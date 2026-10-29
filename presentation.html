@@ -522,6 +522,32 @@
                 white-space: pre-wrap;
                 color: var(--ink);
             }
+            .notes #notesWho {
+                margin-left: auto;
+            }
+            .notes .n-close {
+                appearance: none;
+                align-self: center;
+                margin-left: 4px;
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                border: 1px solid var(--line);
+                border-radius: 9px;
+                background: transparent;
+                color: var(--muted);
+                font: 400 18px/1 var(--sans);
+                cursor: pointer;
+                display: grid;
+                place-items: center;
+            }
+            .notes .n-close:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+            .notes .n-close:active {
+                transform: scale(0.94);
+            }
 
             /* ------------------------------------------------------ settings */
             .overlay {
@@ -1475,7 +1501,16 @@
         <div class="notes" id="notes">
             <div class="n-head">
                 <span id="notesTitle">Speaker notes</span
-                ><span id="notesWho"></span>
+                ><span id="notesWho"></span
+                ><button
+                    class="n-close"
+                    id="notesClose"
+                    type="button"
+                    aria-label="Close notes"
+                    title="Close notes"
+                >
+                    ×
+                </button>
             </div>
             <div class="n-body" id="notesBody"></div>
         </div>
@@ -2370,6 +2405,12 @@
                     e.stopPropagation();
                     toggleNotes();
                 });
+                document
+                    .getElementById("notesClose")
+                    .addEventListener("click", e => {
+                        e.stopPropagation();
+                        if (notesOn) toggleNotes();
+                    });
                 document
                     .getElementById("btnPrev")
                     .addEventListener("click", e => {
