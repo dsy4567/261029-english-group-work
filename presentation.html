@@ -357,6 +357,23 @@
             .steps b {
                 color: var(--accent);
             }
+            .steps div > span .zh {
+                display: block;
+                margin-top: 2px;
+                font-family: var(--sans);
+                font-size: clamp(10px, 1.3vmin, 13px);
+                line-height: 1.45;
+                color: var(--muted);
+            }
+            .qr-card h3 .zh {
+                display: block;
+                margin-top: 4px;
+                font-family: var(--sans);
+                font-size: clamp(11px, 1.4vmin, 14px);
+                line-height: 1.4;
+                letter-spacing: 0;
+                color: var(--muted);
+            }
 
             .roles {
                 display: grid;
@@ -1025,21 +1042,23 @@
             <!-- 09 ============================================================= -->
             <section class="slide" data-title="Interaction 1 · Self-check">
                 <div class="inner">
-                    <div class="eyebrow">Interaction 1 of 2</div>
-                    <h2>Your anxiety profile</h2>
+                    <div class="eyebrow">Interaction 1 of 2 · 互动一</div>
+                    <h2>Your anxiety profile · 你的焦虑画像</h2>
                     <div class="qr-grid">
                         <div class="qr-card" id="cardSurvey">
-                            <div class="tag">Scan now</div>
+                            <div class="tag">Scan now · 现在扫码</div>
                             <div class="qr-box" id="qrSurvey">
                                 <div class="placeholder">
                                     Press <b>S</b> on your keyboard to open
-                                    settings and generate this QR code.
+                                    settings and generate this QR code.<br />按键盘
+                                    <b>S</b> 打开设置，生成此二维码。
                                 </div>
                             </div>
-                            <h3>12-statement self-check</h3>
+                            <h3>12-statement self-check · 12 题自查</h3>
                             <p>
                                 About 2 minutes · stays on your phone · nothing
-                                is uploaded
+                                is uploaded<br />约 2 分钟 · 只留在你的手机上 ·
+                                不上传任何数据
                             </p>
                             <div class="qr-url" id="urlSurvey"></div>
                             <button
@@ -1047,30 +1066,38 @@
                                 data-copy="survey"
                                 type="button"
                             >
-                                Copy link
+                                Copy link · 复制链接
                             </button>
                         </div>
                         <div class="qr-card">
-                            <div class="tag">How it works</div>
+                            <div class="tag">How it works · 怎么玩</div>
                             <div class="steps">
                                 <div>
                                     <b>1</b
                                     ><span
-                                        >Scan, tap “Start the self-check”.</span
+                                        >Scan, tap “Start the self-check”.<span
+                                            class="zh"
+                                            >扫码，点“开始自查”。</span
+                                        ></span
                                     >
                                 </div>
                                 <div>
                                     <b>2</b
                                     ><span
                                         >Answer 12 statements: 1 = not like me,
-                                        5 = very much like me.</span
+                                        5 = very much like me.<span class="zh"
+                                            >12 题按程度选择：1 = 完全不像我，5
+                                            = 非常像我。</span
+                                        ></span
                                     >
                                 </div>
                                 <div>
                                     <b>3</b
                                     ><span
                                         >Get your total, your three bars, and
-                                        two tips.</span
+                                        two tips.<span class="zh"
+                                            >得到总分、三条柱状图和两条建议。</span
+                                        ></span
                                     >
                                 </div>
                                 <div>
@@ -1078,12 +1105,15 @@
                                     ><span
                                         ><b>Raise your hand</b> if the prompt on
                                         your screen matches — we call on
-                                        you.</span
+                                        you.<span class="zh"
+                                            >如果屏幕上的提示符合你，<b>请举手</b>——我们会点你。</span
+                                        ></span
                                     >
                                 </div>
                             </div>
                             <p class="zh">
-                                结果只在自己手机上，我们不收数据、不点名念分。
+                                Results stay on your phone — we collect no data
+                                and never read scores aloud.<br />结果只在自己手机上，我们不收数据、不点名念分。
                             </p>
                         </div>
                     </div>
@@ -1097,8 +1127,8 @@
             <!-- 10 ============================================================= -->
             <section class="slide" data-title="Reading results">
                 <div class="inner">
-                    <div class="eyebrow">Debrief</div>
-                    <h2>How to read your result</h2>
+                    <div class="eyebrow">Debrief · 结果解读</div>
+                    <h2>How to read your result · 怎么读你的结果</h2>
                     <div class="cols">
                         <div class="card accent">
                             <div class="no">30–</div>
@@ -1106,6 +1136,9 @@
                             <p>
                                 You’re comfortable in class. Keep speaking
                                 before you feel ready — that’s how it stays.
+                            </p>
+                            <p class="zh">
+                                你在课堂上比较自在。继续在觉得准备好之前先开口——平静就是这样保持的。
                             </p>
                         </div>
                         <div class="card gold">
@@ -1115,6 +1148,9 @@
                                 You can speak, but half your attention watches
                                 yourself. That split is what freezes you.
                             </p>
+                            <p class="zh">
+                                你能开口，但一半注意力在监视自己。正是这种分裂让你卡住。
+                            </p>
                         </div>
                         <div class="card teal">
                             <div class="no">43+</div>
@@ -1122,6 +1158,9 @@
                             <p>
                                 Fear is doing the talking. Good news: it’s a
                                 state, not a verdict — and states can change.
+                            </p>
+                            <p class="zh">
+                                现在是恐惧在替你说。好消息：它是一种状态，不是判决——状态可以改变。
                             </p>
                         </div>
                     </div>
@@ -1292,24 +1331,30 @@
             <!-- 13 ============================================================= -->
             <section class="slide" data-title="Interaction 2 · Race">
                 <div class="inner">
-                    <div class="eyebrow">Interaction 2 of 2</div>
-                    <h2>The anxiety race</h2>
+                    <div class="eyebrow">Interaction 2 of 2 · 互动二</div>
+                    <h2>The anxiety race · 焦虑抢答</h2>
                     <div class="qr-grid">
                         <div class="qr-card" id="cardRace">
                             <div class="tag">
-                                Scan early · keep the screen open
+                                Scan early · keep the screen open · 早点扫码 ·
+                                别关页面
                             </div>
                             <div class="qr-box" id="qrRace">
                                 <div class="placeholder">
                                     Press <b>S</b> on your keyboard to open
                                     settings: set the start time, then this QR
-                                    code appears.
+                                    code appears.<br />按键盘 <b>S</b>
+                                    打开设置：设好开始时间，这个二维码才会生成。
                                 </div>
                             </div>
-                            <h3 id="raceMeta">Question 1 · starts at —:—:—</h3>
+                            <h3 id="raceMeta">
+                                Question 1 · starts at —:—:—
+                                <span class="zh">第 1 题 · 开始时间 —:—:—</span>
+                            </h3>
                             <p>
                                 Fastest correct answer wins · your phone shows
-                                your time
+                                your time<br />最快答对者获胜 ·
+                                手机上显示你的用时
                             </p>
                             <div class="qr-url" id="urlRace"></div>
                             <button
@@ -1317,45 +1362,51 @@
                                 data-copy="race"
                                 type="button"
                             >
-                                Copy link
+                                Copy link · 复制链接
                             </button>
                         </div>
                         <div class="qr-card">
-                            <div class="tag">Rules</div>
+                            <div class="tag">Rules · 规则</div>
                             <div class="steps">
                                 <div>
                                     <b>1</b
                                     ><span
                                         >Scan <b>now</b> — the question is
-                                        locked until start time.</span
+                                        locked until start time.<span class="zh"
+                                            >现在就扫码——题目在开始时间前处于锁定状态。</span
+                                        ></span
                                     >
                                 </div>
                                 <div>
                                     <b>2</b
                                     ><span
                                         >At start time your screen unlocks. Tap
-                                        once — one shot.</span
+                                        once — one shot.<span class="zh"
+                                            >到开始时间自动解锁。只能点一次。</span
+                                        ></span
                                     >
                                 </div>
                                 <div>
                                     <b>3</b
                                     ><span
                                         >Correct + fastest = winner. Show your
-                                        screen to the judge.</span
+                                        screen to the judge.<span class="zh"
+                                            >答对且最快 =
+                                            获胜。把屏幕给裁判看。</span
+                                        ></span
                                     >
                                 </div>
                                 <div>
                                     <b>4</b
                                     ><span
                                         >Ranking is done live on the podium
-                                        slide — no cheating, don’t
-                                        refresh.</span
+                                        slide — no cheating, don’t refresh.<span
+                                            class="zh"
+                                            >名次在台上现场统计——不要作弊，不要刷新。</span
+                                        ></span
                                     >
                                 </div>
                             </div>
-                            <p class="zh">
-                                全程无后端：计时从官方开始时间算，人工排名，大屏公示。
-                            </p>
                         </div>
                     </div>
                     <div class="note">
@@ -2336,11 +2387,29 @@
                             : epoch !== null
                               ? "starts at " + cfg.start
                               : "no start time set!";
-                        els.raceMeta.textContent =
-                            "Question " + cfg.q + " · " + when;
+                        const whenZh = cfg.preview
+                            ? "预览（立即解锁）"
+                            : epoch !== null
+                              ? cfg.start + " 开始"
+                              : "未设置开始时间！";
+                        els.raceMeta.innerHTML =
+                            "Question " +
+                            cfg.q +
+                            " · " +
+                            when +
+                            '<span class="zh">第 ' +
+                            cfg.q +
+                            " 题 · " +
+                            whenZh +
+                            "</span>";
                     } else {
-                        els.raceMeta.textContent =
-                            "Question " + cfg.q + " · awaiting setup";
+                        els.raceMeta.innerHTML =
+                            "Question " +
+                            cfg.q +
+                            " · awaiting setup" +
+                            '<span class="zh">第 ' +
+                            cfg.q +
+                            " 题 · 等待设置</span>";
                     }
                 }
 
@@ -2417,12 +2486,12 @@
                                 ? surveyUrl()
                                 : raceUrl();
                         if (!url) {
-                            btn.textContent = "Set up first";
+                            btn.textContent = "Set up first · 请先设置";
                             return;
                         }
                         try {
                             await navigator.clipboard.writeText(url);
-                            btn.textContent = "Copied";
+                            btn.textContent = "Copied · 已复制";
                         } catch (e) {
                             const ta = document.createElement("textarea");
                             ta.value = url;
@@ -2430,14 +2499,14 @@
                             ta.select();
                             try {
                                 document.execCommand("copy");
-                                btn.textContent = "Copied";
+                                btn.textContent = "Copied · 已复制";
                             } catch (e2) {
-                                btn.textContent = "Copy failed";
+                                btn.textContent = "Copy failed · 复制失败";
                             }
                             document.body.removeChild(ta);
                         }
                         setTimeout(() => {
-                            btn.textContent = "Copy link";
+                            btn.textContent = "Copy link · 复制链接";
                         }, 1600);
                     });
                 });

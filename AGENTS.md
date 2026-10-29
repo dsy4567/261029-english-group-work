@@ -21,7 +21,13 @@
 3. **互动路由**：互动页仅通过 `?activity=` 区分活动，已注册：
    - `survey` — 12 题自查问卷，题目写死在前端
    - `race` — 抢答，参数 `q`（题号 1–3）、`start`（开始时间，毫秒时间戳或 HH:MM:SS）、
-     `preview`（=1 立即解锁，测试用）
+     `preview`（=1 立即解锁，测试用）、`answer`（已选答案字母 A–D，作答后写入用于防刷新重答）、
+     `t`（作答实际用时，毫秒整数，与 `answer` 同时写入，刷新时原样显示）
+   抢答每题只允许作答一次：点选后将答案字母和用时用 `history.replaceState` 写进 `answer` / `t`
+   参数（不新增历史记录），刷新时若 `answer` 合法则直接渲染结果页并沿用 `t`（缺失或非法时
+   才按 `now()-start` 回算），不得再次出现选项；
+   抢答只能从二维码进入：无参数落地页不得提供抢答入口（只保留自查问卷与扫码提示），
+   `race` 缺少合法 `start` 且无 `preview=1` 时须渲染扫码提示页，不得出题；
    新互动必须合并进 interaction.html，不新建文件。
 4. **抢答开始时间**由展示页设置面板生成进二维码 URI（`start` 毫秒时间戳），
    互动页解析后倒计时解锁；时钟偏差用 HTTP `Date` 头校准，失败回退设备时钟。
@@ -47,6 +53,9 @@
   `【第N页｜主讲 X｜约NN秒】`，页内用 `\n` 换行）。
 - `speech.txt` 按"第 N 页 · 主讲 X"逐页对应幻灯片，页码与主讲人必须与
   `.note` 一致。改任一侧必须同步另一侧（15 页 / 15 段，含 A–F 六角色）。
+- 双语要求：互动页所有正文（题干、选项、说明、按钮、提示、页脚）必须中英双语，
+  英文在前、中文在后（中文用 `.zh` 小号 muted 样式）；展示页第 9、10、13 页
+  的互动内容同样适用。新增互动文案时不得只写一种语言。
 - 幻灯片页序与讲稿页序、互动页题号三者联动，改题数或插页需三处核对。
 
 ## 关键数据位置（改内容先找这里）
@@ -65,13 +74,17 @@
 
 ## 验证
 
-环境：Node ≥ 18；Python venv（qrcode、opencv-python-headless）可用时做二维码验证。
-测试脚本为临时文件，不入库，用完可删。
+环境：Node ≥ 18；jsdom 已作为 devDependency 装在仓库（`pnpm install` 即可），
+`package.json` 为 `"type": "module"`，测试脚本用 `.mjs`。测试脚本本身仍为临时文件，不入库。
+Python venv（qrcode、opencv-python-headless）可用时做二维码验证。
 
 1. 语法：提取两 HTML 的 `<script>` 用 `new Function()` 过一遍。
 2. 行为：jsdom 加载页面（`runScripts: "dangerously"`），
    - 交互页：问卷 12 题出分、抢答 未来 start 倒计时→解锁→作答→结果、
      过去/preview 立即出题、未知 activity 提示、菜单链接带正确参数；
+     无参数落地页无抢答入口且提示扫码、`race` 缺 start 且无 preview 时出扫码提示页；
+     答题后 `answer` / `t` 参数写入且 `history.length` 不增长、带 `answer`+`t` 重载直接出结果页
+     且用时与 `t` 一致、`answer` / `t` 非法时忽略；
    - 展示页：翻页（键盘/点击/边缘回退）、备注换行、计时器开关、
      设置保存后二维码 SVG 生成且 URL 文案正确（q/start/preview 参数）、localStorage 落盘。
    - 断言范围限定 `#app` 或 `.slide` 内容——`body.textContent` 会包含内嵌脚本源码导致误判。

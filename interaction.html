@@ -739,6 +739,16 @@
             .race-opt.dim {
                 opacity: 0.38;
             }
+            .race-opt .zh {
+                display: block;
+                margin-top: 3px;
+                font-size: 12px;
+                line-height: 1.45;
+                color: var(--muted);
+            }
+            .race-opt.chosen .zh {
+                color: inherit;
+            }
 
             .judge {
                 display: inline-flex;
@@ -814,9 +824,11 @@
                 margin-top: auto;
                 padding: 18px 4px 4px;
                 display: flex;
+                flex-wrap: wrap;
                 justify-content: space-between;
-                gap: 12px;
+                gap: 4px 12px;
                 font-size: 10.5px;
+                line-height: 1.5;
                 color: var(--muted);
             }
             .foot span {
@@ -920,10 +932,14 @@
                             [
                                 "Preparation",
                                 "Prepare three \u201cislands\u201d for any topic: one opening line, one detail, one question.",
+                                "准备",
+                                "为任何话题准备三个\u201c语言岛\u201d：一句开场、一个细节、一个问题。",
                             ],
                             [
                                 "Exposure",
                                 "Speak to one person before you speak to the room. A pair is a safer stage than a class.",
+                                "低门槛练习",
+                                "先对一个人说，再对全班说。两人对话比全班更像安全的舞台。",
                             ],
                         ],
                     },
@@ -935,10 +951,14 @@
                             [
                                 "Perspective",
                                 "Write down the worst sentence you imagine hearing. It is usually milder than the movie in your head.",
+                                "换个视角",
+                                "把你最怕听到的那句话写下来。它通常比你脑内的小电影温和得多。",
                             ],
                             [
                                 "Permission",
                                 "Tell your partner \u201cI\u2019m practising \u2014 don\u2019t grade me\u201d before you speak. It changes the stakes.",
+                                "给自己许可",
+                                "开口前告诉搭档\u201c我在练习，别评分\u201d。这句话会改变赌注。",
                             ],
                         ],
                     },
@@ -950,10 +970,14 @@
                             [
                                 "Rehearsal",
                                 "Practise with a 20-second timer, then again with no timer. Pressure loses its surprise.",
+                                "限时排练",
+                                "先用 20 秒计时练一遍，再不计时练一遍。压力就不再突然袭击。",
                             ],
                             [
                                 "Pausing",
                                 "Pause instead of translating. Silence buys thinking time; translation spends it.",
+                                "停顿",
+                                "用停顿代替翻译。沉默买来思考时间，翻译花掉思考时间。",
                             ],
                         ],
                     },
@@ -965,18 +989,21 @@
                         zh: "低焦虑",
                         cls: "low",
                         read: "English rarely makes your body react. You still feel pressure in high-stakes moments \u2014 that is normal. Keep choosing to speak before you feel \u201cready\u201d; that is how the calm stays.",
+                        readZh: "英语很少让你的身体紧张。高风险时刻你仍会感到压力——这很正常。继续在\u201c准备好\u201d之前选择开口，平静就是这样保住的。",
                     },
                     moderate: {
                         en: "MODERATE",
                         zh: "中等",
                         cls: "moderate",
                         read: "You can speak, but your attention splits: part of you is listening, part of you is watching yourself. That split is what makes words disappear. The fix is not \u201ccalm down\u201d \u2014 it is lowering the stakes and preparing fewer, stronger sentences.",
+                        readZh: "你能开口，但注意力被劈成两半：一半在听，一半在审视自己。正是这种分裂让词消失。解法不是\u201c冷静\u201d，而是降低赌注，准备更少但更结实的句子。",
                     },
                     high: {
                         en: "HIGH",
                         zh: "高焦虑",
                         cls: "high",
                         read: "Your fear is doing the talking. That is exhausting, and it is also changeable. Anxiety is a state, not a verdict on your ability. Start with one listener, one minute, one day \u2014 and get the reps in where nothing is graded.",
+                        readZh: "现在是恐惧在替你说。这很累，但它是可以改变的。焦虑是一种状态，不是对你能力的判决。从一个人、一分钟、一天开始——在没有评分的地方多练。",
                     },
                 };
 
@@ -990,9 +1017,17 @@
                             "Translate every word before you speak",
                             "Wait until your accent sounds native",
                         ],
+                        optionsZh: [
+                            "默练到完美再开口",
+                            "准备几句关键短语——然后在\u201c没准备好\u201d之前就开口",
+                            "开口前把每个词都翻译一遍",
+                            "等到口音听起来像母语者",
+                        ],
                         correct: 1,
                         explain:
                             "Action beats perfection. A few ready phrases lower the cost of starting, and starting is what calms the system.",
+                        explainZh:
+                            "行动胜过完美。几句现成短语降低了启动成本，而启动正是让系统平静下来的东西。",
                     },
                     2: {
                         en: "What do researchers say about mistakes in speaking a second language?",
@@ -1003,9 +1038,17 @@
                             "They are a normal part of building fluency",
                             "They come from not studying grammar",
                         ],
+                        optionsZh: [
+                            "每一次都应该被纠正",
+                            "说明学习者还没准备好",
+                            "是建立流利度的正常组成部分",
+                            "来自没有学语法",
+                        ],
                         correct: 2,
                         explain:
                             "Errors are evidence of a system under construction \u2014 interlanguage in motion. Correction has a time and a place.",
+                        explainZh:
+                            "错误是一个正在建造中的系统的证据——中介语在运动中。纠正需要合适的时间和场合。",
                     },
                     3: {
                         en: "Which statement about anxiety and performance is TRUE?",
@@ -1016,9 +1059,17 @@
                             "Only beginners get anxious",
                             "Anxiety has no effect on speaking",
                         ],
+                        optionsZh: [
+                            "焦虑越多，表现一定越好",
+                            "适度紧张能让人更敏锐；过度则有害",
+                            "只有初学者才会焦虑",
+                            "焦虑对口说没有任何影响",
+                        ],
                         correct: 1,
                         explain:
                             "The Yerkes\u2013Dodson curve: arousal helps up to a point, then it hijacks working memory. Even fluent speakers freeze.",
+                        explainZh:
+                            "耶克斯—多德森曲线：唤醒水平在某个点之前有帮助，超过后就会劫持工作记忆。流利的人也会卡住。",
                     },
                 };
 
@@ -1032,7 +1083,7 @@
                     );
                 }
                 function foot() {
-                    return '<footer class="foot"><span>No backend \u00b7 nothing is uploaded</span><span>English Group Work</span></footer>';
+                    return '<footer class="foot"><span>No backend \u00b7 nothing is uploaded · 无后端 · 不上传任何数据</span><span>English Group Work · 英语小组作业</span></footer>';
                 }
                 function esc(s) {
                     return String(s).replace(
@@ -1057,24 +1108,25 @@
                     const base = location.pathname;
                     app.innerHTML =
                         '<section class="screen">' +
-                        chrome("Live") +
+                        chrome("Live · 现场") +
                         '<div class="hero">' +
-                        '<div class="kicker">Classroom live \u00b7 no login \u00b7 no app</div>' +
+                        '<div class="kicker">Classroom live \u00b7 no login \u00b7 no app · 课堂现场 · 免登录 · 免安装</div>' +
                         "<h1>Live<br>Interaction</h1>" +
-                        '<p class="lead">Open this page from the QR code on the slides. If you are here early, that is exactly the point.</p>' +
+                        '<p class="zh" style="font-size:15px;margin-top:-6px">现场互动</p>' +
+                        '<p class="lead">Open this page from the QR code on the slides. If you are here early, that is exactly the point.<span class="zh" style="display:block;margin-top:6px">从幻灯片上的二维码打开本页。如果你来得早——这正是重点。</span></p>' +
                         "</div>" +
                         '<div class="menu">' +
                         '<a href="' +
                         esc(base) +
-                        '?activity=survey"><div class="meta"><div class="t">Self-check</div><div class="s">12 statements \u00b7 2 minutes \u00b7 private</div></div><div class="go">\u2192</div></a>' +
-                        '<a href="' +
-                        esc(base) +
-                        '?activity=race&preview=1"><div class="meta"><div class="t">Live race</div><div class="s">Test mode \u00b7 in class it unlocks at the start time</div></div><div class="go">\u2192</div></a>' +
+                        '?activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">12 statements \u00b7 2 minutes \u00b7 private<br>12 题 · 约 2 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
                         "</div>" +
+                        '<div class="warn">The live race cannot be opened from this page. Scan the QR code on the slide to join \u2014 the link carries the round and the start time.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与，链接里带有题号和开始时间。</span></div>' +
                         (note
-                            ? '<div class="warn">' + esc(note) + "</div>"
+                            ? '<div class="warn">' +
+                              esc(note).replace(/\n/g, "<br>") +
+                              "</div>"
                             : "") +
-                        '<p class="tiny">Activity links look like <b>?activity=survey</b> or <b>?activity=race&amp;q=1&amp;start=&lt;start time&gt;</b>. Both run entirely in your browser.</p>' +
+                        '<p class="tiny">Activity links look like <b>?activity=survey</b> or <b>?activity=race&amp;q=1&amp;start=&lt;start time&gt;</b>. Both run entirely in your browser.<br>活动链接形如 <b>?activity=survey</b> 或 <b>?activity=race&amp;q=1&amp;start=&lt;开始时间&gt;</b>；两者都完全在你的浏览器里运行。</p>' +
                         foot() +
                         "</section>";
                 }
@@ -1089,19 +1141,20 @@
                     document.body.dataset.theme = "paper";
                     app.innerHTML =
                         '<section class="screen">' +
-                        chrome("Self-check") +
+                        chrome("Self-check · 自查") +
                         '<div class="card" style="display:flex;flex-direction:column;gap:18px">' +
                         "<div>" +
-                        '<div class="kicker">12 statements \u00b7 about 2 minutes</div>' +
+                        '<div class="kicker">12 statements \u00b7 about 2 minutes · 12 题 · 约 2 分钟</div>' +
                         '<h1 style="margin-top:10px">How loud is your<br>language anxiety?</h1>' +
+                        '<p class="zh" style="font-size:15px;margin-top:8px">你的语言焦虑，有多响？</p>' +
                         "</div>" +
-                        '<p class="lead">A short adaptation of the foreign-language classroom anxiety scale. There are no right answers \u2014 answer for the version of you that sat in English class last week.</p>' +
+                        '<p class="lead">A short adaptation of the foreign-language classroom anxiety scale. There are no right answers \u2014 answer for the version of you that sat in English class last week.<span class="zh" style="display:block;margin-top:6px">改编自外语课堂焦虑量表。没有标准答案——请按上周坐在英语课上的那个你来回答。</span></p>' +
                         '<div class="stack" style="gap:8px">' +
-                        '<p class="tiny">\u2460 Tap the number that fits: <b>1 = not like me at all</b>, <b>5 = very much like me</b>.</p>' +
-                        '<p class="tiny">\u2461 Your result is calculated on this phone. Nothing is sent anywhere.</p>' +
-                        '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand, not to hand in your data.</p>' +
+                        '<p class="tiny">\u2460 Tap the number that fits: <b>1 = not like me at all</b>, <b>5 = very much like me</b>.<br>① 点选最符合的数字：<b>1 = 完全不像我</b>，<b>5 = 非常像我</b>。</p>' +
+                        '<p class="tiny">\u2461 Your result is calculated on this phone. Nothing is sent anywhere.<br>② 结果只在这台手机上计算，不会发送到任何地方。</p>' +
+                        '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand, not to hand in your data.<br>③ 留着结果页：我们会请你举手，而不是上交数据。</p>' +
                         "</div>" +
-                        '<button class="btn primary block" id="startSurvey">Start the self-check</button>' +
+                        '<button class="btn primary block" id="startSurvey">Start the self-check · 开始自查</button>' +
                         "</div>" +
                         foot() +
                         "</section>";
@@ -1120,14 +1173,20 @@
                     const pct = (sIndex / SURVEY.length) * 100;
                     app.innerHTML =
                         '<section class="screen">' +
-                        chrome("Self-check") +
+                        chrome("Self-check · 自查") +
                         '<div class="progress-wrap">' +
                         '<div class="progress-meta"><span>Statement ' +
                         String(sIndex + 1).padStart(2, "0") +
                         " / " +
                         SURVEY.length +
-                        "</span><span>" +
+                        " · 第 " +
+                        (sIndex + 1) +
+                        " / " +
+                        SURVEY.length +
+                        " 题</span><span>" +
                         DIMS[item.dim].en +
+                        " · " +
+                        DIMS[item.dim].zh.split(" \u00b7 ")[0] +
                         "</span></div>" +
                         '<div class="track"><div class="fill" style="width:' +
                         pct +
@@ -1168,7 +1227,7 @@
                             )
                             .join("") +
                         "</div>" +
-                        '<p class="tiny" style="text-align:center;margin-top:2px">No answer is a bad answer. Choose the first one that feels true.</p>' +
+                        '<p class="tiny" style="text-align:center;margin-top:2px">No answer is a bad answer. Choose the first one that feels true.<br>没有坏答案。选第一个让你觉得真实的。</p>' +
                         "</div>" +
                         foot() +
                         "</section>";
@@ -1206,9 +1265,9 @@
 
                     app.innerHTML =
                         '<section class="screen">' +
-                        chrome("Your profile") +
+                        chrome("Your profile · 你的画像") +
                         '<div class="card" style="display:flex;flex-direction:column;gap:16px">' +
-                        '<div class="kicker">Your language-anxiety profile</div>' +
+                        '<div class="kicker">Your language-anxiety profile · 你的语言焦虑画像</div>' +
                         '<div class="score-row"><span class="score">' +
                         total +
                         '</span><span class="of">/ 60</span></div>' +
@@ -1244,21 +1303,29 @@
                         DIMS[tallest].en +
                         ".</strong> " +
                         band.read +
-                        "</p>" +
+                        '<span class="zh" style="display:block;margin-top:8px">最高的一项是' +
+                        DIMS[tallest].zh.split(" \u00b7 ")[0] +
+                        "。" +
+                        band.readZh +
+                        "</span></p>" +
                         '<div class="tipbox">' +
                         dimName.tips
                             .map(
                                 t =>
                                     '<div class="tip"><b>' +
                                     t[0] +
+                                    " · " +
+                                    t[2] +
                                     "</b>" +
                                     t[1] +
-                                    "</div>",
+                                    '<span class="zh" style="display:block;margin-top:4px">' +
+                                    t[3] +
+                                    "</span></div>",
                             )
                             .join("") +
                         "</div>" +
                         '<div class="hands">' +
-                        '<div class="kicker">Raise your hand if \u2026</div>' +
+                        '<div class="kicker">Raise your hand if \u2026 · 举手，如果……</div>' +
                         "<ol>" +
                         "<li>your tallest bar is " +
                         dimName.short +
@@ -1272,11 +1339,15 @@
                         dimName.en +
                         "</b> (" +
                         dim[tallest] +
-                        "/20).</p>" +
+                        "/20).<br>你的最高维度：<b>" +
+                        DIMS[tallest].zh.split(" \u00b7 ")[0] +
+                        "</b>（" +
+                        dim[tallest] +
+                        "/20）。</p>" +
                         "</div>" +
-                        '<p class="tiny">Adapted for class discussion from the Foreign Language Classroom Anxiety Scale (Horwitz, Horwitz &amp; Cope, 1986). This is a reflection tool, not a diagnosis.</p>' +
+                        '<p class="tiny">Adapted for class discussion from the Foreign Language Classroom Anxiety Scale (Horwitz, Horwitz &amp; Cope, 1986). This is a reflection tool, not a diagnosis.<br>改编自外语课堂焦虑量表（Horwitz, Horwitz &amp; Cope, 1986），用于课堂讨论。它是反思工具，不是诊断。</p>' +
                         "</div>" +
-                        '<div class="row"><button class="btn ghost" id="retake">Take it again</button><button class="btn primary" id="home">Back</button></div>' +
+                        '<div class="row"><button class="btn ghost" id="retake">Take it again · 再做一次</button><button class="btn primary" id="home">Back · 返回</button></div>' +
                         foot() +
                         "</section>";
 
@@ -1361,10 +1432,10 @@
                 }
 
                 function syncLabel() {
-                    if (!synced) return "Using device clock";
+                    if (!synced) return "Using device clock · 使用设备时钟";
                     const drift = clockOffset / 1000;
                     return (
-                        "Clock synced \u00b7 " +
+                        "Clock synced · 时钟已同步 · " +
                         (drift > 0 ? "+" : "") +
                         drift.toFixed(2) +
                         " s"
@@ -1392,10 +1463,49 @@
                         : mmss;
                 }
 
+                function writeAnswerParam(letter, ms) {
+                    const query = new URLSearchParams(location.search);
+                    if (letter) query.set("answer", letter);
+                    else query.delete("answer");
+                    if (Number.isFinite(ms))
+                        query.set("t", String(Math.max(0, Math.round(ms))));
+                    else query.delete("t");
+                    const qs = query.toString();
+                    history.replaceState(
+                        null,
+                        "",
+                        location.pathname +
+                            (qs ? "?" + qs : "") +
+                            location.hash,
+                    );
+                }
+
+                function savedAnswerIndex() {
+                    const raw = (params.get("answer") || "")
+                        .trim()
+                        .toUpperCase();
+                    if (!raw) return null;
+                    const byLetter = letters.indexOf(raw);
+                    if (byLetter >= 0 && byLetter < question.options.length)
+                        return byLetter;
+                    const n = parseInt(raw, 10);
+                    return Number.isInteger(n) &&
+                        n >= 0 &&
+                        n < question.options.length
+                        ? n
+                        : null;
+                }
+
+                function savedAnswerMs() {
+                    const raw = (params.get("t") || "").trim();
+                    const n = Number(raw);
+                    return raw && Number.isFinite(n) && n >= 0 ? n : null;
+                }
+
                 function raceShell(inner, tag) {
                     return (
                         '<section class="screen">' +
-                        chrome(tag || "Live race") +
+                        chrome(tag || "Live race · 现场抢答") +
                         inner +
                         foot() +
                         "</section>"
@@ -1407,17 +1517,22 @@
                     app.innerHTML = raceShell(
                         '<div class="race-top"><span class="dot"></span>Round ' +
                             qParam +
-                            " \u00b7 waiting</div>" +
+                            " \u00b7 waiting · 第 " +
+                            qParam +
+                            " 题 · 等待开始</div>" +
                             '<div class="wait">' +
                             "<h1>You\u2019re in.<br>Keep this screen open.</h1>" +
+                            '<p class="zh" style="font-size:15px;margin-top:-6px">已进入。<br>请让此页面保持打开。</p>' +
                             '<div class="count" id="count">--:--</div>' +
                             '<div class="wait-sub">Question unlocks automatically at <b>' +
                             fmtClock(startAt) +
-                            "</b>. Do not refresh.</div>" +
-                            '<div class="sync" id="sync">Syncing clock\u2026</div>' +
-                            '<div class="tipbox" style="margin-top:4px"><div class="tip"><b>Scoring</b>Fastest correct answer wins. Your screen will show your answer time for the judge.</div></div>' +
+                            '</b>. Do not refresh.<span class="zh" style="display:block;margin-top:4px">题目将在 <b>' +
+                            fmtClock(startAt) +
+                            "</b> 自动解锁，请不要刷新。</span></div>" +
+                            '<div class="sync" id="sync">Syncing clock\u2026 · 正在校准时钟…</div>' +
+                            '<div class="tipbox" style="margin-top:4px"><div class="tip"><b>Scoring · 计分</b>Fastest correct answer wins. Your screen will show your answer time for the judge.<span class="zh" style="display:block;margin-top:4px">最快答对者获胜。你的屏幕会显示答题用时，供裁判查看。</span></div></div>' +
                             "</div>",
-                        "Round " + qParam,
+                        "Round " + qParam + " · 第 " + qParam + " 题",
                     );
 
                     const tick = () => {
@@ -1444,7 +1559,9 @@
                     app.innerHTML = raceShell(
                         '<div class="qhead"><div class="race-top"><span class="dot"></span>Round ' +
                             qParam +
-                            ' \u00b7 go</div><div class="live-time" id="live">0.00 s</div></div>' +
+                            " \u00b7 go · 第 " +
+                            qParam +
+                            ' 题 · 开始</div><div class="live-time" id="live">0.00 s</div></div>' +
                             '<div class="qwrap">' +
                             (badgeText
                                 ? '<div class="sync">' +
@@ -1467,13 +1584,15 @@
                                         letters[i] +
                                         "</span><span>" +
                                         esc(opt) +
-                                        "</span></button>",
+                                        '<span class="zh">' +
+                                        esc(question.optionsZh[i]) +
+                                        "</span></span></button>",
                                 )
                                 .join("") +
                             "</div>" +
-                            '<p class="rank-note" style="margin-top:auto">Tap once. Your time is measured from the official start, not from when you opened the page.</p>' +
+                            '<p class="rank-note" style="margin-top:auto">Tap once. Your time is measured from the official start, not from when you opened the page.<br>只能点一次。用时从官方开始时间算起，而不是从你打开页面算起。</p>' +
                             "</div>",
-                        "Round " + qParam,
+                        "Round " + qParam + " · 第 " + qParam + " 题",
                     );
 
                     const live = document.getElementById("live");
@@ -1493,6 +1612,7 @@
                         clearInterval(liveTimer);
                         const chosen = Number(btn.dataset.i);
                         const ms = Math.max(0, now() - baseTime);
+                        writeAnswerParam(letters[chosen], ms);
                         opts.querySelectorAll(".race-opt").forEach(b => {
                             b.classList.add(b === btn ? "chosen" : "dim");
                         });
@@ -1506,16 +1626,18 @@
                     app.innerHTML = raceShell(
                         '<div class="race-top"><span class="dot"></span>Round ' +
                             qParam +
-                            " \u00b7 answered</div>" +
+                            " \u00b7 answered · 第 " +
+                            qParam +
+                            " 题 · 已作答</div>" +
                             '<div class="qwrap" style="justify-content:center">' +
-                            '<div class="judge">Show this screen to the judge</div>' +
+                            '<div class="judge">Show this screen to the judge · 把此屏出示给裁判</div>' +
                             '<div class="big-time">' +
                             seconds +
                             "<span>s</span></div>" +
                             '<div class="verdict ' +
                             (correct ? "ok" : "no") +
                             '">' +
-                            (correct ? "Correct" : "Not quite") +
+                            (correct ? "Correct · 正确" : "Not quite · 不对") +
                             "</div>" +
                             '<p class="answer-line">Your answer: <b>' +
                             letters[chosen] +
@@ -1523,42 +1645,92 @@
                             letters[question.correct] +
                             "</b> \u2014 " +
                             esc(question.options[question.correct]) +
-                            "</p>" +
+                            '<span class="zh" style="display:block;margin-top:4px">你的答案：<b>' +
+                            letters[chosen] +
+                            "</b> · 正确答案：<b>" +
+                            letters[question.correct] +
+                            "</b> — " +
+                            esc(question.optionsZh[question.correct]) +
+                            "</span></p>" +
                             '<p class="explain">' +
                             esc(question.explain) +
-                            "</p>" +
-                            '<div class="tipbox"><div class="tip"><b>For the judge</b>Time is measured from the official start time. Fastest correct answer wins; incorrect answers do not qualify.</div></div>' +
+                            '<span class="zh" style="display:block;margin-top:6px">' +
+                            esc(question.explainZh) +
+                            "</span></p>" +
+                            '<div class="tipbox"><div class="tip"><b>For the judge · 裁判请看</b>Time is measured from the official start time. Fastest correct answer wins; incorrect answers do not qualify.<span class="zh" style="display:block;margin-top:4px">用时从官方开始时间算起。最快答对者获胜；答错不参与排名。</span></div></div>' +
                             (preview
-                                ? '<button class="btn ghost block" id="again">Test again</button>'
-                                : '<p class="rank-note">Keep this screen visible \u2014 do not refresh.</p>') +
+                                ? '<button class="btn ghost block" id="again">Test again · 再测一次</button>'
+                                : '<p class="rank-note">Keep this screen visible. Refreshing will not let you answer again \u2014 your answer is kept in the link.<br>保持此屏可见。刷新不会让你重新作答——答案已保存在链接里。</p>') +
                             "</div>",
-                        "Round " + qParam,
+                        "Round " + qParam + " · 第 " + qParam + " 题",
                     );
                     if (preview) {
                         document
                             .getElementById("again")
                             .addEventListener("click", () => {
+                                writeAnswerParam(null);
                                 startAt = now();
                                 renderRaceQuestion(
-                                    "Test mode \u00b7 no start time in this link",
+                                    "Test mode \u00b7 no start time in this link · 测试模式 · 此链接没有开始时间",
                                 );
                             });
                     }
                 }
 
-                function startRace() {
+                function renderScanRequired(reason) {
+                    document.body.dataset.theme = "paper";
+                    app.innerHTML =
+                        '<section class="screen">' +
+                        chrome("Live race · 现场抢答") +
+                        '<div class="wait">' +
+                        "<h1>Scan the QR code<br>on the slide.</h1>" +
+                        '<p class="zh" style="font-size:15px;margin-top:-6px">请扫描幻灯片上的二维码进入抢答。</p>' +
+                        '<p class="wait-sub">The race link carries the round number and the official start time, so it can only be opened from the QR code shown in class.<span class="zh" style="display:block;margin-top:4px">抢答链接里带有题号和官方开始时间，因此只能通过课堂上展示的二维码进入。</span></p>' +
+                        (reason
+                            ? '<div class="warn">' + esc(reason) + "</div>"
+                            : "") +
+                        "</div>" +
+                        foot() +
+                        "</section>";
+                }
+
+                async function startRace() {
                     document.body.dataset.theme = "ink";
                     const rawStart = params.get("start");
                     const parsed = parseStart(rawStart);
-                    preview = params.get("preview") === "1" || parsed === null;
+                    const testMode = params.get("preview") === "1";
+                    if (!testMode && parsed === null) {
+                        renderScanRequired(
+                            "This link has no start time \u00b7 此链接没有开始时间",
+                        );
+                        return;
+                    }
+                    preview = testMode || parsed === null;
                     startAt = preview ? now() : parsed;
+
+                    const already = savedAnswerIndex();
+                    if (already !== null) {
+                        answered = true;
+                        await syncClock();
+                        const stored = savedAnswerMs();
+                        renderRaceResult(
+                            already,
+                            stored !== null
+                                ? stored
+                                : startAt !== null
+                                  ? Math.max(0, now() - startAt)
+                                  : 0,
+                        );
+                        return;
+                    }
+
                     syncClock();
 
                     if (preview) {
                         renderRaceQuestion(
                             rawStart
-                                ? "Test mode \u00b7 start time not recognised"
-                                : "Test mode \u00b7 no start time in this link",
+                                ? "Test mode \u00b7 start time not recognised · 测试模式 · 无法识别开始时间"
+                                : "Test mode \u00b7 no start time in this link · 测试模式 · 此链接没有开始时间",
                         );
                     } else if (now() >= startAt) {
                         renderRaceQuestion();
@@ -1577,7 +1749,9 @@
                         renderLanding(
                             "Unknown activity id \u201c" +
                                 activity +
-                                "\u201d. Use ?activity=survey or ?activity=race.",
+                                "\u201d. Use ?activity=survey or ?activity=race.\n未知的活动编号“" +
+                                activity +
+                                "”。请使用 ?activity=survey 或 ?activity=race。",
                         );
                 }
 
