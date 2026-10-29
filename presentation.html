@@ -661,6 +661,40 @@
                 line-height: 1.5;
             }
 
+            /* ------------------------------------------------------- toast */
+            .toast {
+                position: fixed;
+                left: 50%;
+                bottom: clamp(18px, 4vh, 42px);
+                z-index: 60;
+                max-width: min(92vw, 460px);
+                padding: 12px 20px;
+                border-radius: 999px;
+                background: var(--ink);
+                color: var(--bg);
+                font: 600 14px/1.45 var(--sans);
+                text-align: center;
+                box-shadow: 0 18px 40px -22px rgba(0, 0, 0, 0.7);
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translate(-50%, 12px);
+                transition:
+                    opacity 0.22s ease,
+                    transform 0.22s ease,
+                    visibility 0.22s;
+            }
+            .toast.show {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, 0);
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .toast {
+                    transition: none;
+                }
+            }
+
             /* ------------------------------------------------------ help */
             .help-grid {
                 display: grid;
@@ -1629,6 +1663,8 @@
             </div>
         </div>
 
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
         <script>
             /* ==================================================================== *
              *  QR encoder — byte mode, EC level M, versions 1–10, mask autoselect.  *
@@ -2101,6 +2137,7 @@
                     raceMeta: document.getElementById("raceMeta"),
                     btnNotes: document.getElementById("btnNotes"),
                     btnSetup: document.getElementById("btnSetup"),
+                    toast: document.getElementById("toast"),
                 };
 
                 let index = Math.min(
@@ -2332,6 +2369,16 @@
                 function closeSetup() {
                     els.setup.classList.remove("show");
                 }
+                let toastTimer = 0;
+                function showToast(text) {
+                    els.toast.textContent = text;
+                    els.toast.classList.add("show");
+                    clearTimeout(toastTimer);
+                    toastTimer = setTimeout(
+                        () => els.toast.classList.remove("show"),
+                        2200,
+                    );
+                }
 
                 document
                     .getElementById("btnSetupSave")
@@ -2345,7 +2392,12 @@
                         store.set("wxf.q", cfg.q);
                         store.set("wxf.preview", cfg.preview ? "1" : "0");
                         renderQr();
-                        openSetup(); // refresh warnings
+                        closeSetup();
+                        showToast(
+                            cfg.base
+                                ? "Saved & applied · QR codes updated"
+                                : "Saved · add the interaction.html URL to unlock the QR codes",
+                        );
                     });
                 document
                     .getElementById("btnSetupClose")
