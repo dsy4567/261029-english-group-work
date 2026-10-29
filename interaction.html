@@ -739,16 +739,6 @@
             .race-opt.dim {
                 opacity: 0.38;
             }
-            .race-opt .zh {
-                display: block;
-                margin-top: 3px;
-                font-size: 12px;
-                line-height: 1.45;
-                color: var(--muted);
-            }
-            .race-opt.chosen .zh {
-                color: inherit;
-            }
 
             .judge {
                 display: inline-flex;
@@ -1083,7 +1073,7 @@
                     );
                 }
                 function foot() {
-                    return '<footer class="foot"><span>No backend \u00b7 nothing is uploaded · 无后端 · 不上传任何数据</span><span>English Group Work · 英语小组作业</span></footer>';
+                    return '<footer class="foot"><span></span><span>English Group Work · 英语小组作业</span></footer>';
                 }
                 function esc(s) {
                     return String(s).replace(
@@ -1126,7 +1116,6 @@
                               esc(note).replace(/\n/g, "<br>") +
                               "</div>"
                             : "") +
-                        '<p class="tiny">Activity links look like <b>?activity=survey</b> or <b>?activity=race&amp;q=1&amp;start=&lt;start time&gt;</b>. Both run entirely in your browser.<br>活动链接形如 <b>?activity=survey</b> 或 <b>?activity=race&amp;q=1&amp;start=&lt;开始时间&gt;</b>；两者都完全在你的浏览器里运行。</p>' +
                         foot() +
                         "</section>";
                 }
@@ -1151,8 +1140,8 @@
                         '<p class="lead">A short adaptation of the foreign-language classroom anxiety scale. There are no right answers \u2014 answer for the version of you that sat in English class last week.<span class="zh" style="display:block;margin-top:6px">改编自外语课堂焦虑量表。没有标准答案——请按上周坐在英语课上的那个你来回答。</span></p>' +
                         '<div class="stack" style="gap:8px">' +
                         '<p class="tiny">\u2460 Tap the number that fits: <b>1 = not like me at all</b>, <b>5 = very much like me</b>.<br>① 点选最符合的数字：<b>1 = 完全不像我</b>，<b>5 = 非常像我</b>。</p>' +
-                        '<p class="tiny">\u2461 Your result is calculated on this phone. Nothing is sent anywhere.<br>② 结果只在这台手机上计算，不会发送到任何地方。</p>' +
-                        '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand, not to hand in your data.<br>③ 留着结果页：我们会请你举手，而不是上交数据。</p>' +
+                        '<p class="tiny">\u2461 Your result is analyzed on this phone. Nothing is sent anywhere.<br>② 结果只在这台手机上分析，不会发送到任何地方。</p>' +
+                        '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand.<br>③ 留着结果页：我们会请你举手。</p>' +
                         "</div>" +
                         '<button class="btn primary block" id="startSurvey">Start the self-check · 开始自查</button>' +
                         "</div>" +
@@ -1325,7 +1314,7 @@
                             .join("") +
                         "</div>" +
                         '<div class="hands">' +
-                        '<div class="kicker">Raise your hand if \u2026 · 举手，如果……</div>' +
+                        '<div class="kicker">Raise your hand if \u2026 · 符合条件的同学请举手</div>' +
                         "<ol>" +
                         "<li>your tallest bar is " +
                         dimName.short +
@@ -1571,9 +1560,6 @@
                             "<h2>" +
                             esc(question.en) +
                             "</h2>" +
-                            '<p class="zh">' +
-                            esc(question.zh) +
-                            "</p>" +
                             '<div class="race-opts" id="raceOpts">' +
                             question.options
                                 .map(
@@ -1584,9 +1570,7 @@
                                         letters[i] +
                                         "</span><span>" +
                                         esc(opt) +
-                                        '<span class="zh">' +
-                                        esc(question.optionsZh[i]) +
-                                        "</span></span></button>",
+                                        "</span></button>",
                                 )
                                 .join("") +
                             "</div>" +
@@ -1660,7 +1644,7 @@
                             '<div class="tipbox"><div class="tip"><b>For the judge · 裁判请看</b>Time is measured from the official start time. Fastest correct answer wins; incorrect answers do not qualify.<span class="zh" style="display:block;margin-top:4px">用时从官方开始时间算起。最快答对者获胜；答错不参与排名。</span></div></div>' +
                             (preview
                                 ? '<button class="btn ghost block" id="again">Test again · 再测一次</button>'
-                                : '<p class="rank-note">Keep this screen visible. Refreshing will not let you answer again \u2014 your answer is kept in the link.<br>保持此屏可见。刷新不会让你重新作答——答案已保存在链接里。</p>') +
+                                : '<p class="rank-note">Keep this screen visible, do not refresh the page.<br>保持此屏可见，不要刷新页面。</p>') +
                             "</div>",
                         "Round " + qParam + " · 第 " + qParam + " 题",
                     );
