@@ -40,7 +40,8 @@
    （GitHub Pages、Netlify Drop、校内服务器皆可），手机能打开即可。
 2. 打开 `presentation.html`，按 <kbd>S</kbd> 打开设置面板，填写：
    - interaction.html 的完整网址
-   - 抢答开始时间（HH:MM:SS，如 14:35:00）
+   - 抢答开始时间（HH:MM:SS，如 14:35:00）；也可在左侧秒数框里填 N，
+     点 "Fill time" 自动填入"当前时间 + N 秒"
    - 抢答题号（1–3）
    二维码会实时生成并保存在本浏览器。
 3. 手机扫码自测两个链接都能打开。

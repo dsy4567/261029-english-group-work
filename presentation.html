@@ -634,6 +634,36 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
+            .fill-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .fill-row input {
+                width: 74px;
+                flex: none;
+                padding: 8px 10px;
+                font-size: 13px;
+                text-align: center;
+            }
+            .fill-row-unit {
+                font-size: 12px;
+                color: var(--muted);
+            }
+            .fill-row .btn {
+                appearance: none;
+                cursor: pointer;
+                font: 600 12.5px var(--sans);
+                border-radius: 10px;
+                padding: 9px 12px;
+                background: transparent;
+                color: var(--ink);
+                border: 1px solid var(--line);
+            }
+            .fill-row .btn:hover {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
             .panel-actions {
                 display: flex;
                 gap: 10px;
@@ -1637,9 +1667,30 @@
                             placeholder="14:35:00"
                             spellcheck="false"
                         />
+                        <div class="fill-row">
+                            <input
+                                id="inpAhead"
+                                type="number"
+                                min="1"
+                                max="7200"
+                                step="1"
+                                value="60"
+                                aria-label="Seconds from now"
+                            />
+                            <span class="fill-row-unit">sec</span>
+                            <button
+                                class="btn"
+                                id="btnFillNow"
+                                type="button"
+                                title="Fill the start time with now + this many seconds"
+                            >
+                                Fill time
+                            </button>
+                        </div>
                         <div class="hint">
                             Local time today. Students see a live countdown to
-                            it.
+                            it. "Fill time" sets it to now + the seconds on the
+                            left.
                         </div>
                     </div>
                     <div class="field">
@@ -2178,6 +2229,7 @@
                     help: document.getElementById("helpOverlay"),
                     inpBase: document.getElementById("inpBase"),
                     inpStart: document.getElementById("inpStart"),
+                    inpAhead: document.getElementById("inpAhead"),
                     inpQ: document.getElementById("inpQ"),
                     inpPreview: document.getElementById("inpPreview"),
                     setupWarn: document.getElementById("setupWarn"),
@@ -2471,6 +2523,23 @@
                 document
                     .getElementById("btnSetupClose")
                     .addEventListener("click", closeSetup);
+                els.btnFillNow = document.getElementById("btnFillNow");
+                els.btnFillNow.addEventListener("click", e => {
+                    e.stopPropagation();
+                    const secs = parseInt(els.inpAhead.value, 10);
+                    if (!isFinite(secs) || secs < 0) {
+                        els.inpAhead.focus();
+                        return;
+                    }
+                    const d = new Date(Date.now() + secs * 1000);
+                    const pad = n => String(n).padStart(2, "0");
+                    els.inpStart.value =
+                        pad(d.getHours()) +
+                        ":" +
+                        pad(d.getMinutes()) +
+                        ":" +
+                        pad(d.getSeconds());
+                });
                 document
                     .getElementById("btnHelpClose")
                     .addEventListener("click", () =>
