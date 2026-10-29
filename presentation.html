@@ -521,6 +521,15 @@
             .timer.hot {
                 color: var(--accent);
             }
+            .timer-hint {
+                color: var(--muted);
+                opacity: 0.7;
+                letter-spacing: 0.04em;
+                white-space: nowrap;
+            }
+            .timer-hint[hidden] {
+                display: none;
+            }
 
             /* ------------------------------------------------------ notes panel */
             .notes {
@@ -1502,7 +1511,9 @@
                     </div>
                     <div class="note">
                         【第13页｜主讲 D｜约50秒 +
-                        等待3分钟】\n先确认二维码旁已显示开始时间（开场前就在本页二维码下方点 Apply 设好）。口令：“现在扫，页面别关”。倒计时结束读题。读完题给20秒作答，然后请前5名举手，人工记名次。共3题可重复，改二维码旁题号换题。
+                        等待3分钟】\n先确认二维码旁已显示开始时间（开场前就在本页二维码下方点
+                        Apply
+                        设好）。口令：“现在扫，页面别关”。倒计时结束读题。读完题给20秒作答，然后请前5名举手，人工记名次。共3题可重复，改二维码旁题号换题。
                     </div>
                 </div>
             </section>
@@ -1636,6 +1647,9 @@
                         id="timer"
                         title="Presentation timer (T, double-click to reset)"
                         >00:00</span
+                    >
+                    <span class="timer-hint" id="timerHint"
+                        >按 T 开始计时 · 双击归零</span
                     >
                     <button
                         class="hud-btn wide"
@@ -2234,6 +2248,7 @@
                     counter: document.getElementById("counter"),
                     slideTitle: document.getElementById("slideTitle"),
                     timer: document.getElementById("timer"),
+                    timerHint: document.getElementById("timerHint"),
                     notes: document.getElementById("notes"),
                     notesTitle: document.getElementById("notesTitle"),
                     notesBody: document.getElementById("notesBody"),
@@ -2318,7 +2333,12 @@
                 let timerBase = null; // timestamp when started
                 let timerOffset = Number(store.get("wxf.timer") || 0);
                 let timerOn = store.get("wxf.timerOn") === "1";
+                let timerUsed = store.get("wxf.timerUsed") === "1";
                 let timerHandle = null;
+                function updateTimerHint() {
+                    els.timerHint.hidden =
+                        timerUsed || timerOn || timerOffset > 0;
+                }
                 function fmtElapsed(ms) {
                     const total = Math.floor(ms / 1000);
                     const h = Math.floor(total / 3600);
@@ -2364,6 +2384,11 @@
                         store.set("wxf.timer", String(timerOffset));
                     }
                     store.set("wxf.timerOn", timerOn ? "1" : "0");
+                    if (timerOn && !timerUsed) {
+                        timerUsed = true;
+                        store.set("wxf.timerUsed", "1");
+                    }
+                    updateTimerHint();
                     els.timer.style.opacity =
                         timerOn || timerOffset ? "1" : "0.4";
                 }
@@ -2787,6 +2812,7 @@
                     timerTick();
                     els.timer.style.opacity = timerOffset ? "1" : "0.4";
                 }
+                updateTimerHint();
                 if (
                     Number(store.get("wxf.sawSetupHint") || 0) === 0 &&
                     !cfg.base
