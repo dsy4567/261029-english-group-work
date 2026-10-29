@@ -1,0 +1,1588 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="theme-color" content="#f2eee5" />
+        <title>Why We Freeze · Live</title>
+        <style>
+            :root {
+                --bg: #f2eee5;
+                --bg-2: #eae4d7;
+                --card: #fffcf7;
+                --ink: #191d24;
+                --muted: #6f6a61;
+                --line: #dcd4c6;
+                --accent: #cb4a2b;
+                --teal: #1c6b64;
+                --gold: #a97b2b;
+                --shadow: 0 18px 40px -28px rgba(25, 29, 36, 0.45);
+                --ink-08: rgba(25, 29, 36, 0.08);
+                --ink-09: rgba(25, 29, 36, 0.09);
+                --ink-10: rgba(25, 29, 36, 0.1);
+                --ink-22: rgba(25, 29, 36, 0.22);
+                --accent-10: rgba(203, 74, 43, 0.1);
+                --accent-16: rgba(203, 74, 43, 0.16);
+                --accent-45: rgba(203, 74, 43, 0.45);
+                --accent-50: rgba(203, 74, 43, 0.5);
+                --accent-55: rgba(203, 74, 43, 0.55);
+                --teal-10: rgba(28, 107, 100, 0.1);
+                --teal-16: rgba(28, 107, 100, 0.16);
+                --teal-45: rgba(28, 107, 100, 0.45);
+                --gold-10: rgba(169, 123, 43, 0.1);
+                --gold-45: rgba(169, 123, 43, 0.45);
+                --gold-50: rgba(169, 123, 43, 0.5);
+            }
+            body[data-theme="ink"] {
+                --bg: #101318;
+                --bg-2: #0c0f13;
+                --card: #1a1f27;
+                --ink: #f2eee5;
+                --muted: #98a1aa;
+                --line: #2d343e;
+                --accent: #ff6a45;
+                --teal: #53c4b6;
+                --gold: #d6a95a;
+                --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+                --ink-08: rgba(242, 238, 229, 0.08);
+                --ink-09: rgba(242, 238, 229, 0.09);
+                --ink-10: rgba(242, 238, 229, 0.1);
+                --ink-22: rgba(242, 238, 229, 0.22);
+                --accent-10: rgba(255, 106, 69, 0.1);
+                --accent-16: rgba(255, 106, 69, 0.16);
+                --accent-45: rgba(255, 106, 69, 0.45);
+                --accent-50: rgba(255, 106, 69, 0.5);
+                --accent-55: rgba(255, 106, 69, 0.55);
+                --teal-10: rgba(83, 196, 182, 0.1);
+                --teal-16: rgba(83, 196, 182, 0.16);
+                --teal-45: rgba(83, 196, 182, 0.45);
+                --gold-10: rgba(214, 169, 90, 0.1);
+                --gold-45: rgba(214, 169, 90, 0.45);
+                --gold-50: rgba(214, 169, 90, 0.5);
+            }
+            * {
+                box-sizing: border-box;
+                -webkit-tap-highlight-color: transparent;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background:
+                    radial-gradient(
+                        1200px 600px at 50% -10%,
+                        var(--bg-2),
+                        transparent 70%
+                    ),
+                    var(--bg);
+                color: var(--ink);
+                font-family:
+                    ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    "Segoe UI",
+                    "PingFang SC",
+                    "Hiragino Sans GB",
+                    "Microsoft YaHei",
+                    sans-serif;
+                font-size: 16px;
+                line-height: 1.5;
+                min-height: 100vh;
+                min-height: 100dvh;
+                transition:
+                    background 0.35s ease,
+                    color 0.35s ease;
+            }
+            .app {
+                max-width: 600px;
+                min-height: 100vh;
+                min-height: 100dvh;
+                margin: 0 auto;
+                padding: 18px 18px calc(28px + env(safe-area-inset-bottom));
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+            .screen {
+                animation: rise 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                flex: 1;
+            }
+            @keyframes rise {
+                from {
+                    opacity: 0;
+                    transform: translateY(9px);
+                }
+                to {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .screen,
+                .bar-fill {
+                    animation: none !important;
+                    transition: none !important;
+                }
+            }
+
+            .top {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                padding-top: 4px;
+            }
+            .brand {
+                font:
+                    700 11px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.22em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            .pill {
+                font:
+                    600 10px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--accent);
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                padding: 7px 10px;
+                white-space: nowrap;
+            }
+            .kicker {
+                font:
+                    700 10.5px/1.4 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            h1,
+            h2 {
+                margin: 0;
+                font-family:
+                    Georgia, "Times New Roman", "Songti SC",
+                    "Noto Serif CJK SC", serif;
+                font-weight: 500;
+                letter-spacing: -0.01em;
+            }
+            h1 {
+                font-size: 34px;
+                line-height: 1.12;
+            }
+            h2 {
+                font-size: 25px;
+                line-height: 1.25;
+            }
+            p {
+                margin: 0;
+            }
+            .lead {
+                color: var(--muted);
+                font-size: 15px;
+                line-height: 1.55;
+            }
+            .zh {
+                color: var(--muted);
+                font-size: 13px;
+                line-height: 1.6;
+            }
+            .muted {
+                color: var(--muted);
+            }
+            .tiny {
+                font-size: 11.5px;
+                line-height: 1.5;
+                color: var(--muted);
+            }
+
+            .card {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: 20px;
+                padding: 22px;
+                box-shadow: var(--shadow);
+            }
+            .card.flush {
+                padding: 0;
+                overflow: hidden;
+            }
+
+            .btn {
+                appearance: none;
+                border: 0;
+                font: 600 15px/1.2 inherit;
+                font-family: inherit;
+                border-radius: 14px;
+                padding: 17px 20px;
+                cursor: pointer;
+                transition:
+                    transform 0.15s ease,
+                    background 0.2s ease,
+                    border-color 0.2s ease;
+                touch-action: manipulation;
+            }
+            .btn:active {
+                transform: scale(0.98);
+            }
+            .btn.primary {
+                background: var(--accent);
+                color: #fffaf4;
+            }
+            body[data-theme="ink"] .btn.primary {
+                color: #16110e;
+            }
+            .btn.ghost {
+                background: transparent;
+                color: var(--ink);
+                border: 1px solid var(--line);
+            }
+            .btn.block {
+                width: 100%;
+            }
+
+            .stack {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .row {
+                display: flex;
+                gap: 10px;
+            }
+            .row > * {
+                flex: 1;
+            }
+
+            /* ---------- landing ---------- */
+            .hero {
+                padding: 8px 4px 2px;
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .menu {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .menu a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+                text-decoration: none;
+                color: var(--ink);
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                padding: 18px 18px;
+                box-shadow: var(--shadow);
+            }
+            .menu a:active {
+                transform: scale(0.99);
+            }
+            .menu .meta {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .menu .t {
+                font:
+                    600 17px/1.2 Georgia,
+                    serif;
+            }
+            .menu .s {
+                font-size: 12px;
+                color: var(--muted);
+            }
+            .menu .go {
+                font-size: 20px;
+                color: var(--accent);
+            }
+
+            /* ---------- survey ---------- */
+            .progress-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .progress-meta {
+                display: flex;
+                justify-content: space-between;
+                font:
+                    700 10px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            .track {
+                height: 4px;
+                border-radius: 99px;
+                background: var(--line);
+                overflow: hidden;
+            }
+            .fill {
+                height: 100%;
+                width: 0;
+                background: var(--accent);
+                border-radius: 99px;
+                transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+            }
+
+            .statement-card {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                flex: 1;
+            }
+            .statement {
+                font-size: 26px;
+                line-height: 1.28;
+                margin-top: 2px;
+            }
+            .scale {
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                margin-top: 6px;
+            }
+            .opt {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                width: 100%;
+                text-align: left;
+                background: var(--card);
+                color: var(--ink);
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                padding: 14px 16px;
+                min-height: 56px;
+                font: 500 15px/1.3 inherit;
+                font-family: inherit;
+                cursor: pointer;
+                transition:
+                    border-color 0.15s ease,
+                    background 0.15s ease,
+                    transform 0.12s ease;
+            }
+            .opt .n {
+                flex: none;
+                width: 28px;
+                height: 28px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                background: var(--ink-08);
+                color: var(--muted);
+                font:
+                    700 12px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+            }
+            .opt .label {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .opt .label em {
+                font-style: normal;
+                font-size: 11px;
+                color: var(--muted);
+            }
+            .opt:active,
+            .opt.chosen {
+                border-color: var(--accent);
+                transform: scale(0.985);
+            }
+            .opt.chosen .n {
+                background: var(--accent);
+                color: #fff;
+            }
+            .opt.disabled {
+                pointer-events: none;
+                opacity: 0.55;
+            }
+
+            .survey-foot {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+            }
+
+            /* ---------- result ---------- */
+            .score-row {
+                display: flex;
+                align-items: baseline;
+                gap: 8px;
+                margin: 6px 0 2px;
+            }
+            .score {
+                font:
+                    500 64px/1 Georgia,
+                    serif;
+                letter-spacing: -0.02em;
+                font-variant-numeric: tabular-nums;
+            }
+            .of {
+                color: var(--muted);
+                font-size: 13px;
+            }
+            .band {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                border-radius: 999px;
+                padding: 8px 14px;
+                font:
+                    700 11px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                width: fit-content;
+            }
+            .band.low {
+                color: var(--teal);
+                border: 1px solid var(--teal-45);
+                background: var(--teal-10);
+            }
+            .band.moderate {
+                color: var(--gold);
+                border: 1px solid var(--gold-45);
+                background: var(--gold-10);
+            }
+            .band.high {
+                color: var(--accent);
+                border: 1px solid var(--accent-45);
+                background: var(--accent-10);
+            }
+
+            .bars {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                margin: 4px 0;
+            }
+            .bar-row {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+            }
+            .bar-head {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 10px;
+            }
+            .bar-name {
+                font-size: 13px;
+                line-height: 1.3;
+            }
+            .bar-name span {
+                display: block;
+                font-size: 10.5px;
+                color: var(--muted);
+                letter-spacing: 0.04em;
+            }
+            .bar-val {
+                font:
+                    600 12px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                color: var(--muted);
+                font-variant-numeric: tabular-nums;
+            }
+            .bar-track {
+                height: 7px;
+                border-radius: 99px;
+                background: var(--ink-10);
+                overflow: hidden;
+            }
+            .bar-fill {
+                height: 100%;
+                border-radius: 99px;
+                width: 0;
+                transition: width 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+            }
+            .bar-fill.ca {
+                background: var(--accent);
+            }
+            .bar-fill.fne {
+                background: var(--teal);
+            }
+            .bar-fill.tp {
+                background: var(--gold);
+            }
+
+            .read {
+                font-size: 14.5px;
+                line-height: 1.6;
+                color: var(--ink);
+            }
+            .read strong {
+                font-weight: 600;
+            }
+            .tipbox {
+                border-left: 2px solid var(--accent);
+                padding: 2px 0 2px 14px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .tip {
+                font-size: 13.5px;
+                line-height: 1.55;
+            }
+            .tip b {
+                display: block;
+                font:
+                    700 9.5px/1.6 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+
+            .hands {
+                border: 1px dashed var(--ink-22);
+                border-radius: 16px;
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hands .kicker {
+                color: var(--accent);
+            }
+            .hands ol {
+                margin: 0;
+                padding-left: 18px;
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                font-size: 13.5px;
+                line-height: 1.5;
+            }
+            .hands li::marker {
+                color: var(--accent);
+            }
+
+            /* ---------- race ---------- */
+            .race-top {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                font:
+                    700 10.5px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            .dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: var(--accent);
+                box-shadow: 0 0 0 0 var(--accent-55);
+                animation: pulse 1.8s infinite;
+            }
+            @keyframes pulse {
+                0% {
+                    box-shadow: 0 0 0 0 var(--accent-55);
+                }
+                70% {
+                    box-shadow: 0 0 0 9px transparent;
+                }
+                100% {
+                    box-shadow: 0 0 0 0 transparent;
+                }
+            }
+
+            .wait {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 18px;
+                flex: 1;
+                padding: 16px 0 8px;
+            }
+            .wait h1 {
+                font-size: 34px;
+            }
+            .count {
+                font:
+                    600 64px/1 Georgia,
+                    serif;
+                font-variant-numeric: tabular-nums;
+                letter-spacing: 0.02em;
+                color: var(--accent);
+            }
+            .wait-sub {
+                font-size: 14px;
+                color: var(--muted);
+            }
+            .wait-sub b {
+                color: var(--ink);
+                font-weight: 600;
+                font-variant-numeric: tabular-nums;
+            }
+            .sync {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                font-size: 11px;
+                color: var(--muted);
+                width: fit-content;
+                border: 1px solid var(--line);
+                border-radius: 999px;
+                padding: 6px 10px;
+            }
+
+            .qwrap {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+                flex: 1;
+            }
+            .qhead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+            }
+            .live-time {
+                font:
+                    600 13px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                color: var(--accent);
+                font-variant-numeric: tabular-nums;
+            }
+            .qwrap h2 {
+                font-size: 27px;
+                line-height: 1.28;
+            }
+            .race-opts {
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                margin-top: 2px;
+            }
+            .race-opt {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                width: 100%;
+                text-align: left;
+                background: var(--card);
+                color: var(--ink);
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                padding: 14px 15px;
+                min-height: 58px;
+                font: 500 15px/1.35 inherit;
+                font-family: inherit;
+                cursor: pointer;
+                transition:
+                    border-color 0.12s ease,
+                    transform 0.1s ease,
+                    background 0.12s ease;
+            }
+            .race-opt .k {
+                flex: none;
+                width: 26px;
+                height: 26px;
+                display: grid;
+                place-items: center;
+                border-radius: 8px;
+                background: var(--ink-09);
+                color: var(--muted);
+                font:
+                    700 11px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                margin-top: 1px;
+            }
+            .race-opt:active {
+                transform: scale(0.985);
+                border-color: var(--accent);
+            }
+            .race-opt.chosen {
+                border-color: var(--accent);
+                background: var(--accent-10);
+            }
+            .race-opt.dim {
+                opacity: 0.38;
+            }
+
+            .judge {
+                display: inline-flex;
+                width: fit-content;
+                font:
+                    700 10.5px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--accent);
+                border: 1px solid var(--accent-50);
+                border-radius: 999px;
+                padding: 8px 12px;
+            }
+            .big-time {
+                font:
+                    600 92px/1 Georgia,
+                    serif;
+                letter-spacing: -0.03em;
+                font-variant-numeric: tabular-nums;
+                margin: 2px 0;
+            }
+            .big-time span {
+                font-size: 26px;
+                vertical-align: 8px;
+                margin-left: 4px;
+                color: var(--muted);
+                letter-spacing: 0;
+            }
+            .verdict {
+                display: inline-flex;
+                width: fit-content;
+                border-radius: 8px;
+                padding: 7px 12px;
+                font:
+                    700 12px/1 ui-sans-serif,
+                    system-ui,
+                    sans-serif;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+            }
+            .verdict.ok {
+                background: var(--teal-16);
+                color: var(--teal);
+            }
+            .verdict.no {
+                background: var(--accent-16);
+                color: var(--accent);
+            }
+            .answer-line {
+                font-size: 14px;
+                line-height: 1.55;
+                color: var(--ink);
+            }
+            .answer-line b {
+                font-weight: 600;
+            }
+            .explain {
+                font-size: 13px;
+                line-height: 1.55;
+                color: var(--muted);
+                border-top: 1px solid var(--line);
+                padding-top: 12px;
+            }
+            .rank-note {
+                font-size: 12.5px;
+                line-height: 1.5;
+                color: var(--muted);
+            }
+
+            .foot {
+                margin-top: auto;
+                padding: 18px 4px 4px;
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+                font-size: 10.5px;
+                color: var(--muted);
+            }
+            .foot span {
+                letter-spacing: 0.04em;
+            }
+
+            .warn {
+                border: 1px solid var(--gold-50);
+                background: var(--gold-10);
+                color: var(--gold);
+                border-radius: 12px;
+                padding: 12px 14px;
+                font-size: 12.5px;
+                line-height: 1.5;
+            }
+        </style>
+    </head>
+    <body data-theme="paper">
+        <div class="app" id="app"></div>
+        <script>
+            (() => {
+                "use strict";
+
+                const app = document.getElementById("app");
+                const params = new URLSearchParams(location.search);
+                const activity = (params.get("activity") || "")
+                    .trim()
+                    .toLowerCase();
+
+                /* ------------------------------------------------------------------ data */
+
+                const SURVEY = [
+                    {
+                        dim: "ca",
+                        en: "I freeze when I have to speak English in front of the class.",
+                        zh: "在全班面前说英语时，我脑子会一片空白。",
+                    },
+                    {
+                        dim: "ca",
+                        en: "I avoid raising my hand in English class, even when I know the answer.",
+                        zh: "即使知道答案，我也会避开在英语课上举手。",
+                    },
+                    {
+                        dim: "ca",
+                        en: "My heart races when someone asks me a question in English.",
+                        zh: "有人用英语问我问题时，我会心跳加快。",
+                    },
+                    {
+                        dim: "ca",
+                        en: "I rehearse an English sentence in my head, then decide not to say it.",
+                        zh: "我在心里演练了英文句子，最后还是决定不说。",
+                    },
+                    {
+                        dim: "fne",
+                        en: "I worry that classmates will notice every mistake I make.",
+                        zh: "我担心同学会注意到我的每一个错误。",
+                    },
+                    {
+                        dim: "fne",
+                        en: "I am afraid my teacher will think I am a weak student if I speak slowly.",
+                        zh: "我说得慢时，会怕老师觉得我英语很差。",
+                    },
+                    {
+                        dim: "fne",
+                        en: "After English class, I replay the things I said wrong.",
+                        zh: "下课后，我会反复回想自己说错的地方。",
+                    },
+                    {
+                        dim: "fne",
+                        en: "I would rather stay silent than sound \u201cstupid\u201d in English.",
+                        zh: "比起说错显得很蠢，我宁愿保持沉默。",
+                    },
+                    {
+                        dim: "tp",
+                        en: "My mind goes blank when a speaking task is timed.",
+                        zh: "口语任务一开始计时，我就大脑空白。",
+                    },
+                    {
+                        dim: "tp",
+                        en: "I perform worse in English when I know I am being graded.",
+                        zh: "知道要被评分时，我的英语反而发挥得更差。",
+                    },
+                    {
+                        dim: "tp",
+                        en: "I can say a sentence alone, but not when someone is listening.",
+                        zh: "我一个人能说出句子，有人在听时就不行。",
+                    },
+                    {
+                        dim: "tp",
+                        en: "After an English presentation, I only remember what went wrong.",
+                        zh: "英语展示结束后，我只记得自己哪里搞砸了。",
+                    },
+                ];
+
+                const DIMS = {
+                    ca: {
+                        en: "Communication apprehension",
+                        zh: "交流恐惧 · 上台与开口",
+                        short: "communication apprehension",
+                        tips: [
+                            [
+                                "Preparation",
+                                "Prepare three \u201cislands\u201d for any topic: one opening line, one detail, one question.",
+                            ],
+                            [
+                                "Exposure",
+                                "Speak to one person before you speak to the room. A pair is a safer stage than a class.",
+                            ],
+                        ],
+                    },
+                    fne: {
+                        en: "Fear of negative evaluation",
+                        zh: "负面评价恐惧 · 怕被评判",
+                        short: "fear of negative evaluation",
+                        tips: [
+                            [
+                                "Perspective",
+                                "Write down the worst sentence you imagine hearing. It is usually milder than the movie in your head.",
+                            ],
+                            [
+                                "Permission",
+                                "Tell your partner \u201cI\u2019m practising \u2014 don\u2019t grade me\u201d before you speak. It changes the stakes.",
+                            ],
+                        ],
+                    },
+                    tp: {
+                        en: "Test & performance pressure",
+                        zh: "测评压力 · 限时与评分",
+                        short: "performance pressure",
+                        tips: [
+                            [
+                                "Rehearsal",
+                                "Practise with a 20-second timer, then again with no timer. Pressure loses its surprise.",
+                            ],
+                            [
+                                "Pausing",
+                                "Pause instead of translating. Silence buys thinking time; translation spends it.",
+                            ],
+                        ],
+                    },
+                };
+
+                const BANDS = {
+                    low: {
+                        en: "LOW",
+                        zh: "低焦虑",
+                        cls: "low",
+                        read: "English rarely makes your body react. You still feel pressure in high-stakes moments \u2014 that is normal. Keep choosing to speak before you feel \u201cready\u201d; that is how the calm stays.",
+                    },
+                    moderate: {
+                        en: "MODERATE",
+                        zh: "中等",
+                        cls: "moderate",
+                        read: "You can speak, but your attention splits: part of you is listening, part of you is watching yourself. That split is what makes words disappear. The fix is not \u201ccalm down\u201d \u2014 it is lowering the stakes and preparing fewer, stronger sentences.",
+                    },
+                    high: {
+                        en: "HIGH",
+                        zh: "高焦虑",
+                        cls: "high",
+                        read: "Your fear is doing the talking. That is exhausting, and it is also changeable. Anxiety is a state, not a verdict on your ability. Start with one listener, one minute, one day \u2014 and get the reps in where nothing is graded.",
+                    },
+                };
+
+                const RACE = {
+                    1: {
+                        en: "Which habit is most likely to REDUCE speaking anxiety?",
+                        zh: "哪种做法最可能降低开口焦虑？",
+                        options: [
+                            "Rehearse silently until it feels perfect",
+                            "Prepare a few key phrases \u2014 then speak before you feel ready",
+                            "Translate every word before you speak",
+                            "Wait until your accent sounds native",
+                        ],
+                        correct: 1,
+                        explain:
+                            "Action beats perfection. A few ready phrases lower the cost of starting, and starting is what calms the system.",
+                    },
+                    2: {
+                        en: "What do researchers say about mistakes in speaking a second language?",
+                        zh: "研究者如何看待二语口语中的错误？",
+                        options: [
+                            "They should be corrected every single time",
+                            "They mean the learner is not ready",
+                            "They are a normal part of building fluency",
+                            "They come from not studying grammar",
+                        ],
+                        correct: 2,
+                        explain:
+                            "Errors are evidence of a system under construction \u2014 interlanguage in motion. Correction has a time and a place.",
+                    },
+                    3: {
+                        en: "Which statement about anxiety and performance is TRUE?",
+                        zh: "关于焦虑与表现，哪一句是对的？",
+                        options: [
+                            "More anxiety always means better performance",
+                            "A little can sharpen you; too much hurts",
+                            "Only beginners get anxious",
+                            "Anxiety has no effect on speaking",
+                        ],
+                        correct: 1,
+                        explain:
+                            "The Yerkes\u2013Dodson curve: arousal helps up to a point, then it hijacks working memory. Even fluent speakers freeze.",
+                    },
+                };
+
+                /* --------------------------------------------------------------- helpers */
+
+                function chrome(tag) {
+                    return (
+                        '<header class="top"><div class="brand">Why We Freeze</div><div class="pill">' +
+                        tag +
+                        "</div></header>"
+                    );
+                }
+                function foot() {
+                    return '<footer class="foot"><span>No backend \u00b7 nothing is uploaded</span><span>English Group Work</span></footer>';
+                }
+                function esc(s) {
+                    return String(s).replace(
+                        /[&<>"']/g,
+                        c =>
+                            ({
+                                "&": "&amp;",
+                                "<": "&lt;",
+                                ">": "&gt;",
+                                '"': "&quot;",
+                                "'": "&#39;",
+                            })[c],
+                    );
+                }
+                const letters = ["A", "B", "C", "D"];
+                const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+
+                /* ---------------------------------------------------------------- landing */
+
+                function renderLanding(note) {
+                    document.body.dataset.theme = "paper";
+                    const base = location.pathname;
+                    app.innerHTML =
+                        '<section class="screen">' +
+                        chrome("Live") +
+                        '<div class="hero">' +
+                        '<div class="kicker">Classroom live \u00b7 no login \u00b7 no app</div>' +
+                        "<h1>Live<br>Interaction</h1>" +
+                        '<p class="lead">Open this page from the QR code on the slides. If you are here early, that is exactly the point.</p>' +
+                        "</div>" +
+                        '<div class="menu">' +
+                        '<a href="' +
+                        esc(base) +
+                        '?activity=survey"><div class="meta"><div class="t">Self-check</div><div class="s">12 statements \u00b7 2 minutes \u00b7 private</div></div><div class="go">\u2192</div></a>' +
+                        '<a href="' +
+                        esc(base) +
+                        '?activity=race&preview=1"><div class="meta"><div class="t">Live race</div><div class="s">Test mode \u00b7 in class it unlocks at the start time</div></div><div class="go">\u2192</div></a>' +
+                        "</div>" +
+                        (note
+                            ? '<div class="warn">' + esc(note) + "</div>"
+                            : "") +
+                        '<p class="tiny">Activity links look like <b>?activity=survey</b> or <b>?activity=race&amp;q=1&amp;start=&lt;start time&gt;</b>. Both run entirely in your browser.</p>' +
+                        foot() +
+                        "</section>";
+                }
+
+                /* ----------------------------------------------------------------- survey */
+
+                let sIndex = 0;
+                let sAnswers = [];
+                let sLock = false;
+
+                function renderSurveyIntro() {
+                    document.body.dataset.theme = "paper";
+                    app.innerHTML =
+                        '<section class="screen">' +
+                        chrome("Self-check") +
+                        '<div class="card" style="display:flex;flex-direction:column;gap:18px">' +
+                        "<div>" +
+                        '<div class="kicker">12 statements \u00b7 about 2 minutes</div>' +
+                        '<h1 style="margin-top:10px">How loud is your<br>language anxiety?</h1>' +
+                        "</div>" +
+                        '<p class="lead">A short adaptation of the foreign-language classroom anxiety scale. There are no right answers \u2014 answer for the version of you that sat in English class last week.</p>' +
+                        '<div class="stack" style="gap:8px">' +
+                        '<p class="tiny">\u2460 Tap the number that fits: <b>1 = not like me at all</b>, <b>5 = very much like me</b>.</p>' +
+                        '<p class="tiny">\u2461 Your result is calculated on this phone. Nothing is sent anywhere.</p>' +
+                        '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand, not to hand in your data.</p>' +
+                        "</div>" +
+                        '<button class="btn primary block" id="startSurvey">Start the self-check</button>' +
+                        "</div>" +
+                        foot() +
+                        "</section>";
+                    document
+                        .getElementById("startSurvey")
+                        .addEventListener("click", () => {
+                            sIndex = 0;
+                            sAnswers = [];
+                            renderSurveyItem();
+                        });
+                }
+
+                function renderSurveyItem() {
+                    sLock = false;
+                    const item = SURVEY[sIndex];
+                    const pct = (sIndex / SURVEY.length) * 100;
+                    app.innerHTML =
+                        '<section class="screen">' +
+                        chrome("Self-check") +
+                        '<div class="progress-wrap">' +
+                        '<div class="progress-meta"><span>Statement ' +
+                        String(sIndex + 1).padStart(2, "0") +
+                        " / " +
+                        SURVEY.length +
+                        "</span><span>" +
+                        DIMS[item.dim].en +
+                        "</span></div>" +
+                        '<div class="track"><div class="fill" style="width:' +
+                        pct +
+                        '%"></div></div>' +
+                        "</div>" +
+                        '<div class="statement-card">' +
+                        '<h2 class="statement">' +
+                        esc(item.en) +
+                        "</h2>" +
+                        '<p class="zh">' +
+                        esc(item.zh) +
+                        "</p>" +
+                        '<div class="scale" id="scale">' +
+                        [1, 2, 3, 4, 5]
+                            .map(
+                                v =>
+                                    '<button class="opt" data-v="' +
+                                    v +
+                                    '"><span class="n">' +
+                                    v +
+                                    '</span><span class="label">' +
+                                    [
+                                        "Strongly disagree",
+                                        "Disagree",
+                                        "Neutral",
+                                        "Agree",
+                                        "Strongly agree",
+                                    ][v - 1] +
+                                    "<em>" +
+                                    [
+                                        "完全不像我",
+                                        "不太像",
+                                        "说不清",
+                                        "比较像",
+                                        "非常像我",
+                                    ][v - 1] +
+                                    "</em></span></button>",
+                            )
+                            .join("") +
+                        "</div>" +
+                        '<p class="tiny" style="text-align:center;margin-top:2px">No answer is a bad answer. Choose the first one that feels true.</p>' +
+                        "</div>" +
+                        foot() +
+                        "</section>";
+
+                    const scale = document.getElementById("scale");
+                    scale.addEventListener("click", event => {
+                        const btn = event.target.closest(".opt");
+                        if (!btn || sLock) return;
+                        sLock = true;
+                        scale.classList.add("disabled");
+                        btn.classList.add("chosen");
+                        const value = Number(btn.dataset.v);
+                        setTimeout(() => {
+                            sAnswers.push(value);
+                            sIndex += 1;
+                            if (sIndex < SURVEY.length) renderSurveyItem();
+                            else renderSurveyResult();
+                        }, 190);
+                    });
+                }
+
+                function renderSurveyResult() {
+                    const dim = { ca: 0, fne: 0, tp: 0 };
+                    SURVEY.forEach((item, i) => {
+                        dim[item.dim] += sAnswers[i];
+                    });
+                    const total = dim.ca + dim.fne + dim.tp;
+                    const bandKey =
+                        total <= 30 ? "low" : total <= 42 ? "moderate" : "high";
+                    const band = BANDS[bandKey];
+                    const tallest = Object.keys(dim).sort(
+                        (a, b) => dim[b] - dim[a],
+                    )[0];
+                    const dimName = DIMS[tallest];
+
+                    app.innerHTML =
+                        '<section class="screen">' +
+                        chrome("Your profile") +
+                        '<div class="card" style="display:flex;flex-direction:column;gap:16px">' +
+                        '<div class="kicker">Your language-anxiety profile</div>' +
+                        '<div class="score-row"><span class="score">' +
+                        total +
+                        '</span><span class="of">/ 60</span></div>' +
+                        '<div class="band ' +
+                        band.cls +
+                        '">' +
+                        band.en +
+                        " \u00b7 " +
+                        band.zh +
+                        "</div>" +
+                        '<div class="bars">' +
+                        ["ca", "fne", "tp"]
+                            .map(key => {
+                                const pct = ((dim[key] - 4) / 16) * 100;
+                                return (
+                                    '<div class="bar-row"><div class="bar-head"><div class="bar-name">' +
+                                    DIMS[key].en +
+                                    "<span>" +
+                                    DIMS[key].zh +
+                                    '</span></div><div class="bar-val">' +
+                                    dim[key] +
+                                    " / 20</div></div>" +
+                                    '<div class="bar-track"><div class="bar-fill ' +
+                                    key +
+                                    '" data-w="' +
+                                    pct.toFixed(1) +
+                                    '"></div></div></div>'
+                                );
+                            })
+                            .join("") +
+                        "</div>" +
+                        '<p class="read"><strong>Tallest bar: ' +
+                        DIMS[tallest].en +
+                        ".</strong> " +
+                        band.read +
+                        "</p>" +
+                        '<div class="tipbox">' +
+                        dimName.tips
+                            .map(
+                                t =>
+                                    '<div class="tip"><b>' +
+                                    t[0] +
+                                    "</b>" +
+                                    t[1] +
+                                    "</div>",
+                            )
+                            .join("") +
+                        "</div>" +
+                        '<div class="hands">' +
+                        '<div class="kicker">Raise your hand if \u2026</div>' +
+                        "<ol>" +
+                        "<li>your tallest bar is " +
+                        dimName.short +
+                        ".<br><span class='zh'>你的最高项是\u201c" +
+                        DIMS[tallest].zh.split(" \u00b7 ")[0] +
+                        "\u201d。</span></li>" +
+                        "<li>your total is under 31 (the low-anxiety band).<br><span class='zh'>总分低于 31。</span></li>" +
+                        "<li>you would read one line of your result aloud.<br><span class='zh'>愿意念出结果里的一句话。</span></li>" +
+                        "</ol>" +
+                        '<p class="tiny">Your tallest dimension: <b>' +
+                        dimName.en +
+                        "</b> (" +
+                        dim[tallest] +
+                        "/20).</p>" +
+                        "</div>" +
+                        '<p class="tiny">Adapted for class discussion from the Foreign Language Classroom Anxiety Scale (Horwitz, Horwitz &amp; Cope, 1986). This is a reflection tool, not a diagnosis.</p>' +
+                        "</div>" +
+                        '<div class="row"><button class="btn ghost" id="retake">Take it again</button><button class="btn primary" id="home">Back</button></div>' +
+                        foot() +
+                        "</section>";
+
+                    requestAnimationFrame(() => {
+                        document.querySelectorAll(".bar-fill").forEach(bar => {
+                            bar.style.width = bar.dataset.w + "%";
+                        });
+                    });
+                    document
+                        .getElementById("retake")
+                        .addEventListener("click", () => {
+                            sIndex = 0;
+                            sAnswers = [];
+                            renderSurveyIntro();
+                        });
+                    document
+                        .getElementById("home")
+                        .addEventListener("click", () => renderLanding());
+                }
+
+                /* ------------------------------------------------------------------ race */
+
+                const qParam = clamp(
+                    parseInt(params.get("q") || "1", 10) || 1,
+                    1,
+                    3,
+                );
+                const question = RACE[qParam];
+                let startAt = null;
+                let preview = false;
+                let raceTimer = null;
+                let liveTimer = null;
+                let answered = false;
+                let clockOffset = 0;
+                let synced = false;
+
+                const now = () => Date.now() + clockOffset;
+
+                function parseStart(raw) {
+                    if (!raw) return null;
+                    const value = raw.trim();
+                    if (/^\d{10,}$/.test(value)) {
+                        const n = Number(value);
+                        return n > 1e12 ? n : n * 1000;
+                    }
+                    if (/^\d{1,2}:\d{2}(:\d{2})?$/.test(value)) {
+                        const [h, m, s] = value.split(":").map(Number);
+                        const d = new Date();
+                        d.setHours(h, m, s || 0, 0);
+                        return d.getTime();
+                    }
+                    const parsed = Date.parse(value);
+                    return Number.isNaN(parsed) ? null : parsed;
+                }
+
+                async function syncClock() {
+                    try {
+                        const controller = new AbortController();
+                        const timer = setTimeout(
+                            () => controller.abort(),
+                            2500,
+                        );
+                        const res = await fetch(location.href, {
+                            method: "HEAD",
+                            cache: "no-store",
+                            signal: controller.signal,
+                        });
+                        clearTimeout(timer);
+                        const header = res.headers.get("date");
+                        if (header) {
+                            const server = Date.parse(header);
+                            if (!Number.isNaN(server)) {
+                                clockOffset = server - Date.now();
+                                synced = true;
+                            }
+                        }
+                    } catch (err) {
+                        synced = false;
+                    }
+                    const badge = document.getElementById("sync");
+                    if (badge) badge.textContent = syncLabel();
+                }
+
+                function syncLabel() {
+                    if (!synced) return "Using device clock";
+                    const drift = clockOffset / 1000;
+                    return (
+                        "Clock synced \u00b7 " +
+                        (drift > 0 ? "+" : "") +
+                        drift.toFixed(2) +
+                        " s"
+                    );
+                }
+
+                function fmtClock(ms) {
+                    const d = new Date(ms);
+                    return [d.getHours(), d.getMinutes(), d.getSeconds()]
+                        .map(n => String(n).padStart(2, "0"))
+                        .join(":");
+                }
+
+                function fmtCountdown(ms) {
+                    const total = Math.max(0, Math.floor(ms / 1000));
+                    const h = Math.floor(total / 3600);
+                    const m = Math.floor((total % 3600) / 60);
+                    const s = total % 60;
+                    const mmss =
+                        String(m).padStart(2, "0") +
+                        ":" +
+                        String(s).padStart(2, "0");
+                    return h > 0
+                        ? String(h).padStart(2, "0") + ":" + mmss
+                        : mmss;
+                }
+
+                function raceShell(inner, tag) {
+                    return (
+                        '<section class="screen">' +
+                        chrome(tag || "Live race") +
+                        inner +
+                        foot() +
+                        "</section>"
+                    );
+                }
+
+                function renderRaceWaiting() {
+                    document.body.dataset.theme = "ink";
+                    app.innerHTML = raceShell(
+                        '<div class="race-top"><span class="dot"></span>Round ' +
+                            qParam +
+                            " \u00b7 waiting</div>" +
+                            '<div class="wait">' +
+                            "<h1>You\u2019re in.<br>Keep this screen open.</h1>" +
+                            '<div class="count" id="count">--:--</div>' +
+                            '<div class="wait-sub">Question unlocks automatically at <b>' +
+                            fmtClock(startAt) +
+                            "</b>. Do not refresh.</div>" +
+                            '<div class="sync" id="sync">Syncing clock\u2026</div>' +
+                            '<div class="tipbox" style="margin-top:4px"><div class="tip"><b>Scoring</b>Fastest correct answer wins. Your screen will show your answer time for the judge.</div></div>' +
+                            "</div>",
+                        "Round " + qParam,
+                    );
+
+                    const tick = () => {
+                        const left = startAt - now();
+                        const el = document.getElementById("count");
+                        if (!el) return;
+                        if (left <= 0) {
+                            clearInterval(raceTimer);
+                            renderRaceQuestion();
+                        } else {
+                            el.textContent = fmtCountdown(left);
+                        }
+                    };
+                    tick();
+                    raceTimer = setInterval(tick, 100);
+                }
+
+                function renderRaceQuestion(badgeText) {
+                    clearInterval(raceTimer);
+                    clearInterval(liveTimer);
+                    answered = false;
+                    document.body.dataset.theme = "ink";
+                    const baseTime = startAt !== null ? startAt : now();
+                    app.innerHTML = raceShell(
+                        '<div class="qhead"><div class="race-top"><span class="dot"></span>Round ' +
+                            qParam +
+                            ' \u00b7 go</div><div class="live-time" id="live">0.00 s</div></div>' +
+                            '<div class="qwrap">' +
+                            (badgeText
+                                ? '<div class="sync">' +
+                                  esc(badgeText) +
+                                  "</div>"
+                                : "") +
+                            "<h2>" +
+                            esc(question.en) +
+                            "</h2>" +
+                            '<p class="zh">' +
+                            esc(question.zh) +
+                            "</p>" +
+                            '<div class="race-opts" id="raceOpts">' +
+                            question.options
+                                .map(
+                                    (opt, i) =>
+                                        '<button class="race-opt" data-i="' +
+                                        i +
+                                        '"><span class="k">' +
+                                        letters[i] +
+                                        "</span><span>" +
+                                        esc(opt) +
+                                        "</span></button>",
+                                )
+                                .join("") +
+                            "</div>" +
+                            '<p class="rank-note" style="margin-top:auto">Tap once. Your time is measured from the official start, not from when you opened the page.</p>' +
+                            "</div>",
+                        "Round " + qParam,
+                    );
+
+                    const live = document.getElementById("live");
+                    liveTimer = setInterval(() => {
+                        if (live)
+                            live.textContent =
+                                (Math.max(0, now() - baseTime) / 1000).toFixed(
+                                    2,
+                                ) + " s";
+                    }, 60);
+
+                    const opts = document.getElementById("raceOpts");
+                    opts.addEventListener("click", event => {
+                        const btn = event.target.closest(".race-opt");
+                        if (!btn || answered) return;
+                        answered = true;
+                        clearInterval(liveTimer);
+                        const chosen = Number(btn.dataset.i);
+                        const ms = Math.max(0, now() - baseTime);
+                        opts.querySelectorAll(".race-opt").forEach(b => {
+                            b.classList.add(b === btn ? "chosen" : "dim");
+                        });
+                        setTimeout(() => renderRaceResult(chosen, ms), 220);
+                    });
+                }
+
+                function renderRaceResult(chosen, ms) {
+                    const correct = chosen === question.correct;
+                    const seconds = (ms / 1000).toFixed(2);
+                    app.innerHTML = raceShell(
+                        '<div class="race-top"><span class="dot"></span>Round ' +
+                            qParam +
+                            " \u00b7 answered</div>" +
+                            '<div class="qwrap" style="justify-content:center">' +
+                            '<div class="judge">Show this screen to the judge</div>' +
+                            '<div class="big-time">' +
+                            seconds +
+                            "<span>s</span></div>" +
+                            '<div class="verdict ' +
+                            (correct ? "ok" : "no") +
+                            '">' +
+                            (correct ? "Correct" : "Not quite") +
+                            "</div>" +
+                            '<p class="answer-line">Your answer: <b>' +
+                            letters[chosen] +
+                            "</b> \u00b7 Correct answer: <b>" +
+                            letters[question.correct] +
+                            "</b> \u2014 " +
+                            esc(question.options[question.correct]) +
+                            "</p>" +
+                            '<p class="explain">' +
+                            esc(question.explain) +
+                            "</p>" +
+                            '<div class="tipbox"><div class="tip"><b>For the judge</b>Time is measured from the official start time. Fastest correct answer wins; incorrect answers do not qualify.</div></div>' +
+                            (preview
+                                ? '<button class="btn ghost block" id="again">Test again</button>'
+                                : '<p class="rank-note">Keep this screen visible \u2014 do not refresh.</p>') +
+                            "</div>",
+                        "Round " + qParam,
+                    );
+                    if (preview) {
+                        document
+                            .getElementById("again")
+                            .addEventListener("click", () => {
+                                startAt = now();
+                                renderRaceQuestion(
+                                    "Test mode \u00b7 no start time in this link",
+                                );
+                            });
+                    }
+                }
+
+                function startRace() {
+                    document.body.dataset.theme = "ink";
+                    const rawStart = params.get("start");
+                    const parsed = parseStart(rawStart);
+                    preview = params.get("preview") === "1" || parsed === null;
+                    startAt = preview ? now() : parsed;
+                    syncClock();
+
+                    if (preview) {
+                        renderRaceQuestion(
+                            rawStart
+                                ? "Test mode \u00b7 start time not recognised"
+                                : "Test mode \u00b7 no start time in this link",
+                        );
+                    } else if (now() >= startAt) {
+                        renderRaceQuestion();
+                    } else {
+                        renderRaceWaiting();
+                    }
+                }
+
+                /* ------------------------------------------------------------------ boot */
+
+                function boot() {
+                    if (activity === "survey") renderSurveyIntro();
+                    else if (activity === "race") startRace();
+                    else if (activity === "") renderLanding();
+                    else
+                        renderLanding(
+                            "Unknown activity id \u201c" +
+                                activity +
+                                "\u201d. Use ?activity=survey or ?activity=race.",
+                        );
+                }
+
+                boot();
+            })();
+        </script>
+    </body>
+</html>

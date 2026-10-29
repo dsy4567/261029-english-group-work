@@ -1,0 +1,2548 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <meta name="theme-color" content="#f2eee5" />
+        <title>
+            Why We Freeze — The Psychology of Speaking a Second Language
+        </title>
+        <style>
+            :root {
+                --bg: #f2eee5;
+                --bg-2: #eae4d7;
+                --card: #fffcf7;
+                --ink: #191d24;
+                --muted: #6f6a61;
+                --line: #dcd4c6;
+                --accent: #cb4a2b;
+                --teal: #1c6b64;
+                --gold: #a97b2b;
+                --ink-10: rgba(25, 29, 36, 0.1);
+                --accent-10: rgba(203, 74, 43, 0.1);
+                --accent-45: rgba(203, 74, 43, 0.45);
+                --teal-10: rgba(28, 107, 100, 0.1);
+                --teal-45: rgba(28, 107, 100, 0.45);
+                --shadow: 0 18px 40px -28px rgba(25, 29, 36, 0.45);
+                --serif:
+                    Georgia, "Times New Roman", "Songti SC",
+                    "Noto Serif CJK SC", serif;
+                --sans:
+                    ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+                    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+                    sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+                -webkit-tap-highlight-color: transparent;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+                overflow: hidden;
+            }
+            body {
+                background: var(--bg);
+                color: var(--ink);
+                font-family: var(--sans);
+                line-height: 1.5;
+            }
+
+            /* ---------------------------------------------------- stage & slides */
+            .stage {
+                position: fixed;
+                inset: 0;
+            }
+            .slide {
+                position: absolute;
+                inset: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: clamp(28px, 5vmin, 70px) clamp(34px, 7vmin, 110px)
+                    clamp(78px, 10vmin, 110px);
+                opacity: 0;
+                visibility: hidden;
+                transform: translateX(2.5%);
+                transition:
+                    opacity 0.4s ease,
+                    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+                    visibility 0.4s;
+                overflow: auto;
+                background:
+                    radial-gradient(
+                        1100px 520px at 88% -12%,
+                        var(--bg-2),
+                        transparent 65%
+                    ),
+                    var(--bg);
+            }
+            .slide.active {
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+            .slide.prev {
+                transform: translateX(-2.5%);
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .slide {
+                    transition: none;
+                }
+            }
+
+            .inner {
+                width: min(100%, 1120px);
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                gap: clamp(14px, 2vmin, 26px);
+            }
+            .eyebrow {
+                font: 700 clamp(10px, 1.2vmin, 13px)/1 var(--sans);
+                letter-spacing: 0.24em;
+                text-transform: uppercase;
+                color: var(--accent);
+            }
+            h1,
+            h2 {
+                margin: 0;
+                font-family: var(--serif);
+                font-weight: 500;
+                letter-spacing: -0.01em;
+            }
+            h1 {
+                font-size: clamp(38px, 7.4vmin, 86px);
+                line-height: 1.06;
+            }
+            h2 {
+                font-size: clamp(30px, 5.2vmin, 58px);
+                line-height: 1.14;
+            }
+            .sub {
+                font-size: clamp(15px, 2.1vmin, 23px);
+                color: var(--muted);
+                max-width: 34em;
+            }
+            .lead {
+                font-size: clamp(16px, 2.4vmin, 26px);
+                line-height: 1.5;
+                max-width: 30em;
+            }
+            .big-quote {
+                font-family: var(--serif);
+                font-size: clamp(26px, 4.6vmin, 52px);
+                line-height: 1.25;
+                border-left: 3px solid var(--accent);
+                padding-left: clamp(16px, 2.4vmin, 30px);
+                margin: 0;
+            }
+            .zh {
+                color: var(--muted);
+                font-size: clamp(13px, 1.7vmin, 18px);
+            }
+
+            .cols {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+                gap: clamp(12px, 1.8vmin, 22px);
+            }
+            .card {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: clamp(14px, 2vmin, 22px);
+                padding: clamp(16px, 2.4vmin, 28px);
+                box-shadow: var(--shadow);
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+            .card .no {
+                font: 600 clamp(26px, 3.6vmin, 44px)/1 var(--serif);
+                color: var(--accent);
+                font-variant-numeric: tabular-nums;
+            }
+            .card h3 {
+                margin: 0;
+                font-family: var(--serif);
+                font-weight: 500;
+                font-size: clamp(17px, 2.3vmin, 26px);
+                line-height: 1.2;
+            }
+            .card h3 span {
+                display: block;
+                font-family: var(--sans);
+                font-size: clamp(12px, 1.5vmin, 15px);
+                color: var(--muted);
+                font-weight: 500;
+                margin-top: 5px;
+            }
+            .card p {
+                margin: 0;
+                font-size: clamp(13px, 1.8vmin, 17px);
+                color: var(--ink);
+            }
+            .card p.zh {
+                color: var(--muted);
+            }
+            .card.accent {
+                border-top: 3px solid var(--accent);
+            }
+            .card.teal {
+                border-top: 3px solid var(--teal);
+            }
+            .card.gold {
+                border-top: 3px solid var(--gold);
+            }
+
+            .chips {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .chip {
+                border: 1px solid var(--line);
+                background: var(--card);
+                border-radius: 999px;
+                padding: clamp(7px, 1.1vmin, 12px) clamp(12px, 1.7vmin, 20px);
+                font-size: clamp(13px, 1.8vmin, 18px);
+            }
+            .chip b {
+                color: var(--accent);
+                font-weight: 700;
+            }
+
+            .stat-row {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: clamp(12px, 1.8vmin, 24px);
+            }
+            .stat {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .stat .num {
+                font: 500 clamp(44px, 8vmin, 96px)/1 var(--serif);
+                color: var(--accent);
+                font-variant-numeric: tabular-nums;
+            }
+            .stat .cap {
+                font-size: clamp(13px, 1.8vmin, 18px);
+                color: var(--muted);
+            }
+
+            .kf {
+                display: flex;
+                flex-direction: column;
+                gap: clamp(8px, 1.4vmin, 16px);
+            }
+            .kf .line {
+                display: flex;
+                gap: 14px;
+                align-items: baseline;
+                font-size: clamp(15px, 2.2vmin, 24px);
+            }
+            .kf .line b {
+                flex: none;
+                width: clamp(26px, 3vmin, 34px);
+                height: clamp(26px, 3vmin, 34px);
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                background: var(--accent);
+                color: #fffaf4;
+                font-size: clamp(12px, 1.6vmin, 17px);
+            }
+            .kf .line span i {
+                font-style: normal;
+                display: block;
+                font-size: clamp(12px, 1.6vmin, 16px);
+                color: var(--muted);
+            }
+
+            .vs {
+                display: grid;
+                grid-template-columns: 1fr auto 1fr;
+                gap: clamp(14px, 2vmin, 26px);
+                align-items: stretch;
+            }
+            .vs .vs-mark {
+                align-self: center;
+                font: 500 clamp(16px, 2.2vmin, 26px)/1 var(--serif);
+                color: var(--muted);
+            }
+            .vs .card.right {
+                background: transparent;
+            }
+
+            /* interactive QR cards */
+            .qr-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: clamp(16px, 2.4vmin, 30px);
+            }
+            .qr-card {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: clamp(16px, 2.4vmin, 26px);
+                padding: clamp(18px, 2.6vmin, 30px);
+                box-shadow: var(--shadow);
+                display: flex;
+                flex-direction: column;
+                gap: clamp(10px, 1.5vmin, 16px);
+                align-items: center;
+                text-align: center;
+            }
+            .qr-card .tag {
+                font: 700 clamp(10px, 1.3vmin, 13px)/1 var(--sans);
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--accent);
+            }
+            .qr-box {
+                width: clamp(210px, 30vmin, 320px);
+                height: clamp(210px, 30vmin, 320px);
+                background: #fff;
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                display: grid;
+                place-items: center;
+                padding: 10px;
+            }
+            .qr-box svg {
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+            .qr-box .placeholder {
+                color: #8a847a;
+                font-size: clamp(12px, 1.5vmin, 15px);
+                padding: 0 14px;
+                line-height: 1.5;
+            }
+            .qr-card h3 {
+                margin: 0;
+                font-family: var(--serif);
+                font-weight: 500;
+                font-size: clamp(18px, 2.4vmin, 27px);
+            }
+            .qr-card p {
+                margin: 0;
+                font-size: clamp(13px, 1.7vmin, 17px);
+                color: var(--muted);
+            }
+            .qr-url {
+                font-size: clamp(10px, 1.3vmin, 12px);
+                color: var(--muted);
+                word-break: break-all;
+                max-width: 34ch;
+            }
+            .steps {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                text-align: left;
+                font-size: clamp(13px, 1.7vmin, 17px);
+            }
+            .steps div {
+                display: flex;
+                gap: 9px;
+            }
+            .steps b {
+                color: var(--accent);
+            }
+
+            .roles {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+                gap: clamp(10px, 1.5vmin, 18px);
+            }
+            .role {
+                border: 1px solid var(--line);
+                background: var(--card);
+                border-radius: 14px;
+                padding: clamp(12px, 1.8vmin, 20px);
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .role .who {
+                font: 500 clamp(17px, 2.3vmin, 25px)/1 var(--serif);
+            }
+            .role .job {
+                font-size: clamp(12px, 1.5vmin, 15px);
+                color: var(--muted);
+            }
+
+            .refs {
+                font-size: clamp(12px, 1.6vmin, 16px);
+                color: var(--muted);
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+                max-width: 58em;
+            }
+            .refs b {
+                color: var(--ink);
+                font-weight: 600;
+            }
+
+            .note {
+                display: none;
+            }
+            .note-inline {
+                border: 1px dashed var(--line);
+                border-radius: 12px;
+                padding: 10px 14px;
+                font-size: clamp(12px, 1.6vmin, 16px);
+                color: var(--muted);
+            }
+
+            /* ------------------------------------------------------ HUD controls */
+            .hud {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 30;
+                pointer-events: none;
+            }
+            .progress {
+                height: 4px;
+                background: var(--ink-10);
+            }
+            .progress > div {
+                height: 100%;
+                background: var(--accent);
+                width: 0;
+                transition: width 0.35s ease;
+            }
+            .hud-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 14px;
+                padding: 10px clamp(14px, 2.4vmin, 28px) 12px;
+                background: linear-gradient(to top, var(--bg) 55%, transparent);
+                font-size: clamp(11px, 1.5vmin, 14px);
+                color: var(--muted);
+                pointer-events: auto;
+            }
+            .hud-row .cluster {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            .hud-btn {
+                appearance: none;
+                border: 1px solid var(--line);
+                background: var(--card);
+                color: var(--ink);
+                width: clamp(34px, 5vmin, 44px);
+                height: clamp(34px, 5vmin, 44px);
+                border-radius: 12px;
+                font-size: clamp(14px, 2vmin, 18px);
+                cursor: pointer;
+                line-height: 1;
+                display: grid;
+                place-items: center;
+            }
+            .hud-btn:active {
+                transform: scale(0.94);
+            }
+            .hud-btn.wide {
+                width: auto;
+                padding: 0 13px;
+                font-size: clamp(11px, 1.5vmin, 13px);
+                font-weight: 600;
+                letter-spacing: 0.05em;
+            }
+            .hud-btn.on {
+                border-color: var(--accent);
+                color: var(--accent);
+            }
+            .counter {
+                font-variant-numeric: tabular-nums;
+                letter-spacing: 0.08em;
+            }
+            .slide-title {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                max-width: 34vw;
+            }
+            .timer {
+                font-variant-numeric: tabular-nums;
+                font-weight: 600;
+                cursor: pointer;
+                user-select: none;
+            }
+            .timer.hot {
+                color: var(--accent);
+            }
+
+            /* ------------------------------------------------------ notes panel */
+            .notes {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 40;
+                background: var(--card);
+                border-top: 2px solid var(--accent);
+                box-shadow: 0 -20px 50px -35px rgba(0, 0, 0, 0.6);
+                padding: 16px clamp(18px, 3vw, 40px) 18px;
+                display: none;
+                max-height: 44vh;
+                overflow: auto;
+            }
+            .notes.show {
+                display: block;
+            }
+            .notes .n-head {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 12px;
+                font: 700 11px/1 var(--sans);
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 9px;
+            }
+            .notes .n-body {
+                font-size: clamp(13px, 1.6vw, 16px);
+                line-height: 1.6;
+                white-space: pre-wrap;
+                color: var(--ink);
+            }
+
+            /* ------------------------------------------------------ settings */
+            .overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 50;
+                background: rgba(20, 22, 28, 0.45);
+                display: none;
+                place-items: center;
+                padding: 20px;
+            }
+            .overlay.show {
+                display: grid;
+            }
+            .panel {
+                background: var(--card);
+                border: 1px solid var(--line);
+                border-radius: 20px;
+                width: min(560px, 100%);
+                max-height: 90vh;
+                overflow: auto;
+                padding: clamp(20px, 3vw, 32px);
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                box-shadow: 0 40px 90px -50px rgba(0, 0, 0, 0.8);
+            }
+            .panel h3 {
+                margin: 0;
+                font-family: var(--serif);
+                font-weight: 500;
+                font-size: 24px;
+            }
+            .panel .hint {
+                font-size: 12.5px;
+                color: var(--muted);
+                line-height: 1.55;
+            }
+            .field {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .field label {
+                font: 700 11px/1 var(--sans);
+                letter-spacing: 0.14em;
+                text-transform: uppercase;
+                color: var(--muted);
+            }
+            .field input,
+            .field select {
+                font: 500 15px var(--sans);
+                padding: 12px 13px;
+                border: 1px solid var(--line);
+                border-radius: 12px;
+                background: var(--bg);
+                color: var(--ink);
+                width: 100%;
+            }
+            .field input:focus,
+            .field select:focus {
+                outline: 2px solid var(--accent-45);
+                border-color: var(--accent);
+            }
+            .field-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .panel-actions {
+                display: flex;
+                gap: 10px;
+            }
+            .panel-actions .btn {
+                flex: 1;
+                appearance: none;
+                border: 0;
+                cursor: pointer;
+                font: 600 15px var(--sans);
+                border-radius: 13px;
+                padding: 14px;
+            }
+            .btn.primary {
+                background: var(--accent);
+                color: #fffaf4;
+            }
+            .btn.ghost {
+                background: transparent;
+                color: var(--ink);
+                border: 1px solid var(--line);
+            }
+            .check {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 14px;
+                color: var(--ink);
+            }
+            .check input {
+                width: 18px;
+                height: 18px;
+                accent-color: var(--accent);
+            }
+            .warnbox {
+                border: 1px solid var(--gold-45);
+                background: rgba(169, 123, 43, 0.1);
+                color: var(--gold);
+                border-radius: 12px;
+                padding: 11px 13px;
+                font-size: 12.5px;
+                line-height: 1.5;
+            }
+
+            /* ------------------------------------------------------ help */
+            .help-grid {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 8px 16px;
+                font-size: 14px;
+            }
+            .help-grid kbd {
+                font: 600 12px var(--sans);
+                background: var(--bg);
+                border: 1px solid var(--line);
+                border-bottom-width: 2px;
+                border-radius: 7px;
+                padding: 4px 8px;
+                text-align: center;
+                color: var(--ink);
+            }
+            .help-grid span {
+                color: var(--muted);
+            }
+
+            .qr-copy {
+                font: 600 11px var(--sans);
+                letter-spacing: 0.08em;
+                border: 1px solid var(--line);
+                background: var(--bg);
+                color: var(--muted);
+                padding: 7px 12px;
+                border-radius: 999px;
+                cursor: pointer;
+                text-transform: uppercase;
+            }
+            @media print {
+                .slide {
+                    position: static;
+                    opacity: 1;
+                    visibility: visible;
+                    transform: none;
+                    page-break-after: always;
+                    overflow: visible;
+                }
+                .hud,
+                .notes,
+                .overlay {
+                    display: none !important;
+                }
+                html,
+                body {
+                    height: auto;
+                    overflow: visible;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="stage" id="stage">
+            <!-- 01 ============================================================= -->
+            <section class="slide active" data-title="Title">
+                <div class="inner">
+                    <div class="eyebrow">
+                        English Group Work · Class Presentation
+                    </div>
+                    <h1>Why We Freeze</h1>
+                    <p class="lead" style="font-family: var(--serif)">
+                        The psychology of speaking a second language
+                    </p>
+                    <p class="zh">
+                        二语习得主题 · 外语焦虑从何而来，又如何打破
+                    </p>
+                    <div class="chips" style="margin-top: 6px">
+                        <span class="chip"><b>6</b> speakers</span>
+                        <span class="chip"><b>15</b> slides</span>
+                        <span class="chip"><b>2</b> live interactions</span>
+                    </div>
+                    <div class="note">
+                        【第1页｜主讲 A｜约40秒】\n开场自我介绍 +
+                        抛出主题。语速放慢，标题停顿一拍再念副标题。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 02 ============================================================= -->
+            <section class="slide" data-title="Hook">
+                <div class="inner">
+                    <div class="eyebrow">Warm-up</div>
+                    <p class="big-quote">
+                        “You know the answer.<br />Your mouth doesn’t.”
+                    </p>
+                    <p class="lead">
+                        Think of the last time you froze in English class — hand
+                        halfway up, words gone.
+                    </p>
+                    <p class="zh">
+                        想一想：上一次你在英语课上“卡壳”的瞬间。今天我们讲的，就是那个瞬间。
+                    </p>
+                    <div class="note">
+                        【第2页｜主讲
+                        A｜约35秒】\n先自己讲一个卡壳的小故事（越具体越好），再把问题抛给全班。停顿3秒，让教室安静一下。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 03 ============================================================= -->
+            <section class="slide" data-title="L1 vs L2">
+                <div class="inner">
+                    <div class="eyebrow">The phenomenon</div>
+                    <h2>You know more than you can show</h2>
+                    <div class="cols">
+                        <div class="card accent">
+                            <div class="no">01</div>
+                            <h3>Tip of the tongue<span>舌尖现象</span></h3>
+                            <p>
+                                The word is “there” — until you try to say it
+                                out loud in your second language.
+                            </p>
+                        </div>
+                        <div class="card teal">
+                            <div class="no">02</div>
+                            <h3>Silent period<span>沉默期</span></h3>
+                            <p>
+                                Beginners listen for months before they speak.
+                                Silence is part of learning, not a failure.
+                            </p>
+                        </div>
+                        <div class="card gold">
+                            <div class="no">03</div>
+                            <h3>Two systems<span>双系统</span></h3>
+                            <p>
+                                Your L1 runs on autopilot. Your L2 borrows the
+                                same attention — and attention is limited.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第3页｜主讲
+                        B｜约60秒】\n三张卡依次展开。01用中文解释“舌尖现象”举英语单词到嘴边说不出的例子；02解释沉默期是正常阶段；03强调注意力资源有限。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 04 ============================================================= -->
+            <section class="slide" data-title="Definition">
+                <div class="inner">
+                    <div class="eyebrow">Core concept</div>
+                    <h2>Foreign Language Anxiety</h2>
+                    <p
+                        class="lead"
+                        style="font-family: var(--serif); max-width: 38em"
+                    >
+                        “A distinct complex of self-perceptions, beliefs,
+                        feelings and behaviours related to classroom language
+                        learning.”
+                    </p>
+                    <p class="zh">—— Horwitz, Horwitz &amp; Cope, 1986</p>
+                    <div class="note-inline">
+                        Not shyness. Not “bad English”. A specific, measurable
+                        anxiety that appears <b>only</b> in the foreign language
+                        classroom.
+                    </div>
+                    <div class="note">
+                        【第4页｜主讲
+                        B｜约50秒】\n引用定义（英文念一遍即可），强调三点：它是可测量的、它专属于语言课堂、它和英语水平没有必然关系——班里英语最好的人也可能最焦虑。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 ============================================================= -->
+            <section class="slide" data-title="Three faces">
+                <div class="inner">
+                    <div class="eyebrow">Framework</div>
+                    <h2>Three faces of anxiety</h2>
+                    <div class="cols">
+                        <div class="card accent">
+                            <div class="no">A</div>
+                            <h3>
+                                Communication apprehension<span>交流恐惧</span>
+                            </h3>
+                            <p>
+                                The fear of not being able to speak — going
+                                blank when all eyes are on you.
+                            </p>
+                        </div>
+                        <div class="card teal">
+                            <div class="no">B</div>
+                            <h3>
+                                Fear of negative evaluation<span
+                                    >负面评价恐惧</span
+                                >
+                            </h3>
+                            <p>
+                                The fear of being judged — classmates noticing
+                                every single mistake.
+                            </p>
+                        </div>
+                        <div class="card gold">
+                            <div class="no">C</div>
+                            <h3>Test anxiety<span>测评压力</span></h3>
+                            <p>
+                                The fear of being graded — performing worse
+                                exactly when it counts.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="zh">接下来的自查问卷，就从这三个维度给你打分。</p>
+                    <div class="note">
+                        【第5页｜主讲
+                        B｜约55秒】\n每张卡配一个班级里的真实场景（被点名回答、作文被当堂念、考试口语）。结尾一句引出后面自查：“先记住A/B/C三个字母”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 06 ============================================================= -->
+            <section class="slide" data-title="In the brain">
+                <div class="inner">
+                    <div class="eyebrow">Why it happens</div>
+                    <h2>What anxiety does to the brain</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Stress fires up the alarm system (amygdala).<i
+                                    >焦虑启动大脑的“警报器”。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Working memory — your mental “workspace” — gets
+                                hijacked.<i
+                                    >工作记忆（大脑的工作台）被占用。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >Less workspace for words → you freeze. It isn’t
+                                a knowledge gap.<i
+                                    >留给词汇的资源变少 →
+                                    卡壳。这不是你不会。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <p class="zh">
+                        Yerkes–Dodson
+                        定律：唤醒水平适中时表现最好，过高时表现急剧下滑。
+                    </p>
+                    <div class="note">
+                        【第6页｜主讲
+                        C｜约60秒】\n把工作记忆比喻成“手机后台”：焦虑就像同时开了20个App，英语当然卡。用生活化的类比，不要念术语。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 07 ============================================================= -->
+            <section class="slide" data-title="The freeze">
+                <div class="inner">
+                    <div class="eyebrow">Mechanism</div>
+                    <h2>The freeze loop</h2>
+                    <div class="chips" style="gap: 6px; align-items: center">
+                        <span class="chip">Speak in public</span
+                        ><span class="chip"><b>→</b></span>
+                        <span class="chip"
+                            >Heart races, mind watches itself</span
+                        ><span class="chip"><b>→</b></span>
+                        <span class="chip">Fewer words come out</span
+                        ><span class="chip"><b>→</b></span>
+                        <span class="chip">“See? I’m bad at this.”</span
+                        ><span class="chip"><b>→</b></span>
+                        <span class="chip">Avoid the next chance</span
+                        ><span class="chip"><b>→</b></span>
+                        <span class="chip">…</span>
+                    </div>
+                    <p class="lead" style="max-width: 36em">
+                        Anxiety shrinks performance; poor performance feeds
+                        anxiety. The loop only breaks when you speak anyway.
+                    </p>
+                    <p class="zh">
+                        恶性循环：越怕越不说，越不说越怕。破环的方法只有一个——先开口，再完美。
+                    </p>
+                    <div class="note">
+                        【第7页｜主讲
+                        C｜约50秒】\n用手指着一个个chips念，最后停在“…”上。留一个悬念给后面的方法论页：“这个循环怎么破，我们第14页讲”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 08 ============================================================= -->
+            <section class="slide" data-title="How common">
+                <div class="inner">
+                    <div class="eyebrow">How common is it?</div>
+                    <div class="stat-row">
+                        <div class="stat">
+                            <div class="num">⅓</div>
+                            <div class="cap">
+                                of language learners report high
+                                foreign-language anxiety — on average across
+                                studies.
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">1</div>
+                            <div class="cap">
+                                anxiety can depress speaking performance even
+                                among advanced learners.
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">0</div>
+                            <div class="cap">
+                                correlation with how much you actually know. It
+                                hides ability, it doesn’t erase it.
+                            </div>
+                        </div>
+                    </div>
+                    <p class="zh">
+                        数据为多项研究中的常见量级，用于课堂说明；参考文献见最后一页。
+                    </p>
+                    <div class="note">
+                        【第8页｜主讲
+                        C｜约45秒】\n强调“0”：焦虑藏起你的水平，而不是抹掉你的水平。这句是全场最重要的观点之一，说慢一点。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 09 ============================================================= -->
+            <section class="slide" data-title="Interaction 1 · Self-check">
+                <div class="inner">
+                    <div class="eyebrow">Interaction 1 of 2</div>
+                    <h2>Your anxiety profile</h2>
+                    <div class="qr-grid">
+                        <div class="qr-card" id="cardSurvey">
+                            <div class="tag">Scan now</div>
+                            <div class="qr-box" id="qrSurvey">
+                                <div class="placeholder">
+                                    Press <b>S</b> on your keyboard to open
+                                    settings and generate this QR code.
+                                </div>
+                            </div>
+                            <h3>12-statement self-check</h3>
+                            <p>
+                                About 2 minutes · stays on your phone · nothing
+                                is uploaded
+                            </p>
+                            <div class="qr-url" id="urlSurvey"></div>
+                            <button
+                                class="qr-copy"
+                                data-copy="survey"
+                                type="button"
+                            >
+                                Copy link
+                            </button>
+                        </div>
+                        <div class="qr-card">
+                            <div class="tag">How it works</div>
+                            <div class="steps">
+                                <div>
+                                    <b>1</b
+                                    ><span
+                                        >Scan, tap “Start the self-check”.</span
+                                    >
+                                </div>
+                                <div>
+                                    <b>2</b
+                                    ><span
+                                        >Answer 12 statements: 1 = not like me,
+                                        5 = very much like me.</span
+                                    >
+                                </div>
+                                <div>
+                                    <b>3</b
+                                    ><span
+                                        >Get your total, your three bars, and
+                                        two tips.</span
+                                    >
+                                </div>
+                                <div>
+                                    <b>4</b
+                                    ><span
+                                        ><b>Raise your hand</b> if the prompt on
+                                        your screen matches — we call on
+                                        you.</span
+                                    >
+                                </div>
+                            </div>
+                            <p class="zh">
+                                结果只在自己手机上，我们不收数据、不点名念分。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第9页｜主讲 D（互动主持）｜约60秒 +
+                        等待2分钟】\n口令：“扫码，两分钟，答完别关页面”。大屏停留，期间念提示语：“最高一项是交流恐惧的举手”“总分低于31的举手”。点2-3位同学分享一句话。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10 ============================================================= -->
+            <section class="slide" data-title="Reading results">
+                <div class="inner">
+                    <div class="eyebrow">Debrief</div>
+                    <h2>How to read your result</h2>
+                    <div class="cols">
+                        <div class="card accent">
+                            <div class="no">30–</div>
+                            <h3>Low<span>低焦虑</span></h3>
+                            <p>
+                                You’re comfortable in class. Keep speaking
+                                before you feel ready — that’s how it stays.
+                            </p>
+                        </div>
+                        <div class="card gold">
+                            <div class="no">31–42</div>
+                            <h3>Moderate<span>中等焦虑</span></h3>
+                            <p>
+                                You can speak, but half your attention watches
+                                yourself. That split is what freezes you.
+                            </p>
+                        </div>
+                        <div class="card teal">
+                            <div class="no">43+</div>
+                            <h3>High<span>高焦虑</span></h3>
+                            <p>
+                                Fear is doing the talking. Good news: it’s a
+                                state, not a verdict — and states can change.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第10页｜主讲
+                        D｜约50秒】\n重申这不是诊断，是镜子。邀请刚才举手的同学读屏幕里的一句话（自愿）。若无人举手，念自己的结果做示范。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11 ============================================================= -->
+            <section class="slide" data-title="Myths vs facts">
+                <div class="inner">
+                    <div class="eyebrow">Reset your beliefs</div>
+                    <h2>Myths vs facts</h2>
+                    <div class="vs">
+                        <div class="card">
+                            <div
+                                class="tag"
+                                style="
+                                    color: var(--muted);
+                                    font: 700 11px/1 var(--sans);
+                                    letter-spacing: 0.18em;
+                                "
+                            >
+                                MYTH
+                            </div>
+                            <p>“Anxiety means I haven’t prepared enough.”</p>
+                        </div>
+                        <div class="vs-mark">vs</div>
+                        <div class="card right">
+                            <div
+                                class="tag"
+                                style="
+                                    color: var(--accent);
+                                    font: 700 11px/1 var(--sans);
+                                    letter-spacing: 0.18em;
+                                "
+                            >
+                                FACT
+                            </div>
+                            <p>
+                                Preparation helps — but anxiety peaks
+                                <i>after</i> you’ve prepared. It’s an emotional
+                                loop, not a study problem.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <p>“Fluent people never freeze.”</p>
+                        </div>
+                        <div class="vs-mark">vs</div>
+                        <div class="card right">
+                            <p>
+                                Even native speakers freeze in public. Fluency
+                                reduces the frequency; it doesn’t remove the
+                                mechanism.
+                            </p>
+                        </div>
+                        <div class="card">
+                            <p>“I must not make mistakes.”</p>
+                        </div>
+                        <div class="vs-mark">vs</div>
+                        <div class="card right">
+                            <p>
+                                Mistakes are the visible part of a system being
+                                built — interlanguage in motion.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第11页｜主讲
+                        E｜约60秒】\n左右对照念，节奏是“错—对、错—对、错—对”。第三条为抢答第2题埋伏笔，讲完可以先不说破。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 12 ============================================================= -->
+            <section class="slide" data-title="Strategies">
+                <div class="inner">
+                    <div class="eyebrow">Break the loop</div>
+                    <h2>Four things that actually work</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                ><b
+                                    style="
+                                        width: auto;
+                                        height: auto;
+                                        background: none;
+                                        color: inherit;
+                                        font-size: inherit;
+                                        border-radius: 0;
+                                    "
+                                    >Islands of fluency</b
+                                >
+                                — prepare 3 key phrases, not a full script.<i
+                                    >准备三个“语言岛”，而不是整篇稿。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                ><b
+                                    style="
+                                        width: auto;
+                                        height: auto;
+                                        background: none;
+                                        color: inherit;
+                                        font-size: inherit;
+                                        border-radius: 0;
+                                    "
+                                    >Lower the stakes</b
+                                >
+                                — pair practice before whole-class talk.<i
+                                    >先两人练，再全班说。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                ><b
+                                    style="
+                                        width: auto;
+                                        height: auto;
+                                        background: none;
+                                        color: inherit;
+                                        font-size: inherit;
+                                        border-radius: 0;
+                                    "
+                                    >Pause, don’t translate</b
+                                >
+                                — silence is cheaper than mental translating.<i
+                                    >用停顿代替心译，沉默比翻译便宜。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>4</b
+                            ><span
+                                ><b
+                                    style="
+                                        width: auto;
+                                        height: auto;
+                                        background: none;
+                                        color: inherit;
+                                        font-size: inherit;
+                                        border-radius: 0;
+                                    "
+                                    >Rehearse under pressure</b
+                                >
+                                — practise with a timer, then the timer won’t
+                                surprise you.<i
+                                    >限时多练几次，计时就吓不到你。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第12页｜主讲
+                        E｜约70秒】\n每条给一个中文小场景（课文朗读、口语考试、小组展示）。第4条自然过渡到下一个互动：“说到计时——我们来真的”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 13 ============================================================= -->
+            <section class="slide" data-title="Interaction 2 · Race">
+                <div class="inner">
+                    <div class="eyebrow">Interaction 2 of 2</div>
+                    <h2>The anxiety race</h2>
+                    <div class="qr-grid">
+                        <div class="qr-card" id="cardRace">
+                            <div class="tag">
+                                Scan early · keep the screen open
+                            </div>
+                            <div class="qr-box" id="qrRace">
+                                <div class="placeholder">
+                                    Press <b>S</b> on your keyboard to open
+                                    settings: set the start time, then this QR
+                                    code appears.
+                                </div>
+                            </div>
+                            <h3 id="raceMeta">Question 1 · starts at —:—:—</h3>
+                            <p>
+                                Fastest correct answer wins · your phone shows
+                                your time
+                            </p>
+                            <div class="qr-url" id="urlRace"></div>
+                            <button
+                                class="qr-copy"
+                                data-copy="race"
+                                type="button"
+                            >
+                                Copy link
+                            </button>
+                        </div>
+                        <div class="qr-card">
+                            <div class="tag">Rules</div>
+                            <div class="steps">
+                                <div>
+                                    <b>1</b
+                                    ><span
+                                        >Scan <b>now</b> — the question is
+                                        locked until start time.</span
+                                    >
+                                </div>
+                                <div>
+                                    <b>2</b
+                                    ><span
+                                        >At start time your screen unlocks. Tap
+                                        once — one shot.</span
+                                    >
+                                </div>
+                                <div>
+                                    <b>3</b
+                                    ><span
+                                        >Correct + fastest = winner. Show your
+                                        screen to the judge.</span
+                                    >
+                                </div>
+                                <div>
+                                    <b>4</b
+                                    ><span
+                                        >Ranking is done live on the podium
+                                        slide — no cheating, don’t
+                                        refresh.</span
+                                    >
+                                </div>
+                            </div>
+                            <p class="zh">
+                                全程无后端：计时从官方开始时间算，人工排名，大屏公示。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第13页｜主讲 D｜约50秒 +
+                        等待3分钟】\n先确认二维码已经显示开始时间（开场前就该在设置里填好）。口令：“现在扫，页面别关”。倒计时结束读题。读完题给20秒作答，然后请前5名举手，人工记名次。共3题可重复，改设置里的题号换题。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 14 ============================================================= -->
+            <section class="slide" data-title="Wrap-up">
+                <div class="inner">
+                    <div class="eyebrow">Takeaway</div>
+                    <p class="big-quote">
+                        Fluency is not the absence of freezing.<br />It’s
+                        speaking anyway.
+                    </p>
+                    <div class="chips">
+                        <span class="chip"
+                            ><b>1</b> Anxiety hides ability, it doesn’t erase
+                            it</span
+                        >
+                        <span class="chip"
+                            ><b>2</b> The loop breaks only by speaking</span
+                        >
+                        <span class="chip"
+                            ><b>3</b> Rehearse small, low stakes, out loud</span
+                        >
+                    </div>
+                    <div class="note">
+                        【第14页｜主讲
+                        F｜约45秒】\n回到第2页的问题，给一个闭环：“现在再想想你那次卡壳——不是你不会，是工作台被占了。”三句takeaway
+                        慢速念。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 15 ============================================================= -->
+            <section class="slide" data-title="Q & A">
+                <div class="inner">
+                    <div class="eyebrow">Thank you</div>
+                    <h2>Questions?</h2>
+                    <div class="roles">
+                        <div class="role">
+                            <div class="who">A</div>
+                            <div class="job">Opening &amp; hook · 第1–2页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">B</div>
+                            <div class="job">Concepts · 第3–5页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">C</div>
+                            <div class="job">
+                                Mechanism &amp; data · 第6–8页
+                            </div>
+                        </div>
+                        <div class="role">
+                            <div class="who">D</div>
+                            <div class="job">
+                                Host of both interactions · 第9–10、13页
+                            </div>
+                        </div>
+                        <div class="role">
+                            <div class="who">E</div>
+                            <div class="job">
+                                Myths &amp; methods · 第11–12页
+                            </div>
+                        </div>
+                        <div class="role">
+                            <div class="who">F</div>
+                            <div class="job">
+                                Wrap-up &amp; Q&amp;A · 第14–15页
+                            </div>
+                        </div>
+                    </div>
+                    <div class="refs">
+                        <span
+                            ><b
+                                >Horwitz, E. K., Horwitz, M. B., &amp; Cope, J.
+                                (1986).</b
+                            >
+                            Foreign language classroom anxiety. Modern Language
+                            Journal, 70(2), 125–132.</span
+                        >
+                        <span
+                            ><b
+                                >MacIntyre, P. D., &amp; Gardner, R. C.
+                                (1991).</b
+                            >
+                            Language anxiety: A review of the theory and
+                            research. Language Learning, 41(2), 255–278.</span
+                        >
+                        <span
+                            ><b>Yerkes, R. M., &amp; Dodson, J. D. (1908).</b>
+                            The relation of strength of stimulus to rapidity of
+                            habit-formation.</span
+                        >
+                    </div>
+                    <div class="note">
+                        【第15页｜主讲
+                        F｜Q&amp;A】\n分工表同时投屏，方便老师按人提问。常见追问的参考答案在
+                        speech.txt 的“问答预案”部分。
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================================ HUD -->
+        <div class="hud" id="hud">
+            <div class="progress"><div id="bar"></div></div>
+            <div class="hud-row">
+                <div class="cluster">
+                    <button
+                        class="hud-btn"
+                        id="btnPrev"
+                        title="Previous (←)"
+                        type="button"
+                    >
+                        ‹
+                    </button>
+                    <button
+                        class="hud-btn"
+                        id="btnNext"
+                        title="Next (→)"
+                        type="button"
+                    >
+                        ›
+                    </button>
+                    <span class="counter" id="counter">01 / 15</span>
+                    <span class="slide-title" id="slideTitle">Title</span>
+                </div>
+                <div class="cluster">
+                    <span
+                        class="timer"
+                        id="timer"
+                        title="Presentation timer (T, double-click to reset)"
+                        >00:00</span
+                    >
+                    <button
+                        class="hud-btn wide"
+                        id="btnNotes"
+                        title="Speaker notes (N)"
+                        type="button"
+                    >
+                        NOTES
+                    </button>
+                    <button
+                        class="hud-btn wide"
+                        id="btnSetup"
+                        title="Settings (S)"
+                        type="button"
+                    >
+                        SETUP
+                    </button>
+                    <button
+                        class="hud-btn"
+                        id="btnFull"
+                        title="Fullscreen (F)"
+                        type="button"
+                    >
+                        ⛶
+                    </button>
+                    <button
+                        class="hud-btn"
+                        id="btnHelp"
+                        title="Shortcuts (H)"
+                        type="button"
+                    >
+                        ?
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================== NOTES -->
+        <div class="notes" id="notes">
+            <div class="n-head">
+                <span id="notesTitle">Speaker notes</span
+                ><span id="notesWho"></span>
+            </div>
+            <div class="n-body" id="notesBody"></div>
+        </div>
+
+        <!-- ======================================================= SETTINGS -->
+        <div class="overlay" id="setupOverlay">
+            <div
+                class="panel"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Setup"
+            >
+                <h3>Setup</h3>
+                <p class="hint">
+                    Fill this in <b>before class</b> (press S anytime).
+                    Everything is saved in this browser only — no backend, no
+                    data leaves your laptop.
+                </p>
+                <div class="field">
+                    <label for="inpBase">Full URL of interaction.html</label>
+                    <input
+                        id="inpBase"
+                        type="url"
+                        placeholder="https://your-host.example/path/interaction.html"
+                        spellcheck="false"
+                    />
+                    <div class="hint">
+                        Host both files on any static host (GitHub Pages /
+                        school server / Netlify Drop), then paste the URL your
+                        phone can open. Test it on your phone first.
+                    </div>
+                </div>
+                <div class="field-row">
+                    <div class="field">
+                        <label for="inpStart">Race start time (HH:MM:SS)</label>
+                        <input
+                            id="inpStart"
+                            type="text"
+                            placeholder="14:35:00"
+                            spellcheck="false"
+                        />
+                        <div class="hint">
+                            Local time today. Students see a live countdown to
+                            it.
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="inpQ">Race question (1–3)</label>
+                        <select id="inpQ">
+                            <option value="1">
+                                1 — Which habit reduces anxiety?
+                            </option>
+                            <option value="2">
+                                2 — What do researchers say about mistakes?
+                            </option>
+                            <option value="3">
+                                3 — Anxiety &amp; performance: true statement?
+                            </option>
+                        </select>
+                        <div class="hint">
+                            Change between rounds, re-scan to play again.
+                        </div>
+                    </div>
+                </div>
+                <label class="check"
+                    ><input id="inpPreview" type="checkbox" /> Preview mode
+                    (unlocks immediately, for testing — no start time
+                    needed)</label
+                >
+                <div class="warnbox" id="setupWarn" hidden></div>
+                <div class="panel-actions">
+                    <button class="btn ghost" id="btnSetupClose" type="button">
+                        Close
+                    </button>
+                    <button class="btn primary" id="btnSetupSave" type="button">
+                        Save &amp; apply
+                    </button>
+                </div>
+                <p class="hint">
+                    Shortcuts: ←/→/Space flip slides · N notes · T timer · S
+                    setup · F fullscreen · H help · Home/End jump.
+                </p>
+            </div>
+        </div>
+
+        <!-- ============================================================ HELP -->
+        <div class="overlay" id="helpOverlay">
+            <div
+                class="panel"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Keyboard shortcuts"
+            >
+                <h3>Shortcuts</h3>
+                <div class="help-grid">
+                    <kbd>→ ↓ Space</kbd><span>Next slide</span> <kbd>← ↑</kbd
+                    ><span>Previous slide</span> <kbd>Home / End</kbd
+                    ><span>First / last slide</span> <kbd>Click / swipe</kbd
+                    ><span>Next / previous (tap left edge to go back)</span>
+                    <kbd>N</kbd><span>Speaker notes panel (private aid)</span>
+                    <kbd>T</kbd
+                    ><span
+                        >Show / hide presentation timer (double-click it to
+                        reset)</span
+                    >
+                    <kbd>S</kbd
+                    ><span>Setup: base URL, race start time, question</span>
+                    <kbd>F</kbd><span>Fullscreen</span> <kbd>H</kbd
+                    ><span>This help · Esc closes panels</span>
+                </div>
+                <div class="panel-actions">
+                    <button class="btn primary" id="btnHelpClose" type="button">
+                        Got it
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            /* ==================================================================== *
+             *  QR encoder — byte mode, EC level M, versions 1–10, mask autoselect.  *
+             *  Matrices verified module-for-module against reference implementations.*
+             * ==================================================================== */
+            const QRCodeGen = (() => {
+                const EXP = new Uint8Array(512);
+                const LOG = new Uint8Array(256);
+                let x = 1;
+                for (let i = 0; i < 255; i++) {
+                    EXP[i] = x;
+                    LOG[x] = i;
+                    x <<= 1;
+                    if (x & 0x100) x ^= 0x11d;
+                }
+                for (let i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+                const gmul = (a, b) =>
+                    a === 0 || b === 0 ? 0 : EXP[LOG[a] + LOG[b]];
+
+                const TABLES = {
+                    1: [10, [1], [16]],
+                    2: [16, [1], [28]],
+                    3: [26, [1], [44]],
+                    4: [18, [2], [32]],
+                    5: [24, [2], [43]],
+                    6: [16, [4], [27]],
+                    7: [18, [4], [31]],
+                    8: [22, [2, 2], [38, 39]],
+                    9: [22, [3, 2], [36, 37]],
+                    10: [26, [4, 1], [43, 44]],
+                };
+                const ALIGN = {
+                    1: [],
+                    2: [6, 18],
+                    3: [6, 22],
+                    4: [6, 26],
+                    5: [6, 30],
+                    6: [6, 34],
+                    7: [6, 22, 38],
+                    8: [6, 24, 42],
+                    9: [6, 26, 46],
+                    10: [6, 28, 50],
+                };
+
+                const genCache = {};
+                function genPoly(degree) {
+                    if (genCache[degree]) return genCache[degree];
+                    let poly = [1];
+                    for (let i = 0; i < degree; i++) {
+                        const next = new Array(poly.length + 1).fill(0);
+                        for (let j = 0; j < poly.length; j++) {
+                            next[j] ^= poly[j];
+                            next[j + 1] ^= gmul(poly[j], EXP[i]);
+                        }
+                        poly = next;
+                    }
+                    genCache[degree] = poly;
+                    return poly;
+                }
+                function rsEncode(data, ecLen) {
+                    const gen = genPoly(ecLen);
+                    const buf = data.concat(new Array(ecLen).fill(0));
+                    for (let i = 0; i < data.length; i++) {
+                        const coef = buf[i];
+                        if (coef !== 0) {
+                            for (let j = 1; j < gen.length; j++)
+                                buf[i + j] ^= gmul(gen[j], coef);
+                            buf[i] = 0;
+                        }
+                    }
+                    return buf.slice(data.length);
+                }
+                const bitLength = n => {
+                    let l = 0;
+                    while (n !== 0) {
+                        l++;
+                        n >>>= 1;
+                    }
+                    return l;
+                };
+                function bchTypeInfo(data) {
+                    let d = data << 10;
+                    while (bitLength(d) - 11 >= 0)
+                        d ^= 0x537 << (bitLength(d) - 11);
+                    return ((data << 10) | d) ^ 0x5412;
+                }
+                function bchVersion(version) {
+                    let d = version << 12;
+                    while (bitLength(d) - 13 >= 0)
+                        d ^= 0x1f25 << (bitLength(d) - 13);
+                    return (version << 12) | d;
+                }
+                function maskAt(mask, i, j) {
+                    switch (mask) {
+                        case 0:
+                            return (i + j) % 2 === 0;
+                        case 1:
+                            return i % 2 === 0;
+                        case 2:
+                            return j % 3 === 0;
+                        case 3:
+                            return (i + j) % 3 === 0;
+                        case 4:
+                            return (
+                                (Math.floor(i / 2) + Math.floor(j / 3)) % 2 ===
+                                0
+                            );
+                        case 5:
+                            return ((i * j) % 2) + ((i * j) % 3) === 0;
+                        case 6:
+                            return (((i * j) % 2) + ((i * j) % 3)) % 2 === 0;
+                        case 7:
+                            return (((i + j) % 2) + ((i * j) % 3)) % 2 === 0;
+                        default:
+                            return false;
+                    }
+                }
+                function buildCodewords(text, version) {
+                    const [ecLen, counts, datas] = TABLES[version];
+                    const dataCw = counts.reduce(
+                        (s, n, k) => s + n * datas[k],
+                        0,
+                    );
+                    const totalBits = dataCw * 8;
+                    const ccBits = version < 10 ? 8 : 16;
+                    const bytes = new TextEncoder().encode(text);
+                    if (4 + ccBits + bytes.length * 8 > totalBits) return null;
+                    if (version < 10 && bytes.length > 255) return null;
+                    const bits = [];
+                    const push = (val, len) => {
+                        for (let i = len - 1; i >= 0; i--)
+                            bits.push((val >> i) & 1);
+                    };
+                    push(4, 4);
+                    push(bytes.length, ccBits);
+                    for (let i = 0; i < bytes.length; i++) push(bytes[i], 8);
+                    const remain = totalBits - bits.length;
+                    for (let i = 0; i < Math.min(4, remain); i++) bits.push(0);
+                    while (bits.length % 8 !== 0) bits.push(0);
+                    const cw = [];
+                    for (let i = 0; i < bits.length; i += 8) {
+                        let b = 0;
+                        for (let j = 0; j < 8; j++) b = (b << 1) | bits[i + j];
+                        cw.push(b);
+                    }
+                    let pad = 0xec;
+                    while (cw.length < dataCw) {
+                        cw.push(pad);
+                        pad = pad === 0xec ? 0x11 : 0xec;
+                    }
+                    const blocks = [];
+                    let idx = 0;
+                    for (let g = 0; g < counts.length; g++) {
+                        for (let k = 0; k < counts[g]; k++) {
+                            const len = datas[g];
+                            const blockData = cw.slice(idx, idx + len);
+                            idx += len;
+                            blocks.push({
+                                data: blockData,
+                                ec: rsEncode(blockData, ecLen),
+                            });
+                        }
+                    }
+                    const out = [];
+                    const maxData = Math.max(...blocks.map(b => b.data.length));
+                    for (let i = 0; i < maxData; i++)
+                        for (const b of blocks)
+                            if (i < b.data.length) out.push(b.data[i]);
+                    for (let i = 0; i < ecLen; i++)
+                        for (const b of blocks) out.push(b.ec[i]);
+                    return out;
+                }
+                function buildGrid(version, codewords, mask) {
+                    const size = version * 4 + 17;
+                    const grid = Array.from({ length: size }, () =>
+                        new Array(size).fill(null),
+                    );
+                    function drawFinder(row0, col0) {
+                        for (let r = -1; r <= 7; r++) {
+                            const rr = row0 + r;
+                            if (rr < 0 || rr >= size) continue;
+                            for (let c = -1; c <= 7; c++) {
+                                const cc = col0 + c;
+                                if (cc < 0 || cc >= size) continue;
+                                const dark =
+                                    (r >= 0 &&
+                                        r <= 6 &&
+                                        (c === 0 || c === 6)) ||
+                                    (c >= 0 &&
+                                        c <= 6 &&
+                                        (r === 0 || r === 6)) ||
+                                    (r >= 2 && r <= 4 && c >= 2 && c <= 4);
+                                grid[rr][cc] = dark;
+                            }
+                        }
+                    }
+                    drawFinder(0, 0);
+                    drawFinder(size - 7, 0);
+                    drawFinder(0, size - 7);
+                    for (let r = 8; r < size - 8; r++) grid[r][6] = r % 2 === 0;
+                    for (let c = 8; c < size - 8; c++) grid[6][c] = c % 2 === 0;
+                    const centers = ALIGN[version];
+                    const overlapsFinder = (r, c) =>
+                        (r <= 8 && c <= 8) ||
+                        (r <= 8 && c >= size - 9) ||
+                        (r >= size - 9 && c <= 8);
+                    for (const cr of centers) {
+                        for (const cc of centers) {
+                            if (overlapsFinder(cr, cc)) continue;
+                            for (let dr = -2; dr <= 2; dr++) {
+                                for (let dc = -2; dc <= 2; dc++)
+                                    grid[cr + dr][cc + dc] =
+                                        Math.max(Math.abs(dr), Math.abs(dc)) !==
+                                        1;
+                            }
+                        }
+                    }
+                    const format = bchTypeInfo(mask);
+                    for (let i = 0; i < 15; i++) {
+                        const mod = ((format >> i) & 1) === 1;
+                        if (i < 6) grid[i][8] = mod;
+                        else if (i < 8) grid[i + 1][8] = mod;
+                        else grid[size - 15 + i][8] = mod;
+                        if (i < 8) grid[8][size - i - 1] = mod;
+                        else if (i < 9) grid[8][7] = mod;
+                        else grid[8][15 - i - 1] = mod;
+                    }
+                    grid[size - 8][8] = true;
+                    if (version >= 7) {
+                        const info = bchVersion(version);
+                        for (let i = 0; i < 18; i++) {
+                            const mod = ((info >> i) & 1) === 1;
+                            grid[Math.floor(i / 3)][(i % 3) + size - 11] = mod;
+                            grid[(i % 3) + size - 11][Math.floor(i / 3)] = mod;
+                        }
+                    }
+                    let row = size - 1,
+                        inc = -1,
+                        byteIndex = 0,
+                        bitIndex = 7;
+                    for (let col = size - 1; col > 0; col -= 2) {
+                        if (col === 6) col--;
+                        for (;;) {
+                            for (let c = 0; c < 2; c++) {
+                                const cc = col - c;
+                                if (grid[row][cc] === null) {
+                                    let dark = false;
+                                    if (byteIndex < codewords.length)
+                                        dark =
+                                            ((codewords[byteIndex] >>
+                                                bitIndex) &
+                                                1) ===
+                                            1;
+                                    if (maskAt(mask, row, cc)) dark = !dark;
+                                    grid[row][cc] = dark;
+                                    bitIndex--;
+                                    if (bitIndex === -1) {
+                                        byteIndex++;
+                                        bitIndex = 7;
+                                    }
+                                }
+                            }
+                            row += inc;
+                            if (row < 0 || row >= size) {
+                                row -= inc;
+                                inc = -inc;
+                                break;
+                            }
+                        }
+                    }
+                    return grid;
+                }
+                function penalty(grid) {
+                    const n = grid.length;
+                    let score = 0;
+                    for (let r = 0; r < n; r++) {
+                        let run = 1;
+                        for (let c = 1; c < n; c++) {
+                            if (grid[r][c] === grid[r][c - 1]) run++;
+                            else {
+                                if (run >= 5) score += 3 + (run - 5);
+                                run = 1;
+                            }
+                        }
+                        if (run >= 5) score += 3 + (run - 5);
+                    }
+                    for (let c = 0; c < n; c++) {
+                        let run = 1;
+                        for (let r = 1; r < n; r++) {
+                            if (grid[r][c] === grid[r - 1][c]) run++;
+                            else {
+                                if (run >= 5) score += 3 + (run - 5);
+                                run = 1;
+                            }
+                        }
+                        if (run >= 5) score += 3 + (run - 5);
+                    }
+                    for (let r = 0; r < n - 1; r++) {
+                        for (let c = 0; c < n - 1; c++) {
+                            const v = grid[r][c];
+                            if (
+                                v === grid[r + 1][c] &&
+                                v === grid[r][c + 1] &&
+                                v === grid[r + 1][c + 1]
+                            )
+                                score += 3;
+                        }
+                    }
+                    const pat = [true, false, true, true, true, false, true];
+                    const isPat = (line, s) => {
+                        for (let k = 0; k < 7; k++)
+                            if (line[s + k] !== pat[k]) return false;
+                        return true;
+                    };
+                    const lightAfter = (line, from, count) => {
+                        for (let k = 0; k < count; k++) {
+                            const p = from + k;
+                            if (p >= line.length) return false;
+                            if (line[p] === true) return false;
+                        }
+                        return true;
+                    };
+                    const lightBefore = (line, from, count) => {
+                        for (let k = 0; k < count; k++) {
+                            const p = from - k;
+                            if (p < 0) return false;
+                            if (line[p] === true) return false;
+                        }
+                        return true;
+                    };
+                    for (let r = 0; r < n; r++) {
+                        const line = grid[r];
+                        for (let c = 0; c <= n - 7; c++)
+                            if (
+                                isPat(line, c) &&
+                                (lightBefore(line, c, 4) ||
+                                    lightAfter(line, c + 7, 4))
+                            )
+                                score += 40;
+                    }
+                    for (let c = 0; c < n; c++) {
+                        const line = grid.map(r => r[c]);
+                        for (let r = 0; r <= n - 7; r++)
+                            if (
+                                isPat(line, r) &&
+                                (lightBefore(line, r, 4) ||
+                                    lightAfter(line, r + 7, 4))
+                            )
+                                score += 40;
+                    }
+                    let dark = 0;
+                    for (let r = 0; r < n; r++)
+                        for (let c = 0; c < n; c++) if (grid[r][c]) dark++;
+                    score +=
+                        Math.floor(Math.abs((dark * 100) / (n * n) - 50) / 5) *
+                        10;
+                    return score;
+                }
+                function make(text) {
+                    for (let version = 1; version <= 10; version++) {
+                        const codewords = buildCodewords(text, version);
+                        if (!codewords) continue;
+                        let bestGrid = null,
+                            bestScore = Infinity;
+                        for (let m = 0; m < 8; m++) {
+                            const grid = buildGrid(version, codewords, m);
+                            const score = penalty(grid);
+                            if (score < bestScore) {
+                                bestScore = score;
+                                bestGrid = grid;
+                            }
+                        }
+                        return {
+                            version,
+                            size: bestGrid.length,
+                            matrix: bestGrid,
+                        };
+                    }
+                    throw new Error("QR: data too long");
+                }
+                function svg(text) {
+                    const qr = make(text);
+                    const quiet = 4,
+                        n = qr.size + quiet * 2;
+                    let rects = "";
+                    for (let r = 0; r < qr.size; r++) {
+                        let c = 0;
+                        while (c < qr.size) {
+                            if (qr.matrix[r][c]) {
+                                let len = 1;
+                                while (
+                                    c + len < qr.size &&
+                                    qr.matrix[r][c + len]
+                                )
+                                    len++;
+                                rects +=
+                                    '<rect x="' +
+                                    (c + quiet) +
+                                    '" y="' +
+                                    (r + quiet) +
+                                    '" width="' +
+                                    len +
+                                    '" height="1"/>';
+                                c += len;
+                            } else c++;
+                        }
+                    }
+                    return (
+                        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' +
+                        n +
+                        " " +
+                        n +
+                        '" shape-rendering="crispEdges" role="img" aria-label="QR code"><rect width="' +
+                        n +
+                        '" height="' +
+                        n +
+                        '" fill="#ffffff"/><g fill="#111111">' +
+                        rects +
+                        "</g></svg>"
+                    );
+                }
+                return { make, svg };
+            })();
+
+            /* ==================================================================== *
+             *  Deck engine                                                          *
+             * ==================================================================== */
+            (() => {
+                "use strict";
+
+                const slides = Array.from(document.querySelectorAll(".slide"));
+                const TOTAL = slides.length;
+                const store = {
+                    get(key) {
+                        try {
+                            return localStorage.getItem(key);
+                        } catch (e) {
+                            return null;
+                        }
+                    },
+                    set(key, val) {
+                        try {
+                            localStorage.setItem(key, val);
+                        } catch (e) {
+                            /* file:// or private mode */
+                        }
+                    },
+                };
+
+                const els = {
+                    bar: document.getElementById("bar"),
+                    counter: document.getElementById("counter"),
+                    slideTitle: document.getElementById("slideTitle"),
+                    timer: document.getElementById("timer"),
+                    notes: document.getElementById("notes"),
+                    notesTitle: document.getElementById("notesTitle"),
+                    notesBody: document.getElementById("notesBody"),
+                    notesWho: document.getElementById("notesWho"),
+                    setup: document.getElementById("setupOverlay"),
+                    help: document.getElementById("helpOverlay"),
+                    inpBase: document.getElementById("inpBase"),
+                    inpStart: document.getElementById("inpStart"),
+                    inpQ: document.getElementById("inpQ"),
+                    inpPreview: document.getElementById("inpPreview"),
+                    setupWarn: document.getElementById("setupWarn"),
+                    qrSurvey: document.getElementById("qrSurvey"),
+                    qrRace: document.getElementById("qrRace"),
+                    urlSurvey: document.getElementById("urlSurvey"),
+                    urlRace: document.getElementById("urlRace"),
+                    raceMeta: document.getElementById("raceMeta"),
+                    btnNotes: document.getElementById("btnNotes"),
+                    btnSetup: document.getElementById("btnSetup"),
+                };
+
+                let index = Math.min(
+                    TOTAL - 1,
+                    Math.max(0, parseInt(location.hash.slice(1), 10) - 1) || 0,
+                );
+
+                /* ------------------------------------------------------------ nav */
+                function show(next) {
+                    next = Math.min(TOTAL - 1, Math.max(0, next));
+                    if (
+                        next === index &&
+                        slides[next].classList.contains("active")
+                    )
+                        return;
+                    const old = index;
+                    index = next;
+                    slides.forEach((s, i) => {
+                        s.classList.toggle("active", i === index);
+                        s.classList.toggle("prev", i < index);
+                        s.setAttribute(
+                            "aria-hidden",
+                            i === index ? "false" : "true",
+                        );
+                        if (i !== old) s.scrollTop = 0;
+                    });
+                    history.replaceState(null, "", "#" + (index + 1));
+                    els.counter.textContent =
+                        String(index + 1).padStart(2, "0") +
+                        " / " +
+                        String(TOTAL).padStart(2, "0");
+                    els.bar.style.width = ((index + 1) / TOTAL) * 100 + "%";
+                    els.slideTitle.textContent =
+                        slides[index].dataset.title || "";
+                    refreshNotes();
+                }
+                const next = () => show(index + 1);
+                const prev = () => show(index - 1);
+
+                /* ---------------------------------------------------------- notes */
+                let notesOn = store.get("wxf.notes") === "1";
+                function refreshNotes() {
+                    const note = slides[index].querySelector(".note");
+                    const text = note
+                        ? note.textContent.trim().replace(/\\n/g, "\n")
+                        : "(No notes for this slide.)";
+                    els.notesBody.textContent = text;
+                    const who = text.match(/【([^｜]+)｜/);
+                    els.notesTitle.textContent =
+                        "Speaker notes — " +
+                        (slides[index].dataset.title || "");
+                    els.notesWho.textContent = who ? who[1] : "";
+                }
+                function toggleNotes() {
+                    notesOn = !notesOn;
+                    els.notes.classList.toggle("show", notesOn);
+                    els.btnNotes.classList.toggle("on", notesOn);
+                    store.set("wxf.notes", notesOn ? "1" : "0");
+                }
+
+                /* ---------------------------------------------------------- timer */
+                let timerBase = null; // timestamp when started
+                let timerOffset = Number(store.get("wxf.timer") || 0);
+                let timerOn = store.get("wxf.timerOn") === "1";
+                let timerHandle = null;
+                function fmtElapsed(ms) {
+                    const total = Math.floor(ms / 1000);
+                    const h = Math.floor(total / 3600);
+                    const m = Math.floor((total % 3600) / 60);
+                    const s = total % 60;
+                    const mmss =
+                        String(m).padStart(2, "0") +
+                        ":" +
+                        String(s).padStart(2, "0");
+                    return h > 0 ? h + ":" + mmss : mmss;
+                }
+                function timerTick() {
+                    const shown = timerOn
+                        ? timerOffset + (timerBase ? Date.now() - timerBase : 0)
+                        : timerOffset;
+                    els.timer.textContent = fmtElapsed(shown);
+                    els.timer.classList.toggle("hot", shown >= 15 * 60 * 1000);
+                }
+                function startTimer() {
+                    timerBase = Date.now();
+                    if (timerHandle) clearInterval(timerHandle);
+                    timerHandle = setInterval(() => {
+                        timerTick();
+                        store.set(
+                            "wxf.timer",
+                            String(
+                                timerOffset +
+                                    (timerBase ? Date.now() - timerBase : 0),
+                            ),
+                        );
+                    }, 500);
+                    timerTick();
+                }
+                function toggleTimer() {
+                    timerOn = !timerOn;
+                    if (timerOn) {
+                        startTimer();
+                    } else {
+                        timerOffset += timerBase ? Date.now() - timerBase : 0;
+                        timerBase = null;
+                        clearInterval(timerHandle);
+                        timerTick();
+                        store.set("wxf.timer", String(timerOffset));
+                    }
+                    store.set("wxf.timerOn", timerOn ? "1" : "0");
+                    els.timer.style.opacity =
+                        timerOn || timerOffset ? "1" : "0.4";
+                }
+                els.timer.addEventListener("dblclick", () => {
+                    timerOffset = 0;
+                    if (timerOn) {
+                        startTimer();
+                    } else {
+                        timerTick();
+                    }
+                    store.set("wxf.timer", "0");
+                });
+
+                /* -------------------------------------------------------- settings */
+                function defaultBase() {
+                    if (/^https?:$/.test(location.protocol)) {
+                        try {
+                            return new URL("interaction.html", location.href)
+                                .href;
+                        } catch (e) {
+                            /* noop */
+                        }
+                    }
+                    return store.get("wxf.base") || "";
+                }
+
+                const cfg = {
+                    base: store.get("wxf.base") || defaultBase(),
+                    start: store.get("wxf.start") || "",
+                    q: store.get("wxf.q") || "1",
+                    preview: store.get("wxf.preview") === "1",
+                };
+
+                function startEpoch(hhmmss) {
+                    if (!/^\d{1,2}:\d{2}(:\d{2})?$/.test(hhmmss.trim()))
+                        return null;
+                    const parts = hhmmss.split(":").map(Number);
+                    const d = new Date();
+                    d.setHours(
+                        parts[0],
+                        parts[1],
+                        parts.length > 2 ? parts[2] : 0,
+                        0,
+                    );
+                    return d.getTime();
+                }
+
+                function surveyUrl() {
+                    if (!cfg.base) return "";
+                    const u =
+                        cfg.base +
+                        (cfg.base.includes("?") ? "&" : "?") +
+                        "activity=survey";
+                    return u;
+                }
+                function raceUrl() {
+                    if (!cfg.base) return "";
+                    const parts = ["activity=race", "q=" + cfg.q];
+                    const epoch = startEpoch(cfg.start);
+                    if (epoch !== null) parts.push("start=" + epoch);
+                    if (cfg.preview) parts.push("preview=1");
+                    return (
+                        cfg.base +
+                        (cfg.base.includes("?") ? "&" : "?") +
+                        parts.join("&")
+                    );
+                }
+
+                function renderQr() {
+                    const sUrl = surveyUrl();
+                    const rUrl = raceUrl();
+
+                    if (sUrl) {
+                        els.qrSurvey.innerHTML = QRCodeGen.svg(sUrl);
+                        els.urlSurvey.textContent = sUrl;
+                    } else {
+                        els.urlSurvey.textContent = "";
+                    }
+
+                    if (rUrl) {
+                        els.qrRace.innerHTML = QRCodeGen.svg(rUrl);
+                        els.urlRace.textContent = rUrl;
+                        const epoch = startEpoch(cfg.start);
+                        const when = cfg.preview
+                            ? "PREVIEW (unlocks now)"
+                            : epoch !== null
+                              ? "starts at " + cfg.start
+                              : "no start time set!";
+                        els.raceMeta.textContent =
+                            "Question " + cfg.q + " · " + when;
+                    } else {
+                        els.raceMeta.textContent =
+                            "Question " + cfg.q + " · awaiting setup";
+                    }
+                }
+
+                function openSetup() {
+                    els.inpBase.value = cfg.base;
+                    els.inpStart.value = cfg.start;
+                    els.inpQ.value = cfg.q;
+                    els.inpPreview.checked = cfg.preview;
+                    const warn = [];
+                    if (!/^https?:$/.test(location.protocol)) {
+                        warn.push(
+                            "You opened this file locally (" +
+                                location.protocol +
+                                "//). Phones cannot scan a local URL — host both HTML files anywhere static and paste the real https address of interaction.html below.",
+                        );
+                    }
+                    if (!cfg.base)
+                        warn.push(
+                            "No interaction.html URL yet: the QR codes are blank until you fill it in.",
+                        );
+                    els.setupWarn.hidden = warn.length === 0;
+                    els.setupWarn.textContent = warn.join(" ");
+                    els.setup.classList.add("show");
+                    els.inpBase.focus();
+                }
+                function closeSetup() {
+                    els.setup.classList.remove("show");
+                }
+
+                document
+                    .getElementById("btnSetupSave")
+                    .addEventListener("click", () => {
+                        cfg.base = els.inpBase.value.trim();
+                        cfg.start = els.inpStart.value.trim();
+                        cfg.q = els.inpQ.value;
+                        cfg.preview = els.inpPreview.checked;
+                        store.set("wxf.base", cfg.base);
+                        store.set("wxf.start", cfg.start);
+                        store.set("wxf.q", cfg.q);
+                        store.set("wxf.preview", cfg.preview ? "1" : "0");
+                        renderQr();
+                        openSetup(); // refresh warnings
+                    });
+                document
+                    .getElementById("btnSetupClose")
+                    .addEventListener("click", closeSetup);
+                document
+                    .getElementById("btnHelpClose")
+                    .addEventListener("click", () =>
+                        els.help.classList.remove("show"),
+                    );
+
+                /* ----------------------------------------------------- copy links */
+                document.querySelectorAll("[data-copy]").forEach(btn => {
+                    btn.addEventListener("click", async event => {
+                        event.stopPropagation();
+                        const url =
+                            btn.dataset.copy === "survey"
+                                ? surveyUrl()
+                                : raceUrl();
+                        if (!url) {
+                            btn.textContent = "Set up first";
+                            return;
+                        }
+                        try {
+                            await navigator.clipboard.writeText(url);
+                            btn.textContent = "Copied";
+                        } catch (e) {
+                            const ta = document.createElement("textarea");
+                            ta.value = url;
+                            document.body.appendChild(ta);
+                            ta.select();
+                            try {
+                                document.execCommand("copy");
+                                btn.textContent = "Copied";
+                            } catch (e2) {
+                                btn.textContent = "Copy failed";
+                            }
+                            document.body.removeChild(ta);
+                        }
+                        setTimeout(() => {
+                            btn.textContent = "Copy link";
+                        }, 1600);
+                    });
+                });
+
+                /* -------------------------------------------------------- overlays */
+                els.btnSetup.addEventListener("click", e => {
+                    e.stopPropagation();
+                    openSetup();
+                });
+                document
+                    .getElementById("btnHelp")
+                    .addEventListener("click", e => {
+                        e.stopPropagation();
+                        els.help.classList.add("show");
+                    });
+                els.btnNotes.addEventListener("click", e => {
+                    e.stopPropagation();
+                    toggleNotes();
+                });
+                document
+                    .getElementById("btnPrev")
+                    .addEventListener("click", e => {
+                        e.stopPropagation();
+                        prev();
+                    });
+                document
+                    .getElementById("btnNext")
+                    .addEventListener("click", e => {
+                        e.stopPropagation();
+                        next();
+                    });
+                document
+                    .getElementById("btnFull")
+                    .addEventListener("click", e => {
+                        e.stopPropagation();
+                        if (!document.fullscreenElement)
+                            document.documentElement.requestFullscreen?.();
+                        else document.exitFullscreen?.();
+                    });
+
+                els.setup.addEventListener("click", e => {
+                    if (e.target === els.setup) closeSetup();
+                });
+                els.help.addEventListener("click", e => {
+                    if (e.target === els.help)
+                        els.help.classList.remove("show");
+                });
+
+                /* ------------------------------------------------------- keyboard */
+                document.addEventListener("keydown", event => {
+                    const typing = /input|select|textarea/i.test(
+                        event.target.tagName,
+                    );
+                    if (event.key === "Escape") {
+                        closeSetup();
+                        els.help.classList.remove("show");
+                        return;
+                    }
+                    if (typing) return;
+                    switch (event.key) {
+                        case "ArrowRight":
+                        case "ArrowDown":
+                        case " ":
+                        case "PageDown":
+                            event.preventDefault();
+                            next();
+                            break;
+                        case "ArrowLeft":
+                        case "ArrowUp":
+                        case "PageUp":
+                        case "Backspace":
+                            event.preventDefault();
+                            prev();
+                            break;
+                        case "Home":
+                            event.preventDefault();
+                            show(0);
+                            break;
+                        case "End":
+                            event.preventDefault();
+                            show(TOTAL - 1);
+                            break;
+                        case "n":
+                        case "N":
+                            toggleNotes();
+                            break;
+                        case "t":
+                        case "T":
+                            toggleTimer();
+                            break;
+                        case "s":
+                        case "S":
+                            els.setup.classList.contains("show")
+                                ? closeSetup()
+                                : openSetup();
+                            break;
+                        case "h":
+                        case "H":
+                        case "?":
+                            els.help.classList.toggle("show");
+                            break;
+                        case "f":
+                        case "F":
+                            if (!document.fullscreenElement)
+                                document.documentElement.requestFullscreen?.();
+                            else document.exitFullscreen?.();
+                            break;
+                        default:
+                            if (/^[0-9]$/.test(event.key)) {
+                                const target =
+                                    Number(event.key === "0" ? 10 : event.key) -
+                                    1;
+                                if (target < TOTAL) show(target);
+                            }
+                    }
+                });
+
+                /* ---------------------------------------------- click & swipe nav */
+                let touchX = null,
+                    touchY = null;
+                document.addEventListener(
+                    "touchstart",
+                    event => {
+                        const t = event.changedTouches[0];
+                        touchX = t.clientX;
+                        touchY = t.clientY;
+                    },
+                    { passive: true },
+                );
+                document.addEventListener(
+                    "touchend",
+                    event => {
+                        if (touchX === null) return;
+                        const t = event.changedTouches[0];
+                        const dx = t.clientX - touchX;
+                        const dy = t.clientY - touchY;
+                        touchX = touchY = null;
+                        if (
+                            Math.abs(dx) > 60 &&
+                            Math.abs(dx) > Math.abs(dy) * 1.5
+                        ) {
+                            dx < 0 ? next() : prev();
+                        }
+                    },
+                    { passive: true },
+                );
+
+                document.addEventListener("click", event => {
+                    const target = event.target;
+                    if (
+                        target instanceof Element &&
+                        target.closest(
+                            "button, a, input, select, .overlay, .notes, .hud",
+                        )
+                    )
+                        return;
+                    if (window.getSelection && String(window.getSelection()))
+                        return;
+                    if (event.clientX < window.innerWidth * 0.18) prev();
+                    else next();
+                });
+
+                window.addEventListener("hashchange", () => {
+                    const want = Math.min(
+                        TOTAL - 1,
+                        Math.max(0, parseInt(location.hash.slice(1), 10) - 1) ||
+                            0,
+                    );
+                    if (want !== index) show(want);
+                });
+
+                /* ------------------------------------------------------------- boot */
+                renderQr();
+                show(index);
+                refreshNotes();
+                els.notes.classList.toggle("show", notesOn);
+                els.btnNotes.classList.toggle("on", notesOn);
+                if (timerOn) startTimer();
+                else {
+                    timerTick();
+                    els.timer.style.opacity = timerOffset ? "1" : "0.4";
+                }
+                if (
+                    Number(store.get("wxf.sawSetupHint") || 0) === 0 &&
+                    !cfg.base
+                ) {
+                    store.set("wxf.sawSetupHint", "1");
+                    setTimeout(() => {
+                        openSetup();
+                    }, 600);
+                }
+            })();
+        </script>
+    </body>
+</html>
