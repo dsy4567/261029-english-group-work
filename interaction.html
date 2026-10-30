@@ -1110,7 +1110,7 @@
                         esc(base) +
                         '?activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">12 statements \u00b7 2 minutes \u00b7 private<br>12 题 · 约 2 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
                         "</div>" +
-                        '<div class="warn">The live race cannot be opened from this page. Scan the QR code on the slide to join \u2014 the link carries the round and the start time.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与，链接里带有题号和开始时间。</span></div>' +
+                        '<div class="warn">The live race cannot be opened from this page. Scan the QR code on the slide to join.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与。</span></div>' +
                         (note
                             ? '<div class="warn">' +
                               esc(note).replace(/\n/g, "<br>") +
@@ -1371,7 +1371,11 @@
                 let liveTimer = null;
                 let answered = false;
                 let clockOffset = 0;
+                let clockUncertainty = null;
                 let synced = false;
+                let syncAttempted = false;
+                let clockSamples = [];
+                let syncLoop = null;
 
                 const now = () => Date.now() + clockOffset;
 
@@ -1392,41 +1396,137 @@
                     return Number.isNaN(parsed) ? null : parsed;
                 }
 
-                async function syncClock() {
-                    try {
+                /* 时钟校准：并发多次 HEAD，HTTP Date 头只向下截断到整秒，
+                   所以每个样本都是"服务器时刻"的下界。取所有样本的下界上确界
+                   与上界下确界求交，区间中点即偏移，半宽即不确定度。 */
+                function probeOnce() {
+                    return new Promise(resolve => {
+                        const sent = Date.now();
                         const controller = new AbortController();
                         const timer = setTimeout(
                             () => controller.abort(),
                             2500,
                         );
-                        const res = await fetch(location.href, {
-                            method: "HEAD",
-                            cache: "no-store",
-                            signal: controller.signal,
-                        });
-                        clearTimeout(timer);
-                        const header = res.headers.get("date");
-                        if (header) {
-                            const server = Date.parse(header);
-                            if (!Number.isNaN(server)) {
-                                clockOffset = server - Date.now();
-                                synced = true;
-                            }
+                        const done = sample => {
+                            clearTimeout(timer);
+                            resolve(sample);
+                        };
+                        try {
+                            fetch(location.href, {
+                                method: "HEAD",
+                                cache: "no-store",
+                                signal: controller.signal,
+                            })
+                                .then(res => {
+                                    const arrived = Date.now();
+                                    const header = res.headers.get("date");
+                                    const server = header
+                                        ? Date.parse(header)
+                                        : NaN;
+                                    done(
+                                        Number.isNaN(server)
+                                            ? null
+                                            : { sent, arrived, server },
+                                    );
+                                })
+                                .catch(() => done(null));
+                        } catch (err) {
+                            done(null);
                         }
-                    } catch (err) {
-                        synced = false;
+                    });
+                }
+
+                function applySamples() {
+                    if (!clockSamples.length) return;
+                    const newest = Math.max(
+                        ...clockSamples.map(s => s.arrived),
+                    );
+                    clockSamples = clockSamples.filter(
+                        s => newest - s.arrived <= 6000,
+                    );
+                    if (clockSamples.length > 12)
+                        clockSamples = clockSamples.slice(-12);
+
+                    const mids = clockSamples.map(
+                        s => s.server + 500 - s.arrived,
+                    );
+                    const sorted = mids.slice().sort((a, b) => a - b);
+                    const median = sorted[Math.floor(sorted.length / 2)];
+
+                    let lo = -Infinity;
+                    let hi = Infinity;
+                    clockSamples.forEach((s, i) => {
+                        // 离群样本（多半是中间层缓存的旧 Date 头）会污染交集，丢掉
+                        if (Math.abs(mids[i] - median) > 1200) return;
+                        lo = Math.max(lo, s.server - s.arrived);
+                        hi = Math.min(hi, s.server + 1000 - s.sent);
+                    });
+                    if (
+                        !Number.isFinite(lo) ||
+                        !Number.isFinite(hi) ||
+                        hi <= lo
+                    ) {
+                        lo = median - 500;
+                        hi = median + 500;
                     }
+
+                    clockOffset = Math.round((lo + hi) / 2);
+                    clockUncertainty = Math.round((hi - lo) / 2);
+                    synced = true;
+                    updateSyncBadge();
+                }
+
+                async function syncClock(burst) {
+                    const results = await Promise.all(
+                        Array.from({ length: burst || 2 }, () => probeOnce()),
+                    );
+                    results.forEach(s => {
+                        if (s) clockSamples.push(s);
+                    });
+                    syncAttempted = true;
+                    applySamples();
+                    updateSyncBadge(); // 全部失败时也要把徽标从"正在校准"改成回退文案
+                }
+
+                function stopSyncLoop() {
+                    if (syncLoop) {
+                        clearInterval(syncLoop);
+                        syncLoop = null;
+                    }
+                }
+
+                // 等待解锁期间静默补采样：采样跨度越大，整秒截断的不确定性收得越紧
+                function refineClock() {
+                    stopSyncLoop();
+                    let probes = 0;
+                    syncLoop = setInterval(() => {
+                        if (probes >= 8) return stopSyncLoop();
+                        if (
+                            clockUncertainty !== null &&
+                            clockUncertainty <= 120
+                        )
+                            return stopSyncLoop();
+                        if (startAt !== null && now() >= startAt)
+                            return stopSyncLoop();
+                        probes++;
+                        probeOnce().then(s => {
+                            if (s) clockSamples.push(s);
+                            applySamples();
+                        });
+                    }, 350);
+                }
+
+                function updateSyncBadge() {
                     const badge = document.getElementById("sync");
                     if (badge) badge.textContent = syncLabel();
                 }
 
                 function syncLabel() {
-                    if (!synced) return "Using device clock · 使用设备时钟";
-                    const drift = clockOffset / 1000;
+                    if (!synced || clockUncertainty === null)
+                        return "Using device clock · 使用设备时钟";
                     return (
-                        "Clock synced · 时钟已同步 · " +
-                        (drift > 0 ? "+" : "") +
-                        drift.toFixed(2) +
+                        "Clock synced · 时钟已同步 · \u00b1" +
+                        (Math.max(clockUncertainty, 100) / 1000).toFixed(1) +
                         " s"
                     );
                 }
@@ -1525,11 +1625,15 @@
                     );
 
                     const tick = () => {
-                        const left = startAt - now();
                         const el = document.getElementById("count");
                         if (!el) return;
+                        // 校准回来前既不显示倒计时也不判定"已开始"：设备时钟偏快会提前放题、
+                        // 偏慢会让倒计时先亮后跳
+                        if (!syncAttempted) return;
+                        const left = startAt - now();
                         if (left <= 0) {
                             clearInterval(raceTimer);
+                            stopSyncLoop();
                             renderRaceQuestion();
                         } else {
                             el.textContent = fmtCountdown(left);
@@ -1537,11 +1641,13 @@
                     };
                     tick();
                     raceTimer = setInterval(tick, 100);
+                    refineClock();
                 }
 
                 function renderRaceQuestion(badgeText) {
                     clearInterval(raceTimer);
                     clearInterval(liveTimer);
+                    stopSyncLoop();
                     answered = false;
                     document.body.dataset.theme = "ink";
                     const baseTime = startAt !== null ? startAt : now();
@@ -1584,7 +1690,7 @@
                         if (live)
                             live.textContent =
                                 (Math.max(0, now() - baseTime) / 1000).toFixed(
-                                    2,
+                                    1,
                                 ) + " s";
                     }, 60);
 
@@ -1605,8 +1711,10 @@
                 }
 
                 function renderRaceResult(chosen, ms) {
+                    clearInterval(liveTimer);
+                    stopSyncLoop();
                     const correct = chosen === question.correct;
-                    const seconds = (ms / 1000).toFixed(2);
+                    const seconds = (ms / 1000).toFixed(1);
                     app.innerHTML = raceShell(
                         '<div class="race-top"><span class="dot"></span>Round ' +
                             qParam +
@@ -1695,7 +1803,7 @@
                     const already = savedAnswerIndex();
                     if (already !== null) {
                         answered = true;
-                        await syncClock();
+                        await syncClock(2);
                         const stored = savedAnswerMs();
                         renderRaceResult(
                             already,
@@ -1708,7 +1816,7 @@
                         return;
                     }
 
-                    syncClock();
+                    syncClock(2);
 
                     if (preview) {
                         renderRaceQuestion(
@@ -1716,9 +1824,8 @@
                                 ? "Test mode \u00b7 start time not recognised · 测试模式 · 无法识别开始时间"
                                 : "Test mode \u00b7 no start time in this link · 测试模式 · 此链接没有开始时间",
                         );
-                    } else if (now() >= startAt) {
-                        renderRaceQuestion();
                     } else {
+                        // 先出等待页：设备时钟可能偏快，"是否已开始"交给 tick 在校准后判断
                         renderRaceWaiting();
                     }
                 }
