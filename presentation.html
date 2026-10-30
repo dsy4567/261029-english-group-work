@@ -2444,12 +2444,46 @@
                         "activity=survey";
                     return u;
                 }
+                /* 抢答链接签名：FNV-1a 32 位 + 固定盐，只用于发现手改地址栏。
+                   无后端，密钥就在源码里，属于威慑而非真安全。 */
+                function raceSign(q, start, preview, answer, t) {
+                    const text =
+                        "race|" +
+                        q +
+                        "|" +
+                        start +
+                        "|" +
+                        preview +
+                        "|" +
+                        answer +
+                        "|" +
+                        t +
+                        "|wxf-race";
+                    let h = 0x811c9dc5;
+                    for (let i = 0; i < text.length; i++) {
+                        h ^= text.charCodeAt(i);
+                        h = Math.imul(h, 16777619) >>> 0;
+                    }
+                    return ("0000000" + h.toString(16)).slice(-8);
+                }
+
                 function raceUrl() {
                     if (!cfg.base) return "";
-                    const parts = ["activity=race", "q=" + cfg.q];
                     const epoch = startEpoch(cfg.start);
-                    if (epoch !== null) parts.push("start=" + epoch);
+                    const startVal = epoch !== null ? String(epoch) : "";
+                    const parts = ["activity=race", "q=" + cfg.q];
+                    if (epoch !== null) parts.push("start=" + startVal);
                     if (cfg.preview) parts.push("preview=1");
+                    parts.push(
+                        "sign=" +
+                            raceSign(
+                                String(cfg.q),
+                                startVal,
+                                cfg.preview ? "1" : "0",
+                                "",
+                                "",
+                            ),
+                    );
                     return (
                         cfg.base +
                         (cfg.base.includes("?") ? "&" : "?") +

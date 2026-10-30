@@ -1559,6 +1559,16 @@
                     if (Number.isFinite(ms))
                         query.set("t", String(Math.max(0, Math.round(ms))));
                     else query.delete("t");
+                    query.set(
+                        "sign",
+                        raceSign(
+                            String(qParam),
+                            query.get("start") || "",
+                            query.get("preview") === "1" ? "1" : "0",
+                            query.get("answer") || "",
+                            query.get("t") || "",
+                        ),
+                    );
                     const qs = query.toString();
                     history.replaceState(
                         null,
@@ -1566,6 +1576,44 @@
                         location.pathname +
                             (qs ? "?" + qs : "") +
                             location.hash,
+                    );
+                }
+
+                /* 抢答链接签名：与展示页 raceSign 必须逐字一致。
+                   无后端，密钥在源码里，只防手改地址栏。 */
+                function raceSign(q, start, preview, answer, t) {
+                    const text =
+                        "race|" +
+                        q +
+                        "|" +
+                        start +
+                        "|" +
+                        preview +
+                        "|" +
+                        answer +
+                        "|" +
+                        t +
+                        "|wxf-race";
+                    let h = 0x811c9dc5;
+                    for (let i = 0; i < text.length; i++) {
+                        h ^= text.charCodeAt(i);
+                        h = Math.imul(h, 16777619) >>> 0;
+                    }
+                    return ("0000000" + h.toString(16)).slice(-8);
+                }
+
+                function signValid() {
+                    const raw = params.get("sign");
+                    if (!raw) return false;
+                    return (
+                        raw.trim().toLowerCase() ===
+                        raceSign(
+                            String(qParam),
+                            params.get("start") || "",
+                            params.get("preview") === "1" ? "1" : "0",
+                            (params.get("answer") || "").trim().toUpperCase(),
+                            (params.get("t") || "").trim(),
+                        )
                     );
                 }
 
@@ -1786,11 +1834,57 @@
                         "</section>";
                 }
 
+                /* 验签失败时的硬拦截页：不给题目、不给结果，只留一句冷幽默 + 重扫提示 */
+                const TAMPER_LINES = [
+                    [
+                        "Nice try \u2014 the URL remembers what I wrote.",
+                        "想得美，链接记得我当初写的是啥。",
+                    ],
+                    ["Link edited. Bold move.", "链接改了，胆子不小。"],
+                    [
+                        "You hacked a URL, not the exam.",
+                        "你黑的是网址，不是考试。",
+                    ],
+                    [
+                        "This link is not the one I handed out.",
+                        "这条链接不是我发的那条。",
+                    ],
+                    [
+                        "Fastest fingers, or fastest editor?",
+                        "手快，还是编辑器快？",
+                    ],
+                ];
+
+                function renderTamperCaught() {
+                    const pick =
+                        TAMPER_LINES[(Math.random() * TAMPER_LINES.length) | 0];
+                    document.body.dataset.theme = "paper";
+                    app.innerHTML =
+                        '<section class="screen">' +
+                        chrome("Live race · 现场抢答") +
+                        '<div class="wait">' +
+                        "<h1>" +
+                        esc(pick[0]) +
+                        "</h1>" +
+                        '<p class="zh" style="font-size:15px;margin-top:-6px">' +
+                        esc(pick[1]) +
+                        "</p>" +
+                        '<p class="wait-sub">This link has been changed, so the race will not open here. Scan the QR code on the slide again.<span class="zh" style="display:block;margin-top:4px">这条链接的参数被改过了，抢答不会在这里打开。请重新扫描幻灯片上的二维码。</span></p>' +
+                        "</div>" +
+                        foot() +
+                        "</section>";
+                }
+
                 async function startRace() {
                     document.body.dataset.theme = "ink";
                     const rawStart = params.get("start");
                     const parsed = parseStart(rawStart);
                     const testMode = params.get("preview") === "1";
+                    // 签名缺失或与实算不符：一律不出题、不出结果（preview 也不例外）
+                    if (!signValid()) {
+                        renderTamperCaught();
+                        return;
+                    }
                     if (!testMode && parsed === null) {
                         renderScanRequired(
                             "This link has no start time \u00b7 此链接没有开始时间",

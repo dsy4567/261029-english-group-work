@@ -22,12 +22,22 @@
    - `survey` — 12 题自查问卷，题目写死在前端
    - `race` — 抢答，参数 `q`（题号 1–3）、`start`（开始时间，毫秒时间戳或 HH:MM:SS）、
      `preview`（=1 立即解锁，测试用）、`answer`（已选答案字母 A–D，作答后写入用于防刷新重答）、
-     `t`（作答实际用时，毫秒整数，与 `answer` 同时写入，刷新时原样显示）
+     `t`（作答实际用时，毫秒整数，与 `answer` 同时写入，刷新时原样显示）、
+     `sign`（签名，见下）
    抢答每题只允许作答一次：点选后将答案字母和用时用 `history.replaceState` 写进 `answer` / `t`
    参数（不新增历史记录），刷新时若 `answer` 合法则直接渲染结果页并沿用 `t`（缺失或非法时
    才按 `now()-start` 回算），不得再次出现选项；
    抢答只能从二维码进入：无参数落地页不得提供抢答入口（只保留自查问卷与扫码提示），
    `race` 缺少合法 `start` 且无 `preview=1` 时须渲染扫码提示页，不得出题；
+   **签名是必需的**：互动页启动时先验签，缺失或与实算不符一律硬拦截——只渲染一句
+   中英冷幽默 + "重新扫码"提示页，不出题、不出结果，`preview=1` 也不豁免：
+   - 签名串固定 6 段顺序 `race|<q>|<start>|<preview>|<answer>|<t>|wxf-race`；
+     `q` 用有效题号，`preview` 用 `1/0`，缺省字段写空串，`answer` 取大写，`t` 去空白；
+   - 算法 FNV-1a 32 位（`Math.imul(h, 16777619) >>> 0`）+ 固定盐，输出 8 位小写 hex；
+     展示页与互动页的 `raceSign` 必须逐字一致，改一处必须改另一处；
+   - 作答写 `answer` / `t` 时必须先删旧 `sign`，再按新参数重算写回；
+   - 目标是防手改地址栏（改 start 提前放题、加 preview 拿 0.0s、改 t 伪造用时）。
+     无后端、盐就在源码里，这是威慑与彩蛋，不是真安全，不得写成能防作弊。
    新互动必须合并进 interaction.html，不新建文件。
 4. **抢答开始时间**由展示页第 13 页抢答二维码下方的控件生成进二维码 URI
    （`start` 毫秒时间戳），互动页解析后倒计时解锁；时钟偏差用 HTTP `Date`
@@ -36,6 +46,8 @@
    `cfg.start` 并立即保存、刷新二维码，无需再去设置面板。设置面板（S）
    只保留 `inpBase`（互动页网址）与 `inpPreview`（预览模式）；`rqQ` 题号
    下拉框同样位于第 13 页二维码下方，变更即时保存并刷新二维码。
+   `raceUrl()` 必须始终追加 `sign`（覆盖 q / start / preview，`preview` 关闭时按 `0` 计算），
+   复制链接按钮随之带上；改 q、改开始时间、切换预览都要重算。
    **校准规则（勿退回单发点估计）**：`Date` 头只向下截断到整秒，故每个样本
    给出偏移区间 `[header-到达时刻, header+1000-发出时刻]`；代码用 2 次并发
    HEAD 起步，等待解锁期间每 350ms 静默补采样（上限 8 次，跨度越大区间越窄），
@@ -81,6 +93,7 @@
 | 三维定义与建议 | interaction.html `DIMS` |
 | 分数分档（≤30 / ≤42 / ≥43） | interaction.html `BANDS` |
 | 抢答 3 题与答案解释 | interaction.html `RACE` |
+| 抢答验签拦截文案（5 句冷幽默） | interaction.html `TAMPER_LINES` |
 | 幻灯片正文 | presentation.html 各 `<section>` |
 | 演讲者备注 | 各 `<div class="note">` |
 | 二维码编码器 | presentation.html 顶部 `QRCodeGen` IIFE |
@@ -98,10 +111,13 @@ Python venv（qrcode、opencv-python-headless）可用时做二维码验证。
    - 交互页：问卷 12 题出分、抢答 未来 start 倒计时→解锁→作答→结果、
      过去/preview 立即出题、未知 activity 提示、菜单链接带正确参数；
      无参数落地页无抢答入口且提示扫码、`race` 缺 start 且无 preview 时出扫码提示页；
-     答题后 `answer` / `t` 参数写入且 `history.length` 不增长、带 `answer`+`t` 重载直接出结果页
-     且用时与 `t` 一致、`answer` / `t` 非法时忽略；
+     验签：无 `sign`、改 `start`、改 `t`、给普通链接加 `preview=1`、`?activity=race` 裸链接
+     均须渲染拦截页（不出题/不出结果）；合法签名照常出题与出结果；
+     答题后 `answer` / `t` 参数写入且 `history.length` 不增长、写回的 `sign` 与重算值一致、
+     带 `answer`+`t` 重载直接出结果页且用时与 `t` 一致、`answer` / `t` 非法时忽略；
    - 展示页：翻页（键盘/点击/边缘回退）、备注换行、计时器开关、
-     设置保存后二维码 SVG 生成且 URL 文案正确（q/start/preview 参数）、localStorage 落盘。
+     设置保存后二维码 SVG 生成且 URL 文案正确（q/start/preview/sign 参数）、
+     生成的 `sign` 能被互动页同一算法复算通过、localStorage 落盘。
    - 断言范围限定 `#app` 或 `.slide` 内容——`body.textContent` 会包含内嵌脚本源码导致误判。
 3. 二维码（改编码器后必做）：生成矩阵与 Python `qrcode` 库（EC-M、同掩码）
    逐行比对完全一致，并用 OpenCV `QRCodeDetector` 解码回原文。
