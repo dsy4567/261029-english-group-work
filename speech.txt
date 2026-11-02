@@ -1,631 +1,443 @@
-================================================================
-WHY WE FREEZE —— 大学英语课小组展示演讲稿
-副标题：The Psychology of Speaking a Second Language
-时长：约 13 分钟（正文约 12 分 + 互动等待约 2 分钟，可伸缩）
-成员：6 人（A/B/C/D/E/F 角色见分工）
-配套：presentation.html（15 页）+ interaction.html（互动页）
+MY JOURNEY OF LEARNING ENGLISH —— 高中英语学习经验分享演讲稿
+副标题：From exam scores to real English literacy
+时长：约 14 分钟（正文约 11 分 + 两次互动约 3 分钟，可伸缩）
+成员：7 人（场控 1 + 主讲 1 + 念稿人 5，姓名见名单页）
+配套：presentation.html（16 页）+ interaction.html（互动页）
 ================================================================
 
 
 【总体说明】
-- 逐页对应 presentation.html 的 15 页幻灯片，页码一致。
-- 英文部分为实际要说的话；【方括号】内是舞台提示，不要念出来。
-- 每段开头标注：页码 / 主讲 / 建议用时。
-- 互动环节用时取决于现场，正文中按 2 分钟估算，超时不慌，见"应急预案"。
-- 开场前：用 presentation.html 按 S 打开设置面板，填好互动页网址；
-  再翻到第 13 页，在抢答二维码下方填秒数点 Apply 设开始时间（上课前 2 分钟即可）、
-  选题号，二维码会自动生成。
+- 逐页对应 presentation.html 的 16 页幻灯片，页码一致。
+- 英文为主体；复杂概念、方法细节、互动口令用中文补充。
+- 【方括号】内是舞台提示，不要念出来。
+- 每段开头标注：页码 / 角色 / 建议用时。
+- 姓名是占位，替换名单页后，讲稿里的名字也要同步替换。
+- 开场前：按 S 填好互动页网址；翻到第 14 页，在抢答二维码下方
+  填秒数点 Apply 设开始时间、选题号；确认海报文件与两个网页在同一目录。
 
 
 ================================================================
-第 1 页 · 片头
-主讲 A · 约 40 秒
+第 1 页 · 封面与开场
+主讲 · 约 40 秒
 ================================================================
 
-Good morning, everyone.
+Good morning, dear teachers and classmates.
 
-Today, before we start — one question.
+It is my great honor to come back to our high school and share my English
+learning journey with you.
 
-Have you ever known exactly what you wanted to say in English…
-and the moment you opened your mouth in front of the class — nothing?
+English is not only a required subject. It is a window to the world.
 
-【停顿两秒，环视教室】
-
-You are not alone. And that is exactly what we're going to talk about today.
-
-Our topic is: "Why We Freeze — the psychology of speaking a second language."
-
-I'm [你的名字], and today we are six.
-
-【示意下一位】
-
-【备用中文串词（老师或同学要求中文时用）：
-大家早上好。开始之前先问一个问题：你有没有过这种经历——
-明明心里知道要说什么，可一站起来要讲英语，脑子突然一片空白？
-今天我们讲的，就是这个"卡壳"背后的原理。]
-
-
-================================================================
-第 2 页 · 开场提问（Hook）
-主讲 A · 约 35 秒
-================================================================
-
-Let me start with a small confession.
-
-Last semester, my teacher asked me a question I knew the answer to.
-I had it — in my head, perfectly.
-But when thirty people looked at me… the sentence just… disappeared.
-
-【耸肩，笑一下，停一拍】
-
-Raise your hand if this has happened to you.
-
-【停 3 秒，看举手情况；如果人少就自己圆：
-It's okay — maybe you're lucky. Or maybe you're just freezing right now.】【笑】
-
-So: what is actually happening in our brains when this happens?
-That's our question today.
-
-【示意 B 接】
-
-【备用中文串词：
-我先分享一个自己的经历：上学期老师问了我一个我明明会的问题，
-三十个人看着我，那句话就在嘴里消失了。有过同样经历的举手？
-没关系，也许你是幸运的那类人——或者你现在正在卡壳。
-那么问题来了：卡壳的时候，大脑里到底发生了什么？
-
-
-================================================================
-第 3 页 · 二语 vs 母语：你知道的比你说出的多
-主讲 B · 约 60 秒
-================================================================
-
-Thank you, A. So let's look at what makes a second language special.
-
-There are three things about speaking an L2 — a second language — that matter here.
-
-First: the tip-of-the-tongue state.
-You're sure you know a word… you just can't reach it.
-In your own language, almost never. In English? Happens all the time.
-
-【指着卡片 01】
-
-Second: the silent period.
-Beginners often listen for months before they say a word.
-So silence doesn't mean failure — it's part of how the system builds up.
-
-【指着卡片 02】
-
-And third — and this is the key —
-your first language runs on autopilot, but your second language
-borrows something very limited: your attention.
-
-【卡片 03，放慢】
-
-We only have so much attention. Remember this word — attention.
-It comes back on the next slide.
-
-【示意翻页，主讲仍为 B，直接进第4页】
-
-【备用中文串词：
-二语有三个特点：一是"舌尖现象"，话到嘴边说不出；
-二是"沉默期"，初学者听几个月才开口，沉默不是失败；
-三是母语是自动挡，二语却要占用我们非常有限的注意力。
-请大家记住"注意力"这个词，下一页还要用。]
-
-
-================================================================
-第 4 页 · 概念定义：外语焦虑
-主讲 B · 约 50 秒
-================================================================
-
-And when that limited attention gets invaded by worry —
-we get what researchers call Foreign Language Anxiety.
-
-【指着定义，慢速念】
-
-"A distinct complex of self-perceptions, beliefs, feelings and behaviours
-related to classroom language learning."
-— Horwitz and colleagues, 1986.
-
-Three things to notice.
-
-One: it is specific. Not shyness — shyness shows up everywhere;
-language anxiety shows up only in language class.
-
-Two: it is measurable. We will measure it ourselves in a few minutes.
-
-Three: it has nothing to do with your real level.
-The best English student in the room can be the most anxious one.
+Today I will talk about three things: the problems I had, the methods that
+actually helped me, and how English can become more than an exam.
 
 【停一拍】
 
-Keep that in mind: anxiety hides your level. It does not erase it.
+今天不讲空话，也不卖焦虑。就讲我踩过的坑、真正有用的方法，以及怎么让
+英语不只是考试科目。
 
 【示意翻页】
 
-【备用中文串词：
-当有限的注意力被担心占据，就出现"外语焦虑"。
-三个要点：它是特定的，只在语言课出现，不是性格内向；
-它是可测量的，等下我们自己就测；它和真实水平无关——
-班上英语最好的人，可能也是最焦虑的那个。
-记住这句话：焦虑藏起你的水平，而不是抹掉你的水平。]
-
 
 ================================================================
-第 5 页 · 焦虑的三张脸
-主讲 B · 约 55 秒
+第 2 页 · 小组名单
+场控 · 约 20 秒
 ================================================================
 
-Psychologists describe foreign language anxiety with three faces.
+Before we start, let me introduce our team.
 
-【逐张卡片】
+Our host is 陈可欣. Our main speaker is 林致远.
 
-Face A: communication apprehension — 交流恐惧.
-The fear of going blank when everyone is watching.
-Like when the teacher says: "Who'd like to answer?"
-and your heart suddenly starts a marathon.
+Our five readers are 苏晓航, 周予安, 许嘉宁, 顾言舟 and 唐若溪.
 
-Face B: fear of negative evaluation — 负面评价恐惧.
-You're not afraid of English. You're afraid of classmates
-noticing every single mistake you make.
+They will cover listening, reading, cloze, grammar, writing, vocabulary and
+English outside the exam.
 
-Face C: test anxiety — 测评压力.
-When it's graded, you perform worse — exactly when it counts.
-
-【停顿】
-
-These three letters — A, B, C —
-our next activity will score you on exactly these three dimensions.
-
-So remember them.
-
-【示意 D 上场，交接：D, it's your turn — with the phones.】
-
-【备用中文串词：
-三张脸：A 交流恐惧——怕当众卡壳；B 负面评价恐惧——怕被同学挑错；
-C 测评压力——越要评分越发挥失常。
-这三个字母，等下的问卷就按这三个维度打分，大家记住。]
-
-
-================================================================
-第 6 页 · 大脑里发生了什么
-主讲 C · 约 60 秒
-================================================================
-
-Thanks, B. Now the mechanism — what is happening upstairs.
-
-Three steps. I'll keep it simple.
-
-One: when you feel evaluated, your brain's alarm system — the amygdala — fires up.
-It treats a question from the teacher like a tiger in the grass.
-
-【轻笑，节奏放松】
-
-Two: that alarm steals your working memory —
-your mental workspace, the place where you hold words
-and find verbs and build sentences.
-
-Think of your phone: working memory is the RAM.
-Anxiety opens… twenty background apps at once.
-
-Three: less workspace left for words — so you freeze.
-
-And here's the important part:
-freezing does NOT mean you don't know the language.
-It means your workspace is full.
-
-【放慢，重读最后一句】
-
-Freezing is not a knowledge gap. It's a capacity gap.
+【提醒：姓名是占位，正式名单替换后再念；只报角色和负责页，不逐页念页码。】
 
 【示意翻页】
 
-【备用中文串词：
-三步：一，被评价的感觉触发大脑警报；
-二，警报偷走工作记忆——就是你组织句子的工作台，
-可以理解成手机后台，焦虑相当于同时开了二十个 App；
-三，留给词汇的资源没了，就卡壳。
-重点：卡壳不是不会，是工作台被占满了。]
-
 
 ================================================================
-第 7 页 · 冻结循环
-主讲 C · 约 50 秒
+第 3 页 · 互动一：8 题自查
+场控 · 约 50 秒 + 等待 1 分钟
 ================================================================
 
-And here's the bad news: it becomes a loop.
+First, a one-minute self-check.
 
-【顺着链条逐个指】
+Scan the QR code on the screen. Eight statements. No right answers. Nothing is
+uploaded. The result stays on your phone.
 
-You speak in public.
-Your mind starts watching itself instead of listening.
-Fewer words come out.
-You think: "See? I'm bad at this."
-So you avoid the next chance to speak.
-And then… the loop repeats.
+【中文口令，放慢】
+扫码，点“开始自查”。八道题，一分钟。1 表示完全不像我，5 表示非常像我。
+答完先别关页面，等会儿我会请符合条件的同学举手。
 
-【停在最后的省略号】
+While you answer, think about one question: which moment in an English exam
+makes you panic?
 
-The scary part is: the loop feels like proof.
-"I froze, therefore I can't." But it's not proof —
-it's just a habit of attention.
+Listening? Reading? Cloze? Grammar? Writing?
 
-Good news: this loop has only one weak point —
-and we'll get to it on slide fourteen.
+【停两秒，环视教室】
 
-【卖个关子，示意翻页】
-
-【备用中文串词：
-更糟的是，这会变成循环：上台、自我监视、说得更少、
-自我否定、逃避下一次，然后重来。
-这个循环最阴险的地方是它"感觉像证据"——
-我卡壳了，说明我不行。其实不是，只是一种注意力习惯。
-好消息是，这个循环只有一个突破口，第14页揭晓。]
-
-
-================================================================
-第 8 页 · 数据：它有多常见
-主讲 C · 约 45 秒
-================================================================
-
-How common is this? Look at the numbers.
-
-【指数字】
-
-About one third of language learners report high language anxiety —
-that's an average across many studies.
-
-One: anxiety measurably lowers speaking performance —
-even among advanced learners.
-
-And zero:
-there is no real correlation between anxiety and how much you actually know.
-
-【停顿】
-
-So the student who stays quiet all semester is not necessarily
-the one who knows the least.
-Sometimes it's the opposite.
-
-【示意 D 上场】
-
-【备用中文串词：
-约三分之一的学习者报告高外语焦虑；焦虑会实打实地拉低口语表现，
-连高水平学习者也不例外；而焦虑和你的真实水平相关性为零。
-所以一个学期不说话的同学，未必是懂得最少的那个，有时恰恰相反。]
-
-
-================================================================
-第 9 页 · 互动一：心理自查（扫码）
-主讲 D · 讲解约 60 秒 + 等待约 2 分钟
-================================================================
-
-Now — let's measure it. Interaction number one.
-
-【指二维码】
-
-Take out your phones and scan the QR code on the screen.
-No login, no app — it opens in your browser.
-
-When it opens, tap "Start the self-check".
-
-【等大家扫码，间隙念操作说明】
-
-You will see twelve statements.
-For each one, choose a number from one to five:
-one means "not like me at all" — five means "very much like me".
-
-Two important promises:
-your result is calculated on your phone, nothing is sent anywhere;
-and we will NOT read out your scores.
-
-When you finish, you'll see three bars and a big number.
-Keep that screen open — don't close it.
-
-【等待 90–120 秒，期间带领举手环节】
-
-Alright — keep your result on screen. Three questions:
-
-If your tallest bar is communication apprehension — raise your hand.
-【环视，2–3 秒】
-
-If your total score is below 31 — you're in the low-anxiety band — hands up.
-
-【环视】
-
-And finally: who would read ONE line of their result out loud?
-Nobody? Okay — I'll read mine.
-
-【念自己屏幕上的 read 部分一句，示范；或邀请志愿者念一句】
-
-【备用中文串词：
-现在测一测。扫码，点开始，12 个陈述，1–5 打分：
-1 完全不像我，5 非常像我。结果只在你自己手机上算，我们不收数据、不念分数。
-做完把结果页面留着别关。
-——好，三个举手：最高项是"交流恐惧"的举手；
-总分低于 31 的举手；愿意念一句结果的……没有？那我念我自己的。]
-
-
-================================================================
-第 10 页 · 结果怎么读
-主讲 D · 约 50 秒
-================================================================
-
-So how do you read your result?
-
-【三张卡片依次】
-
-Thirty or below: low anxiety. You're comfortable in class.
-Keep speaking before you feel ready — that's how it stays that way.
-
-Thirty-one to forty-two: moderate. You CAN speak —
-but half your attention is watching yourself.
-That split attention is what freezes you.
-
-Forty-three and above: high. Right now, fear is doing the talking.
-
-But — and I want to be clear about this —
-this is a mirror, not a medical test.
-It's adapted from a real questionnaire by Horwitz and colleagues,
-for reflection only. It says nothing about your ability.
-
-Did anyone get the highest bar in fear of negative evaluation?
-【看举手，若有人，邀请：Say one line from your screen?】【最多15秒】
-
-【备用中文串词：
-30 以下：低焦虑，保持开口习惯；31–42：中等，
-能说，但一半注意力在"监视自己"；43 以上：此刻是恐惧替你在说话。
-注意：这是镜子，不是体检，改编自霍维茨等人的问卷，只用于反思，与能力无关。
-有没有最高项是"负面评价恐惧"的？愿意的话念一句屏幕上的原话。]
-
-
-================================================================
-第 11 页 · 迷思 vs 事实
-主讲 E · 约 60 秒
-================================================================
-
-Thank you, D. While you put your phones down —
-let's clean up three very common myths.
-
-【左右对照，节奏：错—对】
-
-Myth one: "I'm anxious because I didn't prepare enough."
-Fact: anxiety often peaks AFTER you've prepared.
-It's an emotional loop, not a study problem. More preparation,
-up to a point — but it never fully removes it.
-
-Myth two: "Fluent people never freeze."
-Fact: even native speakers freeze when speaking in public.
-Fluency reduces how often — it does not remove the mechanism.
-
-Myth three: "I must not make mistakes."
-Fact: mistakes are the visible part of a system being built.
-Linguists call it interlanguage — a language in motion.
-
-【停顿，语气放轻松】
-
-And actually — this connects directly to our next activity.
-But first, four things that actually work.
+Keep that moment in mind. We will come back to it.
 
 【示意翻页】
 
-【备用中文串词：
-三个迷思：一"焦虑是因为没复习好"——错，准备充分后焦虑照样来；
-二"流利的人从不卡壳"——错，母语者当众发言也会卡；
-三"绝不能犯错"——错，错误是语言系统正在建造的证据，
-语言学叫"interlanguage"，正在移动的语言。
-这和接下来的抢答直接相关，不过先讲四个真正有用的方法。】
+
+================================================================
+第 4 页 · 我的困难
+主讲 · 约 60 秒
+================================================================
+
+When I started learning English, I had five problems.
+
+Listening: one lost minute, and the whole passage collapsed.
+
+Reading and seven-choose-five: I was slow, so time always ran out.
+
+Cloze: I missed the story, and then wrong answers snowballed.
+
+Word forms: I knew the word, but I could not write the right form.
+
+Writing: the prompt was there, but the first sentence was not.
+
+【停一拍】
+
+Later I understood: most of these were not proof that I was bad at English.
+They were problems of method, accumulation and review.
+
+Vocabulary is the root. But memorising a word list alone is not enough.
+
+【示意翻页】
 
 
 ================================================================
-第 12 页 · 四个真正有用的方法
-主讲 E · 约 70 秒
+第 5 页 · 考试地图
+主讲 · 约 50 秒
 ================================================================
 
-Four things that actually work — backed by classroom research,
-and honestly, by our own experience.
+Here is the basic map. One hundred and fifty points, one hundred and twenty
+minutes.
 
-One: islands of fluency.
-Don't memorize a whole script. Prepare three key phrases.
-Opening, one detail, one question. Three islands — the rest can sink.
+Listening, thirty. Reading A to D, thirty-seven point five. Seven-choose-five,
+twelve point five. Cloze, fifteen. Grammar fill-in, fifteen. Writing, forty —
+fifteen for the short piece and twenty-five for continuation writing.
 
-Two: lower the stakes.
-Practice in pairs BEFORE you speak to the room.
-Forty people is a stage; two people is a kitchen.
+【指屏幕】
 
-Three: pause — don't translate.
-Silence is cheap; mental translation is expensive.
-A two-second pause sounds thoughtful. A translated sentence sounds broken.
+Different regions use different formats and marks, so check your local paper.
 
-Four: rehearse under pressure.
-Practise with a timer, out loud, more than once.
-Then the timer has no surprises left for you.
+We are not talking about primary or middle school today. We are focusing on
+high school: exam skills on one side, real English literacy on the other.
 
-【停顿】
-
-Which brings us to… the timer.
-
-【笑，示意 D 上场】
-
-Interaction two: the anxiety race.
-
-【备用中文串词：
-四个方法：一、"语言岛"——不背整篇稿，准备三个关键句；
-二、降低赌注——先两人练再全班说，四十人是舞台，两个人是厨房；
-三、停顿代替心译——沉默很便宜，心译很贵，停两秒显得在思考；
-四、在压力下排练——用计时器多练几遍，计时器就没有 surprise 了。
-现在，计时器来了。']
+【示意翻页】
 
 
 ================================================================
-第 13 页 · 互动二：抢答
-主讲 D · 讲解约 50 秒 + 等待约 2 分钟（3 轮可重复）
+第 6 页 · 听力
+念稿人1 · 约 70 秒
 ================================================================
 
-Interaction two — but this one has rules.
+Listening is not about catching every word. It is about not being stopped by a
+few blurred words.
 
-【指二维码，清晰、慢】
+Here is what worked for me.
 
-Step one: scan the code NOW.
-The question is LOCKED. You will see a waiting screen with a countdown.
-Do not refresh, do not close it.
+First, listen. Do not translate while the audio is running. If you translate,
+your attention splits, and the next sentence is already gone.
 
-Step two: when the countdown reaches zero, the question unlocks
-on every phone at the same official start time.
-Tap your answer ONCE — you get one shot.
+Second, read the transcript after every practice set. Mark the words you did not
+recognise, and mark linking and weak forms.
 
-Step three: your screen will show your answer, whether it's correct,
-and your TIME — measured from the official start, not from when you scanned.
+【中文补充】
+文本里那些“好像听过、但没反应过来”的词，就是你觉得这篇很难的罪魁祸首。
 
-Fastest correct answer wins.
-Show your screen to me — I'm the judge — and I'll read out the ranking.
+Third, shadow the audio for fifteen to twenty minutes a day. Copy the rhythm,
+not just the words.
 
-【等扫码，确认等待画面出现：】
+Fifteen minutes every day beats one long session before the exam.
 
-I can see the countdowns… everyone's waiting? Good.
-
-【倒计时结束，朗读题目——用第1题示例，现场按页上题目念：】
-
-Question: "Which habit is most likely to REDUCE speaking anxiety?"
-
-A — rehearse silently until it feels perfect
-B — prepare a few key phrases, then speak before you feel ready
-C — translate every word before you speak
-D — wait until your accent sounds native
-
-You have… fifteen seconds. Go.
-
-【15–20 秒后】
-
-Stop! Screens up — show me your time.
-Correct AND fast — hands up!
-
-【看举手，口头排名：第一名…第二名…；人工记录在黑板/纸上】
-【答错的也问一句 Why did you choose that? 顺带教学】
-【公布正确答案与解释（页面会显示 explain 文本），念一遍即可】
-
-【一轮约 2 分钟；要换题：在 presentation.html 第 13 页二维码下方改题号 2/3，二维码实时更新，
- 再让大家重新扫一次即可。3 题用完或者时间不够就直接进第 14 页。】
-
-【备用中文串词：
-规则：现在扫，题目是锁着的，会看到倒计时，别刷新别关页面；
-倒计时归零，题目同时解锁，每个人从官方开始时间算时间；
-只准点一次。屏幕会显示对错和用时。答对且最快的赢，举手给我看，
-我来排名。
-——题目来了：哪种做法最可能降低开口焦虑？A 静默练到完美，
-B 准备几个关键句、没准备好就开口，C 每个词先翻译再开口，
-D 等口音像母语再说。15 秒，开始！
-——停！举手给我看时间……答对又最快的……第一、第二、第三名记下！】
+【示意翻页】
 
 
 ================================================================
-第 14 页 · 总结
-主讲 F · 约 45 秒
+第 7 页 · 阅读
+念稿人1 · 约 60 秒
 ================================================================
 
-Thank you, D. So — let's go back to where we started.
+Reading: accuracy first, speed second.
 
-Remember slide two: you know the answer, and your mouth doesn't?
+Do not chase the clock on day one. Get the answers right first, then add a time
+limit.
 
-Now you know why: anxiety occupies the workspace where words live.
-It is a state — not a verdict on your English.
+When a sentence is long, split it: find the subject, the verb and the object;
+then find the connectors and the modifiers.
 
-So here are three things to take home.
+For every wrong answer, go back to the passage and locate the evidence. Ask
+yourself: did I misread it, did a distractor fool me, or did I simply run out of
+time?
 
-【逐条，慢】
+【中文补充】
+三种错法对应三种改法。复盘十篇，强过囫囵刷三十篇。
 
-One: anxiety hides your ability. It does not erase it.
+Review is what turns quantity into quality.
 
-Two: the freeze loop only breaks by speaking anyway —
-before you feel ready.
-
-Three: rehearse small, low stakes, and out loud.
-
-Fluency is not the absence of freezing.
-
-【停顿】
-
-It's speaking anyway.
-
-【停两秒，交 A 或自己收尾】
-
-【备用中文串词：
-回到第 2 页的问题：明明会说却说不出。
-现在你知道了——焦虑占用了词汇的工作台。
-它是状态，不是对你英语水平的判决。
-三条带走：一、焦虑藏起能力，不是抹掉能力；
-二、循环只有一个出口：先开口，再完美；
-三、小范围、低赌注、出声练。
-流利不是从不卡壳，是卡壳了照样说。】
+【示意翻页】
 
 
 ================================================================
-第 15 页 · 致谢与问答
-主讲 F · Q&A 环节
+第 8 页 · 完形
+念稿人2 · 约 70 秒
 ================================================================
 
-That's our presentation. Thank you!
+Cloze: two passes, one story.
 
-【全员上前一步或站定】
+First pass, read the whole passage. Get the plot and the feeling. Do not stop at
+every blank.
 
-If you have any questions — English or Chinese —
-we're happy to answer. The references are on the slide.
+Second pass, fill each blank with grammar and context, not with a gut feeling.
 
-Any questions?
+【中文补充，重点】
+完形大多是故事，很考验共情：人物为什么这么做，情绪怎么变。理解不到位，
+才会一个错接着一个错。
 
-【进入问答。分工表投屏，老师可按人点名。】
-【若冷场，备用：No questions? Then let me ask YOU one —
- what did YOUR highest bar say?】【看谁笑，顺势点将】
+大型考试里，ABCD 选项常见 4:4:4:3 的比例。但这是经验规律，不是官方规定，
+也不是蒙题口诀。它的正确用法是：做完以后检查一下分布；如果某个选项特别
+离谱，提醒自己回文章，而不是靠比例选答案。
 
-【备用中文串词：
-我们的展示到此结束，谢谢大家！
-参考文献在屏幕上，欢迎用中文或英文提问。
-没有问题的话，那我反过来问大家一句：你自己的最高项是什么？】
+【示意翻页】
+
+
+================================================================
+第 9 页 · 语法填空
+念稿人3 · 约 70 秒
+================================================================
+
+Grammar fill-in looks technical, but it starts with one question: what part of
+speech is missing?
+
+Noun, verb, adjective, adverb, pronoun, conjunction or article. Decide that
+first. Then decide the form: plural, tense, voice, comparison or non-finite.
+
+【中文补充，逐个指屏幕】
+高频考点可以盯这十一个：名词单复数、各类时态、序数词、冠词、逻辑连接词、
+被动语态、非谓语动词、同位语、三大从句、虚拟语气、倒装句式。
+
+真题里动词、形容词、名词考得最多，冠词一般就一个。但这是经验，不是每年
+绝对固定。
+
+方法三步：第一，理清规则，结合标准例句吃透；第二，自己仿写五个不同场景
+的句子；第三，整理考场作文的万能句式，并且一定动笔写。只看懂不动笔，等于
+没掌握。
+
+【示意翻页】
+
+
+================================================================
+第 10 页 · 写作
+念稿人4 · 约 60 秒
+================================================================
+
+Writing: outline first, direction first.
+
+Spend two minutes on a three-line outline: beginning, middle, end. Your ideas
+will be much clearer when you write.
+
+For continuation writing, choose the direction before you write a word. Without
+a direction, the story drifts.
+
+One hundred and fifty words, two paragraphs. Do not go over the limit.
+
+Templates are a floor, not a script. Learn the patterns for action, emotion and
+setting, then adapt them to the prompt.
+
+【示意翻页】
+
+
+================================================================
+第 11 页 · 背词法
+念稿人4 · 约 60 秒
+================================================================
+
+Vocabulary: do not start from “abandon” every time.
+
+Collect the unknown words from your papers and practice sets. Put them into
+groups of two hundred.
+
+【中文补充】
+基础弱的同学可以把 200 减到 100 或 50。关键不是一次背多少，而是循环和复盘。
+
+One group, seven days, continuous cycling. Review after you forget. Keep a
+separate list of words that keep slipping away, and give them a final sprint in
+the two weeks before the exam.
+
+If you miss a word three times, treat it as a hard word and give it extra
+attention.
+
+Context matters too: a word learned in a sentence stays longer than a word
+learned alone.
+
+【示意翻页】
+
+
+================================================================
+第 12 页 · 英语素养
+念稿人5 · 约 60 秒
+================================================================
+
+English outside the exam.
+
+Listen to songs you actually like, and sing along. You learn melody, phrasing
+and rhythm at the same time.
+
+Watch short films with clear dialogue. Listen for the situation first; you do
+not need every word.
+
+【指右侧海报】
+This is “Spider-Man: Brand New Day”. Clear dialogue, fast rhythm. It is good
+listening practice, not a magic pill.
+
+【中文补充】
+看电影不是任务，别一边看一边查词。先跟住情节，第二遍再挑几句跟读。
+
+Most importantly, accept English. Five minutes a day beats one long cram.
+
+English does not end when the exam ends.
+
+【示意翻页】
+
+
+================================================================
+第 13 页 · 问卷结果与举手
+场控 · 约 2 分钟
+================================================================
+
+Now let us look at the room.
+
+【中文口令】
+看你的结果页。最大痛点是听力的，举手。
+
+最大痛点是阅读或七选五的，举手。
+
+最大痛点是完形、语法或写作的，举手。
+
+再看最薄弱的习惯：不复盘的、不限时的、不列提纲的，分别举手。
+
+【点两位同学】
+Could you read one line of your result aloud?
+
+【中文补充】
+这是自查，不是诊断。分数高不代表没救，只说明这一项现在最值得先改。
+
+【示意翻页】
+
+
+================================================================
+第 14 页 · 互动二：技巧抢答
+场控 · 约 50 秒 + 等待 3 分钟
+================================================================
+
+One more interaction. This one is about the methods we just covered.
+
+【中文口令】
+现在扫码，页面别关。题目会在开始时间自动解锁。每题只能答一次，答完把屏幕
+给场控看。
+
+【确认二维码旁已显示开始时间】
+
+The question unlocks at the start time. Tap once. Correct and fastest wins.
+
+【倒计时结束，读题；每题给 20 秒】
+Question one: in cloze, what should you do first?
+Question two: in continuation writing, what is the first step?
+Question three: in grammar fill-in, what do you decide first?
+
+【请前五名举手，现场记名次】
+
+【示意翻页】
+
+
+================================================================
+第 15 页 · 四条建议与寄语
+主讲 · 约 60 秒
+================================================================
+
+Before we finish, four things I wish I had known earlier.
+
+First, practise a little every day. Cramming is not a plan.
+
+Second, feed yourself real English, not only textbook exercises.
+
+Third, speak and write before you feel ready. Mistakes are data, not verdicts.
+
+Fourth, make English part of your life, not just your timetable.
+
+【停一拍，放慢】
+
+“Patience is the key to life.”
+
+耐心是生活的关键。高考结束，不等于英语学习结束；那只是你开始真正用英语看
+世界的起点。
+
+Thank you.
+
+【示意翻页】
+
+
+================================================================
+第 16 页 · 致谢与问答
+主讲 · Q&A 环节
+================================================================
+
+That is our presentation. Thank you for listening.
+
+If you have any questions — in English or in Chinese — we are happy to answer.
+
+【全员站定，分工表投屏】
+
+【冷场备用：No questions? Then let me ask you one — what is your biggest pain
+point after today?】
+
+【中文备用】
+没有问题的话，我反过来问大家一句：今天听完，你最先想改的是哪一项？
 
 
 ================================================================
 问答预案（Q&A）
 ================================================================
 
-Q1：焦虑和没准备好，怎么区分？
-A：看时机。如果是准备充分了、一站起来还是心跳加速——那是表现焦虑；
-如果连内容都没底——那是准备问题。两者会叠加，但治疗方法不同：
-前者要降低赌注和脱敏练习，后者只要多练。
+Q1：英语基础差，是先背单词还是先刷题？
+A：先补词汇，但要放在语境里。从试卷里收生词，200 个一组循环 7 天；
+同时每天做一篇阅读保持手感。只背词表，阅读速度上不来；只刷题，生词
+永远在重复。
 
-Q2：为什么不建议每次都纠正错误？
-A：纠错本身会抬高"被评价感"，打断正在进行的流利表达。
-研究里常见的做法是分阶段：以流利度为目标的表达环节不打断，
-以准确度为目标的环节再集中纠正。当堂纠错的最佳时机是活动结束后
-统一反馈，而不是每错必停。
+Q2：完形 4:4:4:3 到底能不能用？
+A：能，但只能当检查工具。做完以后看分布，如果某个选项特别离谱，提醒
+自己回文章核对。不能一上来靠比例选答案，那是蒙，不是做题。
 
-Q3：你说焦虑和水平无关，可是我英语差所以才焦虑，不对吗？
-A：相关性为零是说在同等水平的人里，焦虑程度和水平不挂钩——
-高焦虑者里有学霸，低焦虑者里也有学渣。当然，焦虑会反过来
-压低你的表现，所以它确实会"制造"看起来像水平差的现象。
-这正是我们说它"藏起"而不是"抹掉"的原因。
+Q3：语法填空先看词性还是先翻译？
+A：先判词性，再想变形。翻译只能帮你理解句意，不能替你决定填名词还是
+动词。词性错了，形式再对也没分。
 
-Q4：这个问卷准吗？
-A：它是 Horwitz 等人 1986 年 FLCAS 量表的课堂简化版，
-原量表 33 题、信效度有大量研究支持；我们压到 12 题、
-自己打分，用途是引发讨论，不是心理诊断。
-分数高低没有好坏，只有提示。
+Q4：读后续写总是跑偏怎么办？
+A：动笔前先用一句话定方向：这段要解决什么问题、人物情绪往哪走。方向
+定了，再写动作、情绪、环境。150 词两段，不要为了“高级”硬加长句。
 
-Q5：抢答对慢的人不公平吧？
-A：确实，这个环节比的是"在焦虑下的反应速度"——而这正是我们想
-演示的：限时会放大焦虑。所以输赢是游戏，真正的看点是
-"限时一来，你会不会也卡壳"。想照顾所有人的话，可以下一轮
-改成小组合作作答。
+Q5：每天只有二十分钟，怎么分配？
+A：十分钟输入，十分钟复盘。听一段并跟读，或者读一篇短文；然后整理
+当天的生词和一道错题。不要把这二十分钟拆成十个两分钟。
 
-Q6：那怎么办？我就是一开口就紧张。
-A：四个方法里先挑一个最容易的：准备三个关键句。
-开口的门槛降低之后，循环从内部断掉。这比"别紧张"有用得多——
-"别紧张"是循环里最没用的一句话。
+Q6：这套自查准吗？
+A：它是一份课堂自查，不是心理测评，也没有上传数据。它的用途是帮你
+找到“先改哪一项”，不是给你贴标签。分数高只说明这一项现在最拖分。
 
-Q7：外语焦虑会随年龄/水平消失吗？
-A：不会自动消失。研究里高水平学习者仍然报告显著焦虑，
-但暴露式练习会让"每次的强度"下降——频率可能不变，
-峰值会变低。所以方法不是消除焦虑，是降低它的音量。
+Q7：抢答对慢的人公平吗？
+A：这个环节比的是“限时下的反应”，输赢是游戏。真正的看点是：时间一
+压，你会不会也卡住。所以下一轮可以改成小组讨论后作答。
+
+Q8：看电影、听歌真的能提分吗？
+A：不能保证直接提分，但能提高语感、连读识别和表达储备。前提是别把
+它变成任务：先跟住情节，再挑几句跟读，每次五到十分钟。
 
 
 ================================================================
@@ -633,42 +445,54 @@ A：不会自动消失。研究里高水平学习者仍然报告显著焦虑，
 ================================================================
 
 1. 二维码扫不出来 / 没网：
-   - 先用手机打开互动页测试链接（见使用说明）。
-   - 应急：口头进行。问卷改为"闭眼举手"——念 12 个陈述，
-     自己心里 1–5 打分，最后按三维度各问一次举手；
-     抢答改为口头抢答，用教室时钟计时。
-   - 展示页本身完全离线可用，PPT 部分不受影响。
+   - 先用手机打开互动页测试链接。
+   - 应急：问卷改成口头版——念 8 道题，学生在心里打 1–5 分，
+     最后按“痛点、习惯、态度”各问一次举手。
+   - 抢答改成口头抢答，用教室时钟计时。
+   - 展示页本身离线可用，PPT 不受影响；海报是本地文件，也不受影响。
 
 2. 抢答开始时间设置错了：
-   - 到第 13 页，在二维码下方重填秒数点 Apply，二维码实时更新，让大家重新扫一次。
-   - 若时间已过：页面会直接显示题目，不影响进行，只是少了倒计时。
+   - 翻到第 14 页，在二维码下方重填秒数点 Apply，二维码会实时更新，
+     让大家重新扫。
+   - 时间已过也没关系：页面会直接出题，只是少了倒计时。
 
 3. 没人举手（问卷环节）：
-   - D 先念自己的结果示范；再点第 10 页邀请的那位；
-   - 实在没有就改为同桌互相看屏幕（30 秒），气氛会起来。
+   - 场控先念自己的结果示范，再点刚才说“最大痛点”的同学。
+   - 实在冷场，改成同桌互看屏幕 30 秒，再请一人说一句。
 
 4. 抢答时间不够：
-   - 3 题只做 1 题也完全成立，直接进第 14 页。
-   - 超时太多就砍第 8 页数据或第 11 页迷思中的一条。
+   - 三题只做一题也成立，直接进第 15 页。
+   - 超时太多就砍第 11 页背词法，或把第 12 页素养压成一句话。
 
-5. 时间分配参考（12–15 分钟版）：
-   第1–2页  1:15   第3–5页  2:45   第6–8页  2:30
-   第9–10页 2:00+ 互动     第11–12页 2:10
-   第13页   2:00+ 互动     第14–15页 1:30
-   若总时长被压到 10 分钟：砍 1 轮抢答 + 第 11 页。
+5. 时间分配参考（14 分钟版）：
+   第 1–2 页   1:00
+   第 3 页     0:50 + 互动 1:00
+   第 4–5 页   1:50
+   第 6–9 页   4:30
+   第 10–12 页 3:00
+   第 13 页    2:00
+   第 14 页    0:50 + 互动 3:00
+   第 15–16 页 1:30
+   压到 10 分钟：砍第 11 页 + 只做一轮抢答。
 
 6. 老师要求全中文：
-   每段末尾的【备用中文串词】直接对应正文，可整体替换。
+   英文主体可现场口译；第 9、11 页本来就是中文为主，可直接用。
+   互动口令已写成中文，不需要另备。
+
+7. 海报显示不出来：
+   - 确认 spider-man-poster.avif 与 presentation.html 在同一目录。
+   - 还不显示就换成本地 jpg 版本，并同步改第 12 页的文件名。
 
 
 ================================================================
 课前 10 分钟检查清单
 ================================================================
 
-□ 打开 presentation.html，确认 15 页翻页正常（按 → 试试）
-□ 按 S：互动页网址填好（手机能打开测试链接）
-□ 翻到第 13 页二维码下方：秒数填 180 点 Apply（= 现在 + 3 分钟），题号选 1
-□ 手机扫二维码测试链接，确认能打开自查页
+□ 打开 presentation.html，确认 16 页翻页正常（按 → 试试）
+□ 确认 spider-man-poster.avif 与两个网页在同一目录，第 12 页能显示
+□ 按 S：互动页网址填好，手机能打开测试链接
+□ 翻到第 14 页二维码下方：秒数填 180 点 Apply，题号选 1
+□ 手机扫问卷二维码，确认 8 题能做完、结果页能出三条柱
 □ 按 T 打开计时器，按 N 看演讲者备注是否显示
 □ 投屏分辨率下按 F 全屏，翻两页看看字号
-□ 开场前 3 分钟：把第 9 页（自查二维码）翻出来，提前让学生扫
+□ 开场前 3 分钟：把第 3 页（问卷二维码）翻出来，提前让学生扫

@@ -7,9 +7,7 @@
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <meta name="theme-color" content="#f2eee5" />
-        <title>
-            Why We Freeze — The Psychology of Speaking a Second Language
-        </title>
+        <title>My Journey of Learning English</title>
         <style>
             :root {
                 --bg: #f2eee5;
@@ -89,6 +87,28 @@
             }
             .slide.prev {
                 transform: translateX(-2.5%);
+            }
+            /* 右上角 emoji 水印：纯装饰，不参与布局与朗读 */
+            .slide::after {
+                content: attr(data-emoji);
+                position: absolute;
+                right: clamp(14px, 3.4vmin, 46px);
+                top: clamp(8px, 2.2vmin, 30px);
+                font-size: clamp(64px, 14vmin, 168px);
+                line-height: 1;
+                opacity: 0.7;
+                filter: grayscale(0.12);
+                pointer-events: none;
+                user-select: none;
+                z-index: 1;
+            }
+            .slide.cover::after {
+                opacity: 0.7;
+                font-size: clamp(66px, 15vmin, 178px);
+                top: clamp(4px, 1.4vmin, 18px);
+            }
+            .slide.no-deco::after {
+                content: "";
             }
             @media (prefers-reduced-motion: reduce) {
                 .slide {
@@ -426,6 +446,43 @@
             .refs b {
                 color: var(--ink);
                 font-weight: 600;
+            }
+
+            .split {
+                display: grid;
+                grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+                gap: clamp(18px, 3vmin, 40px);
+                align-items: center;
+            }
+            .poster img {
+                width: auto;
+                max-width: 100%;
+                max-height: clamp(260px, 56vh, 520px);
+                height: auto;
+                display: block;
+                margin: 0 auto;
+                border-radius: clamp(12px, 1.8vmin, 18px);
+                border: 1px solid var(--line);
+                box-shadow: var(--shadow);
+            }
+            .poster .cap {
+                margin: 8px 0 0;
+                font-size: clamp(11px, 1.4vmin, 14px);
+                line-height: 1.45;
+                color: var(--muted);
+            }
+            .poster .cap b {
+                color: var(--ink);
+                font-weight: 600;
+            }
+            @media (max-width: 820px) {
+                .split {
+                    grid-template-columns: 1fr;
+                }
+                .poster img {
+                    max-height: 38vh;
+                    object-fit: contain;
+                }
             }
 
             .note {
@@ -826,281 +883,90 @@
     <body>
         <div class="stage" id="stage">
             <!-- 01 ============================================================= -->
-            <section class="slide active" data-title="Title">
+            <section
+                class="slide active cover"
+                data-emoji="🎓"
+                data-title="Title"
+            >
                 <div class="inner">
                     <div class="eyebrow">
-                        English Group Work · Class Presentation
+                        English Group Work · Back to High School
                     </div>
-                    <h1>Why We Freeze</h1>
+                    <h1>My Journey of Learning English</h1>
                     <p class="lead" style="font-family: var(--serif)">
-                        The psychology of speaking a second language
+                        From exam scores to real English literacy
                     </p>
-                    <p class="zh">
-                        二语习得主题 · 外语焦虑从何而来，又如何打破
-                    </p>
+                    <p class="zh">我的英语学习之路：从应试提分到英语素养</p>
                     <div class="chips" style="margin-top: 6px">
-                        <span class="chip"><b>6</b> speakers</span>
-                        <span class="chip"><b>15</b> slides</span>
+                        <span class="chip"><b>7</b> speakers</span>
+                        <span class="chip"><b>16</b> slides</span>
                         <span class="chip"><b>2</b> live interactions</span>
                     </div>
                     <div class="note">
-                        【第1页｜主讲 A｜约40秒】\n开场自我介绍 +
-                        抛出主题。语速放慢，标题停顿一拍再念副标题。
+                        【第1页｜主讲｜约40秒】\n英文开场，语速放慢；标题停一拍，再念副标题。中文只补一句“今天不讲空话，也不卖焦虑”。
                     </div>
                 </div>
             </section>
 
             <!-- 02 ============================================================= -->
-            <section class="slide" data-title="Hook">
+            <section
+                class="slide"
+                data-emoji="👥"
+                data-title="Our team · 小组名单"
+            >
                 <div class="inner">
-                    <div class="eyebrow">Warm-up</div>
-                    <p class="big-quote">
-                        “You know the answer.<br />Your mouth doesn’t.”
-                    </p>
+                    <div class="eyebrow">Our team · 小组名单</div>
+                    <h2>Seven of us, one story</h2>
                     <p class="lead">
-                        Think of the last time you froze in English class — hand
-                        halfway up, words gone.
+                        Names are placeholders — swap them for the real ones.
+                        <span class="zh"
+                            >姓名为占位，替换时只改本页和最后一页的分工表。</span
+                        >
                     </p>
-                    <p class="zh">
-                        想一想：上一次你在英语课上“卡壳”的瞬间。今天我们讲的，就是那个瞬间。
-                    </p>
+                    <div class="roles">
+                        <div class="role">
+                            <div class="who">陈可欣</div>
+                            <div class="job">场控 · 第 2、3、13、14 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">林致远</div>
+                            <div class="job">主讲 · 第 1、4、5、15、16 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">苏晓航</div>
+                            <div class="job">念稿人 1 · 第 6、7 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">周予安</div>
+                            <div class="job">念稿人 2 · 第 8 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">许嘉宁</div>
+                            <div class="job">念稿人 3 · 第 9 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">顾言舟</div>
+                            <div class="job">念稿人 4 · 第 10、11 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">唐若溪</div>
+                            <div class="job">念稿人 5 · 第 12 页</div>
+                        </div>
+                    </div>
                     <div class="note">
-                        【第2页｜主讲
-                        A｜约35秒】\n先自己讲一个卡壳的小故事（越具体越好），再把问题抛给全班。停顿3秒，让教室安静一下。
+                        【第2页｜场控｜约20秒】\n只报角色和负责页，不逐页念页码。姓名是占位，替换时同步改本页与第16页分工表。
                     </div>
                 </div>
             </section>
 
             <!-- 03 ============================================================= -->
-            <section class="slide" data-title="L1 vs L2">
-                <div class="inner">
-                    <div class="eyebrow">The phenomenon</div>
-                    <h2>You know more than you can show</h2>
-                    <div class="cols">
-                        <div class="card accent">
-                            <div class="no">01</div>
-                            <h3>Tip of the tongue<span>舌尖现象</span></h3>
-                            <p>
-                                The word is “there” — until you try to say it
-                                out loud in your second language.
-                            </p>
-                        </div>
-                        <div class="card teal">
-                            <div class="no">02</div>
-                            <h3>Silent period<span>沉默期</span></h3>
-                            <p>
-                                Beginners listen for months before they speak.
-                                Silence is part of learning, not a failure.
-                            </p>
-                        </div>
-                        <div class="card gold">
-                            <div class="no">03</div>
-                            <h3>Two systems<span>双系统</span></h3>
-                            <p>
-                                Your L1 runs on autopilot. Your L2 borrows the
-                                same attention — and attention is limited.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="note">
-                        【第3页｜主讲
-                        B｜约60秒】\n三张卡依次展开。01用中文解释“舌尖现象”举英语单词到嘴边说不出的例子；02解释沉默期是正常阶段；03强调注意力资源有限。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 04 ============================================================= -->
-            <section class="slide" data-title="Definition">
-                <div class="inner">
-                    <div class="eyebrow">Core concept</div>
-                    <h2>Foreign Language Anxiety</h2>
-                    <p
-                        class="lead"
-                        style="font-family: var(--serif); max-width: 38em"
-                    >
-                        “A distinct complex of self-perceptions, beliefs,
-                        feelings and behaviours related to classroom language
-                        learning.”
-                    </p>
-                    <p class="zh">—— Horwitz, Horwitz &amp; Cope, 1986</p>
-                    <div class="note-inline">
-                        Not shyness. Not “bad English”. A specific, measurable
-                        anxiety that appears <b>only</b> in the foreign language
-                        classroom.
-                    </div>
-                    <div class="note">
-                        【第4页｜主讲
-                        B｜约50秒】\n引用定义（英文念一遍即可），强调三点：它是可测量的、它专属于语言课堂、它和英语水平没有必然关系——班里英语最好的人也可能最焦虑。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 05 ============================================================= -->
-            <section class="slide" data-title="Three faces">
-                <div class="inner">
-                    <div class="eyebrow">Framework</div>
-                    <h2>Three faces of anxiety</h2>
-                    <div class="cols">
-                        <div class="card accent">
-                            <div class="no">A</div>
-                            <h3>
-                                Communication apprehension<span>交流恐惧</span>
-                            </h3>
-                            <p>
-                                The fear of not being able to speak — going
-                                blank when all eyes are on you.
-                            </p>
-                        </div>
-                        <div class="card teal">
-                            <div class="no">B</div>
-                            <h3>
-                                Fear of negative evaluation<span
-                                    >负面评价恐惧</span
-                                >
-                            </h3>
-                            <p>
-                                The fear of being judged — classmates noticing
-                                every single mistake.
-                            </p>
-                        </div>
-                        <div class="card gold">
-                            <div class="no">C</div>
-                            <h3>Test anxiety<span>测评压力</span></h3>
-                            <p>
-                                The fear of being graded — performing worse
-                                exactly when it counts.
-                            </p>
-                        </div>
-                    </div>
-                    <p class="zh">接下来的自查问卷，就从这三个维度给你打分。</p>
-                    <div class="note">
-                        【第5页｜主讲
-                        B｜约55秒】\n每张卡配一个班级里的真实场景（被点名回答、作文被当堂念、考试口语）。结尾一句引出后面自查：“先记住A/B/C三个字母”。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 06 ============================================================= -->
-            <section class="slide" data-title="In the brain">
-                <div class="inner">
-                    <div class="eyebrow">Why it happens</div>
-                    <h2>What anxiety does to the brain</h2>
-                    <div class="kf">
-                        <div class="line">
-                            <b>1</b
-                            ><span
-                                >Stress fires up the alarm system (amygdala).<i
-                                    >焦虑启动大脑的“警报器”。</i
-                                ></span
-                            >
-                        </div>
-                        <div class="line">
-                            <b>2</b
-                            ><span
-                                >Working memory — your mental “workspace” — gets
-                                hijacked.<i
-                                    >工作记忆（大脑的工作台）被占用。</i
-                                ></span
-                            >
-                        </div>
-                        <div class="line">
-                            <b>3</b
-                            ><span
-                                >Less workspace for words → you freeze. It isn’t
-                                a knowledge gap.<i
-                                    >留给词汇的资源变少 →
-                                    卡壳。这不是你不会。</i
-                                ></span
-                            >
-                        </div>
-                    </div>
-                    <p class="zh">
-                        Yerkes–Dodson
-                        定律：唤醒水平适中时表现最好，过高时表现急剧下滑。
-                    </p>
-                    <div class="note">
-                        【第6页｜主讲
-                        C｜约60秒】\n把工作记忆比喻成“手机后台”：焦虑就像同时开了20个App，英语当然卡。用生活化的类比，不要念术语。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 07 ============================================================= -->
-            <section class="slide" data-title="The freeze">
-                <div class="inner">
-                    <div class="eyebrow">Mechanism</div>
-                    <h2>The freeze loop</h2>
-                    <div class="chips" style="gap: 6px; align-items: center">
-                        <span class="chip">Speak in public</span
-                        ><span class="chip"><b>→</b></span>
-                        <span class="chip"
-                            >Heart races, mind watches itself</span
-                        ><span class="chip"><b>→</b></span>
-                        <span class="chip">Fewer words come out</span
-                        ><span class="chip"><b>→</b></span>
-                        <span class="chip">“See? I’m bad at this.”</span
-                        ><span class="chip"><b>→</b></span>
-                        <span class="chip">Avoid the next chance</span
-                        ><span class="chip"><b>→</b></span>
-                        <span class="chip">…</span>
-                    </div>
-                    <p class="lead" style="max-width: 36em">
-                        Anxiety shrinks performance; poor performance feeds
-                        anxiety. The loop only breaks when you speak anyway.
-                    </p>
-                    <p class="zh">
-                        恶性循环：越怕越不说，越不说越怕。破环的方法只有一个——先开口，再完美。
-                    </p>
-                    <div class="note">
-                        【第7页｜主讲
-                        C｜约50秒】\n用手指着一个个chips念，最后停在“…”上。留一个悬念给后面的方法论页：“这个循环怎么破，我们第14页讲”。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 08 ============================================================= -->
-            <section class="slide" data-title="How common">
-                <div class="inner">
-                    <div class="eyebrow">How common is it?</div>
-                    <div class="stat-row">
-                        <div class="stat">
-                            <div class="num">⅓</div>
-                            <div class="cap">
-                                of language learners report high
-                                foreign-language anxiety — on average across
-                                studies.
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="num">1</div>
-                            <div class="cap">
-                                anxiety can depress speaking performance even
-                                among advanced learners.
-                            </div>
-                        </div>
-                        <div class="stat">
-                            <div class="num">0</div>
-                            <div class="cap">
-                                correlation with how much you actually know. It
-                                hides ability, it doesn’t erase it.
-                            </div>
-                        </div>
-                    </div>
-                    <p class="zh">
-                        数据为多项研究中的常见量级，用于课堂说明；参考文献见最后一页。
-                    </p>
-                    <div class="note">
-                        【第8页｜主讲
-                        C｜约45秒】\n强调“0”：焦虑藏起你的水平，而不是抹掉你的水平。这句是全场最重要的观点之一，说慢一点。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 09 ============================================================= -->
-            <section class="slide" data-title="Interaction 1 · Self-check">
+            <section
+                class="slide no-deco"
+                data-title="Interaction 1 · Self-check"
+            >
                 <div class="inner">
                     <div class="eyebrow">Interaction 1 of 2 · 互动一</div>
-                    <h2>Your anxiety profile · 你的焦虑画像</h2>
+                    <h2>What hurts most? · 你最痛的环节</h2>
                     <div class="qr-grid">
                         <div class="qr-card" id="cardSurvey">
                             <div class="tag">Scan now · 现在扫码</div>
@@ -1111,10 +977,10 @@
                                     <b>S</b> 打开设置，生成此二维码。
                                 </div>
                             </div>
-                            <h3>12-statement self-check · 12 题自查</h3>
+                            <h3>8-statement self-check · 8 题自查</h3>
                             <p>
-                                About 2 minutes · stays on your phone · nothing
-                                is uploaded<br />约 2 分钟 · 只留在你的手机上 ·
+                                About 1 minute · stays on your phone · nothing
+                                is uploaded<br />约 1 分钟 · 只留在你的手机上 ·
                                 不上传任何数据
                             </p>
                             <div class="qr-url" id="urlSurvey"></div>
@@ -1141,19 +1007,19 @@
                                 <div>
                                     <b>2</b
                                     ><span
-                                        >Answer 12 statements: 1 = not like me,
-                                        5 = very much like me.<span class="zh"
-                                            >12 题按程度选择：1 = 完全不像我，5
-                                            = 非常像我。</span
+                                        >Answer 8 statements: 1 = not like me, 5
+                                        = very much like me.<span class="zh"
+                                            >8 题按程度选择：1 = 完全不像我，5 =
+                                            非常像我。</span
                                         ></span
                                     >
                                 </div>
                                 <div>
                                     <b>3</b
                                     ><span
-                                        >Get your total, your three bars, and
-                                        two tips.<span class="zh"
-                                            >得到总分、三条柱状图和两条建议。</span
+                                        >Get three bars: pain, habits,
+                                        attitude.<span class="zh"
+                                            >得到三条柱：考试痛点、学习习惯、态度素养。</span
                                         ></span
                                     >
                                 </div>
@@ -1163,7 +1029,7 @@
                                         ><b>Raise your hand</b> if the prompt on
                                         your screen matches — we call on
                                         you.<span class="zh"
-                                            >如果屏幕上的提示符合你，<b>请举手</b>——我们会点你。</span
+                                            >屏幕上的提示符合你，<b>请举手</b>——我们会点你。</span
                                         ></span
                                     >
                                 </div>
@@ -1171,221 +1037,524 @@
                         </div>
                     </div>
                     <div class="note">
-                        【第9页｜主讲 D（互动主持）｜约60秒 +
-                        等待2分钟】\n口令：“扫码，两分钟，答完别关页面”。大屏停留，期间念提示语：“最高一项是交流恐惧的举手”“总分低于31的举手”。点2-3位同学分享一句话。
+                        【第3页｜场控｜约50秒 +
+                        等待1分钟】\n口令：“扫码，一分钟，答完别关页面”。大屏停留，期间补一句“最高痛点：听力、阅读与七选五、完形语法写作；最低习惯：不复盘、不开口、不限时、不列提纲”。点
+                        2–3 位同学说一句话。
                     </div>
                 </div>
             </section>
 
-            <!-- 10 ============================================================= -->
-            <section class="slide" data-title="Reading results">
+            <!-- 04 ============================================================= -->
+            <section
+                class="slide"
+                data-emoji="🧗"
+                data-title="Where I got stuck"
+            >
                 <div class="inner">
-                    <div class="eyebrow">Debrief · 结果解读</div>
-                    <h2>How to read your result · 怎么读你的结果</h2>
-                    <div class="cols">
-                        <div class="card accent">
-                            <div class="no">30–</div>
-                            <h3>Low<span>低焦虑</span></h3>
-                            <p>
-                                You’re comfortable in class. Keep speaking
-                                before you feel ready — that’s how it stays.
-                            </p>
-                            <p class="zh">
-                                你在课堂上比较自在。继续在觉得准备好之前先开口——平静就是这样保持的。
-                            </p>
-                        </div>
-                        <div class="card gold">
-                            <div class="no">31–42</div>
-                            <h3>Moderate<span>中等焦虑</span></h3>
-                            <p>
-                                You can speak, but half your attention watches
-                                yourself. That split is what freezes you.
-                            </p>
-                            <p class="zh">
-                                你能开口，但一半注意力在监视自己。正是这种分裂让你卡住。
-                            </p>
-                        </div>
-                        <div class="card teal">
-                            <div class="no">43+</div>
-                            <h3>High<span>高焦虑</span></h3>
-                            <p>
-                                Fear is doing the talking. Good news: it’s a
-                                state, not a verdict — and states can change.
-                            </p>
-                            <p class="zh">
-                                现在是恐惧在替你说。好消息：它是一种状态，不是判决——状态可以改变。
-                            </p>
-                        </div>
-                    </div>
-                    <div class="note">
-                        【第10页｜主讲
-                        D｜约50秒】\n重申这不是诊断，是镜子。邀请刚才举手的同学读屏幕里的一句话（自愿）。若无人举手，念自己的结果做示范。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 11 ============================================================= -->
-            <section class="slide" data-title="Myths vs facts">
-                <div class="inner">
-                    <div class="eyebrow">Reset your beliefs</div>
-                    <h2>Myths vs facts</h2>
-                    <div class="vs">
-                        <div class="card">
-                            <div
-                                class="tag"
-                                style="
-                                    color: var(--muted);
-                                    font: 700 11px/1 var(--sans);
-                                    letter-spacing: 0.18em;
-                                "
-                            >
-                                MYTH
-                            </div>
-                            <p>“Anxiety means I haven’t prepared enough.”</p>
-                        </div>
-                        <div class="vs-mark">vs</div>
-                        <div class="card right">
-                            <div
-                                class="tag"
-                                style="
-                                    color: var(--accent);
-                                    font: 700 11px/1 var(--sans);
-                                    letter-spacing: 0.18em;
-                                "
-                            >
-                                FACT
-                            </div>
-                            <p>
-                                Preparation helps — but anxiety peaks
-                                <i>after</i> you’ve prepared. It’s an emotional
-                                loop, not a study problem.
-                            </p>
-                        </div>
-                        <div class="card">
-                            <p>“Fluent people never freeze.”</p>
-                        </div>
-                        <div class="vs-mark">vs</div>
-                        <div class="card right">
-                            <p>
-                                Even native speakers freeze in public. Fluency
-                                reduces the frequency; it doesn’t remove the
-                                mechanism.
-                            </p>
-                        </div>
-                        <div class="card">
-                            <p>“I must not make mistakes.”</p>
-                        </div>
-                        <div class="vs-mark">vs</div>
-                        <div class="card right">
-                            <p>
-                                Mistakes are the visible part of a system being
-                                built — interlanguage in motion.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="note">
-                        【第11页｜主讲
-                        E｜约60秒】\n左右对照念，节奏是“错—对、错—对、错—对”。第三条为抢答第2题埋伏笔，讲完可以先不说破。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 12 ============================================================= -->
-            <section class="slide" data-title="Strategies">
-                <div class="inner">
-                    <div class="eyebrow">Break the loop</div>
-                    <h2>Four things that actually work</h2>
+                    <div class="eyebrow">Where I got stuck</div>
+                    <h2>Five problems I used to have</h2>
                     <div class="kf">
                         <div class="line">
                             <b>1</b
                             ><span
-                                ><b
-                                    style="
-                                        width: auto;
-                                        height: auto;
-                                        background: none;
-                                        color: inherit;
-                                        font-size: inherit;
-                                        border-radius: 0;
-                                    "
-                                    >Islands of fluency</b
-                                >
-                                — prepare 3 key phrases, not a full script.<i
-                                    >准备三个“语言岛”，而不是整篇稿。</i
+                                >Listening: one lost minute, and the whole
+                                passage collapsed.<i
+                                    >听力一走神，整段就崩。</i
                                 ></span
                             >
                         </div>
                         <div class="line">
                             <b>2</b
                             ><span
-                                ><b
-                                    style="
-                                        width: auto;
-                                        height: auto;
-                                        background: none;
-                                        color: inherit;
-                                        font-size: inherit;
-                                        border-radius: 0;
-                                    "
-                                    >Lower the stakes</b
-                                >
-                                — pair practice before whole-class talk.<i
-                                    >先两人练，再全班说。</i
+                                >Reading and seven-choose-five: accuracy came
+                                late, so time ran out.<i
+                                    >做不完，最后几分钟靠猜。</i
                                 ></span
                             >
                         </div>
                         <div class="line">
                             <b>3</b
                             ><span
-                                ><b
-                                    style="
-                                        width: auto;
-                                        height: auto;
-                                        background: none;
-                                        color: inherit;
-                                        font-size: inherit;
-                                        border-radius: 0;
-                                    "
-                                    >Pause, don’t translate</b
-                                >
-                                — silence is cheaper than mental translating.<i
-                                    >用停顿代替心译，沉默比翻译便宜。</i
+                                >Cloze: I missed the story, then wrong answers
+                                snowballed.<i
+                                    >没读懂，一个错接着一个错。</i
                                 ></span
                             >
                         </div>
                         <div class="line">
                             <b>4</b
                             ><span
-                                ><b
-                                    style="
-                                        width: auto;
-                                        height: auto;
-                                        background: none;
-                                        color: inherit;
-                                        font-size: inherit;
-                                        border-radius: 0;
-                                    "
-                                    >Rehearse under pressure</b
-                                >
-                                — practise with a timer, then the timer won’t
-                                surprise you.<i
-                                    >限时多练几次，计时就吓不到你。</i
+                                >Word forms: I knew the word but could not write
+                                the right form.<i>词认识，变形写不出。</i></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>5</b
+                            ><span
+                                >Writing: the prompt was there, the first
+                                sentence was not.<i
+                                    >作文憋半天，开不了头。</i
                                 ></span
                             >
                         </div>
                     </div>
                     <div class="note">
-                        【第12页｜主讲
-                        E｜约70秒】\n每条给一个中文小场景（课文朗读、口语考试、小组展示）。第4条自然过渡到下一个互动：“说到计时——我们来真的”。
+                        【第4页｜主讲｜约60秒】\n逐条念，先讲现象再讲原因：多数不是“我不行”，是方法、积累和复盘的问题。最后落到“词汇是根，但只背词表不够”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 05 ============================================================= -->
+            <section class="slide" data-emoji="🗺️" data-title="The exam map">
+                <div class="inner">
+                    <div class="eyebrow">The exam, in numbers</div>
+                    <h2>150 points, 120 minutes</h2>
+                    <div class="stat-row">
+                        <div class="stat">
+                            <div class="num">30</div>
+                            <div class="cap">Listening · 听力</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">37.5</div>
+                            <div class="cap">Reading A–D · 阅读四篇</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">12.5</div>
+                            <div class="cap">Seven-choose-five · 七选五</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">15</div>
+                            <div class="cap">Cloze · 完形</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">15</div>
+                            <div class="cap">Grammar fill-in · 语法填空</div>
+                        </div>
+                        <div class="stat">
+                            <div class="num">40</div>
+                            <div class="cap">Writing · 写作（15 + 25）</div>
+                        </div>
+                    </div>
+                    <p class="lead">
+                        Formats and marks vary by region — check your local
+                        paper.
+                        <span class="zh">题型和分值以你们当地高考卷为准。</span>
+                    </p>
+                    <div class="note">
+                        【第5页｜主讲｜约50秒】\n先给基本盘，再补一句“今天不讲小学初中，聚焦高中：一边讲考试技巧，一边讲英语素养”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 06 ============================================================= -->
+            <section class="slide" data-emoji="🎧" data-title="Listening">
+                <div class="inner">
+                    <div class="eyebrow">Listening</div>
+                    <h2>Blurred words sink the whole passage</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Listen first — do not translate while the audio
+                                is running.<i
+                                    >边听边翻译，注意力就断了。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Read the transcript after every set: mark
+                                blurred words, linking and weak forms.<i
+                                    >模糊词、连读弱读，全都标出来。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >Shadow 15–20 minutes a day; copy the rhythm,
+                                not just the words.<i
+                                    >每天跟读一刻钟，比考前突击有用。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第6页｜念稿人1｜约70秒】\n先抛一句“听不懂全文不要紧，怕的是文本里有模糊词”。三步讲完，强调“回看文本”和“跟读”，不要只刷题。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 07 ============================================================= -->
+            <section class="slide" data-emoji="📖" data-title="Reading">
+                <div class="inner">
+                    <div class="eyebrow">Reading</div>
+                    <h2>Accuracy first, speed second</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Get the answers right before you chase the
+                                clock.<i>先做对，再逐渐限时。</i></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Split long sentences: subject–verb–object,
+                                connectors, modifiers.<i
+                                    >长难句拆成主谓宾、连接词、修饰成分。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >For every wrong answer, go back and locate the
+                                evidence.<i>错题回文定位，别只看答案。</i></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>4</b
+                            ><span
+                                >Review beats volume: ten analysed passages beat
+                                thirty skimmed ones.<i
+                                    >复盘十篇，强过囫囵刷三十篇。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第7页｜念稿人1｜约60秒】\n节奏“先准后快”。讲错题定位时举例：是没读懂、被干扰项骗了，还是时间不够，三种错法对应三种改法。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 08 ============================================================= -->
+            <section class="slide" data-emoji="🧩" data-title="Cloze">
+                <div class="inner">
+                    <div class="eyebrow">Cloze</div>
+                    <h2>Two passes, one story</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >First pass: read the whole story for plot and
+                                feeling.<i
+                                    >先通读，抓人物、情节、情绪。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Second pass: fill each blank with grammar and
+                                context, not gut feeling.<i
+                                    >第二遍扣细节，语法加语境。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >4:4:4:3 is a check, not a guessing trick.<i
+                                    >大型考试常见
+                                    4:4:4:3，但这是经验规律，不是官方规定。做完用它检查分布，别拿它蒙答案。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <p class="lead">
+                        Most cloze passages are stories. Ask why the character
+                        acts that way — empathy is a reading skill.
+                        <span class="zh">完形多是故事，共情也是阅读能力。</span>
+                    </p>
+                    <div class="note">
+                        【第8页｜念稿人2｜约70秒】\n两遍法讲清楚，再专门拆
+                        4:4:4:3：不是蒙题口诀，是做完后的检查工具。理解不到位，才会一个错接着一个错。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 09 ============================================================= -->
+            <section class="slide" data-emoji="🧱" data-title="Grammar fill-in">
+                <div class="inner">
+                    <div class="eyebrow">Grammar fill-in · 语法填空</div>
+                    <h2>Part of speech first, then the form</h2>
+                    <div class="chips">
+                        <span class="chip">noun plurals · 名词单复数</span>
+                        <span class="chip">tenses · 各类时态</span>
+                        <span class="chip">ordinals · 序数词</span>
+                        <span class="chip">articles · 冠词</span>
+                        <span class="chip">linking words · 逻辑连接词</span>
+                        <span class="chip">passive voice · 被动语态</span>
+                        <span class="chip">non-finite verbs · 非谓语</span>
+                        <span class="chip">appositives · 同位语</span>
+                        <span class="chip">three clauses · 三大从句</span>
+                        <span class="chip">subjunctive · 虚拟语气</span>
+                        <span class="chip">inversion · 倒装</span>
+                    </div>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Learn the rule through one standard example.<i
+                                    >理清规则，用标准例句吃透。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Write five sentences of your own, in five
+                                different scenes.<i
+                                    >自己仿写 5 个不同场景的句子。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >Collect exam-ready patterns — and actually
+                                write them out.<i
+                                    >整理万能句式，必须动笔；只看懂等于没掌握。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第9页｜念稿人3｜约70秒】\n这页信息密，中文讲：先判词性（名、动、形、副、代、连、冠），再想变形。11
+                        个考点是高频，不是每年绝对固定；冠词“一般一个”也是经验。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 10 ============================================================= -->
+            <section class="slide" data-emoji="✍️" data-title="Writing">
+                <div class="inner">
+                    <div class="eyebrow">Writing</div>
+                    <h2>Outline first, direction first</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Spend two minutes on a three-line outline.
+                                <i>先列提纲，写的时候思路才清。</i></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Continuation writing: choose the direction
+                                before you write a word.<i
+                                    >续写先定方向，不然容易跑偏。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >150 words, two paragraphs — do not overshoot
+                                the limit.<i>150 词写 2 段，别超字数。</i></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>4</b
+                            ><span
+                                >Templates are a floor, not a script. Adapt them
+                                to the prompt.<i>模板保底，但别死套。</i></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第10页｜念稿人4｜约60秒】\n先讲小作文提纲，再讲读后续写：动作、情绪、环境三类万能句各备两句，考前一定动笔仿写。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 11 ============================================================= -->
+            <section class="slide" data-emoji="🔁" data-title="Vocabulary">
+                <div class="inner">
+                    <div class="eyebrow">Vocabulary · 背词法</div>
+                    <h2>200 words, 7 days, one loop</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Collect unknown words from papers and practice
+                                sets — not just the word list.<i
+                                    >从试卷和刷题里收生词，别只从 abandon
+                                    开始。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Group 200 words; weaker learners can use 100 or
+                                50.<i
+                                    >每 200 个一组；基础弱就减到 100 或 50。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >Cycle one group for 7 days, then review on
+                                schedule.<i
+                                    >一组连续循环 7 天，遗忘后及时复盘。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>4</b
+                            ><span
+                                >Keep a hard-word list; three misses means a
+                                pre-exam sprint.<i
+                                    >三次记不住的归为难词，考前两周集中冲刺。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第11页｜念稿人4｜约60秒】\n中文讲循环：关键不是一次背多少，是分组、循环、复盘、语境。200
+                        只是参考值。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 12 ============================================================= -->
+            <section
+                class="slide no-deco"
+                data-title="English outside the exam"
+            >
+                <div class="inner">
+                    <div class="eyebrow">English outside the exam</div>
+                    <h2>Feed the language, not just the score</h2>
+                    <div class="split">
+                        <div class="kf">
+                            <div class="line">
+                                <b>1</b
+                                ><span
+                                    >Songs: sing along — you learn melody,
+                                    phrasing and rhythm.<i
+                                        >听喜欢的英文歌，跟唱，旋律和表达一起学。</i
+                                    ></span
+                                >
+                            </div>
+                            <div class="line">
+                                <b>2</b
+                                ><span
+                                    >Short films with clear dialogue: listen for
+                                    the situation, not every word.<i
+                                        >看台词清楚的短片，先听情境，不必逐词抠。</i
+                                    ></span
+                                >
+                            </div>
+                            <div class="line">
+                                <b>3</b
+                                ><span
+                                    >Accept English: five minutes a day beats
+                                    one long cram.<i
+                                        >接受英语，每天五分钟，胜过偶尔猛攻。</i
+                                    ></span
+                                >
+                            </div>
+                            <div class="line">
+                                <b>4</b
+                                ><span
+                                    >English does not end when the exam ends.<i
+                                        >高考结束，不等于英语学习结束。</i
+                                    ></span
+                                >
+                            </div>
+                        </div>
+                        <div class="poster">
+                            <img
+                                src="spider-man-poster.avif"
+                                alt="Poster for Spider-Man: Brand New Day, in cinemas July 29"
+                            />
+                            <p class="cap">
+                                <b>Spider-Man: Brand New Day</b>
+                                · 《蜘蛛侠：崭新之日》<br />Clear dialogue, fast
+                                rhythm — good for listening practice.<br />台词清楚、节奏快，适合磨耳朵。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="note">
+                        【第12页｜念稿人5｜约60秒】\n海报放右侧约占三分之一宽。片名用正式译名，课堂只当听力素材推荐，不承诺“看一部就能提分”。
                     </div>
                 </div>
             </section>
 
             <!-- 13 ============================================================= -->
-            <section class="slide" data-title="Interaction 2 · Race">
+            <section
+                class="slide"
+                data-emoji="📊"
+                data-title="Interaction 1 · Results"
+            >
+                <div class="inner">
+                    <div class="eyebrow">Interaction 1 · Results · 结果</div>
+                    <h2>What the room just told us</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Biggest pain: listening — raise your hand.<span
+                                    class="zh"
+                                    >最高痛点是听力，举手。</span
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Biggest pain: reading or seven-choose-five —
+                                raise your hand.<span class="zh"
+                                    >最高痛点是阅读或七选五，举手。</span
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >Biggest pain: cloze, grammar or writing — raise
+                                your hand.<span class="zh"
+                                    >最高痛点是完形、语法或写作，举手。</span
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>4</b
+                            ><span
+                                >Weakest habit: no review, no speaking, no
+                                timing, no outline.<span class="zh"
+                                    >最薄弱习惯：不复盘、不开口、不限时、不列提纲，分别举手。</span
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <div class="note-inline">
+                        This is a self-check, not a diagnosis. No answers leave
+                        your phone.<br />这是自查，不是诊断；数据不上传。
+                    </div>
+                    <p class="lead">
+                        Two volunteers, one line each — read your result aloud.
+                        <span class="zh">请两位同学各念一句自己的结果。</span>
+                    </p>
+                    <div class="note">
+                        【第13页｜场控｜约2分钟】\n按四类逐个举手，点 2
+                        位同学念结果。提醒：分高不等于“没救”，只说明这一项现在最值得先改。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 14 ============================================================= -->
+            <section class="slide no-deco" data-title="Interaction 2 · Race">
                 <div class="inner">
                     <div class="eyebrow">Interaction 2 of 2 · 互动二</div>
-                    <h2>The anxiety race · 焦虑抢答</h2>
+                    <h2>The quick-check race · 技巧抢答</h2>
                     <div class="qr-grid">
                         <div class="qr-card" id="cardRace">
                             <div class="tag">
@@ -1434,15 +1603,14 @@
                                     <label for="rqQ">Question · 题号</label>
                                     <select id="rqQ">
                                         <option value="1">
-                                            1 — Which habit reduces anxiety?
+                                            1 — What comes first in cloze?
                                         </option>
                                         <option value="2">
-                                            2 — What do researchers say about
-                                            mistakes?
+                                            2 — First step in continuation
+                                            writing?
                                         </option>
                                         <option value="3">
-                                            3 — Anxiety &amp; performance: true
-                                            statement?
+                                            3 — First call in grammar fill-in?
                                         </option>
                                     </select>
                                 </div>
@@ -1490,19 +1658,18 @@
                                     <b>3</b
                                     ><span
                                         >Correct + fastest = winner. Show your
-                                        screen to the judge.<span class="zh"
+                                        screen to the host.<span class="zh"
                                             >答对且最快 =
-                                            获胜。把屏幕给裁判看。</span
+                                            获胜。把屏幕给场控看。</span
                                         ></span
                                     >
                                 </div>
                                 <div>
                                     <b>4</b
                                     ><span
-                                        >Ranking is done live on the podium
-                                        slide — no cheating, don’t refresh.<span
-                                            class="zh"
-                                            >名次在台上现场统计——不要作弊，不要刷新。</span
+                                        >Ranking is done live — no cheating,
+                                        don’t refresh.<span class="zh"
+                                            >名次现场统计——不要作弊，不要刷新。</span
                                         ></span
                                     >
                                 </div>
@@ -1510,107 +1677,116 @@
                         </div>
                     </div>
                     <div class="note">
-                        【第13页｜主讲 D｜约50秒 +
-                        等待3分钟】\n先确认二维码旁已显示开始时间（开场前就在本页二维码下方点
-                        Apply
-                        设好）。口令：“现在扫，页面别关”。倒计时结束读题。读完题给20秒作答，然后请前5名举手，人工记名次。共3题可重复，改二维码旁题号换题。
-                    </div>
-                </div>
-            </section>
-
-            <!-- 14 ============================================================= -->
-            <section class="slide" data-title="Wrap-up">
-                <div class="inner">
-                    <div class="eyebrow">Takeaway</div>
-                    <p class="big-quote">
-                        Fluency is not the absence of freezing.<br />It’s
-                        speaking anyway.
-                    </p>
-                    <div class="chips">
-                        <span class="chip"
-                            ><b>1</b> Anxiety hides ability, it doesn’t erase
-                            it</span
-                        >
-                        <span class="chip"
-                            ><b>2</b> The loop breaks only by speaking</span
-                        >
-                        <span class="chip"
-                            ><b>3</b> Rehearse small, low stakes, out loud</span
-                        >
-                    </div>
-                    <div class="note">
-                        【第14页｜主讲
-                        F｜约45秒】\n回到第2页的问题，给一个闭环：“现在再想想你那次卡壳——不是你不会，是工作台被占了。”三句takeaway
-                        慢速念。
+                        【第14页｜场控｜约50秒 +
+                        等待3分钟】\n开场前就在本页二维码下方点 Apply
+                        设好开始时间。口令：“现在扫，页面别关”。倒计时结束读题，给
+                        20 秒作答，请前 5
+                        名举手，人工记名次。三题可重复，改题号换题。
                     </div>
                 </div>
             </section>
 
             <!-- 15 ============================================================= -->
-            <section class="slide" data-title="Q & A">
+            <section class="slide" data-emoji="🧭" data-title="Takeaway">
+                <div class="inner">
+                    <div class="eyebrow">Takeaway · 带得走的东西</div>
+                    <h2>Four things I wish I had known</h2>
+                    <div class="kf">
+                        <div class="line">
+                            <b>1</b
+                            ><span
+                                >Practice a little every day — cramming is not a
+                                plan.<i
+                                    >每天少量练习，别把希望押在考前。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>2</b
+                            ><span
+                                >Feed yourself real English, not only textbook
+                                exercises.<i>多输入真实、地道的材料。</i></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>3</b
+                            ><span
+                                >Speak and write before you feel ready; mistakes
+                                are data, not verdicts.<i
+                                    >不怕犯错，错误是信息，不是判决。</i
+                                ></span
+                            >
+                        </div>
+                        <div class="line">
+                            <b>4</b
+                            ><span
+                                >Make English part of your life, not just your
+                                timetable.<i
+                                    >把英语放进日常，而不是只放进课表。</i
+                                ></span
+                            >
+                        </div>
+                    </div>
+                    <p class="big-quote" style="margin-top: 8px">
+                        “Patience is the key to life.”<br /><span
+                            class="zh"
+                            style="font-size: clamp(14px, 1.9vmin, 20px)"
+                            >耐心是生活的关键。</span
+                        >
+                    </p>
+                    <div class="note">
+                        【第15页｜主讲｜约60秒】\n四条建议逐条念，最后落到寄语。不要说“保证提分”，只说“方法和积累”。
+                    </div>
+                </div>
+            </section>
+
+            <!-- 16 ============================================================= -->
+            <section class="slide" data-emoji="❓" data-title="Q & A">
                 <div class="inner">
                     <div class="eyebrow">Thank you</div>
                     <h2>Questions?</h2>
+                    <p class="lead">
+                        Ask about methods, exams, or the parts that still feel
+                        hard.
+                        <span class="zh"
+                            >可以问方法、考试，也可以问“我还是卡在哪里”。</span
+                        >
+                    </p>
                     <div class="roles">
                         <div class="role">
-                            <div class="who">A</div>
-                            <div class="job">Opening &amp; hook · 第1–2页</div>
+                            <div class="who">陈可欣</div>
+                            <div class="job">场控 · 第 2、3、13、14 页</div>
                         </div>
                         <div class="role">
-                            <div class="who">B</div>
-                            <div class="job">Concepts · 第3–5页</div>
+                            <div class="who">林致远</div>
+                            <div class="job">主讲 · 第 1、4、5、15、16 页</div>
                         </div>
                         <div class="role">
-                            <div class="who">C</div>
-                            <div class="job">
-                                Mechanism &amp; data · 第6–8页
-                            </div>
+                            <div class="who">苏晓航</div>
+                            <div class="job">念稿人 1 · 第 6、7 页</div>
                         </div>
                         <div class="role">
-                            <div class="who">D</div>
-                            <div class="job">
-                                Host of both interactions · 第9–10、13页
-                            </div>
+                            <div class="who">周予安</div>
+                            <div class="job">念稿人 2 · 第 8 页</div>
                         </div>
                         <div class="role">
-                            <div class="who">E</div>
-                            <div class="job">
-                                Myths &amp; methods · 第11–12页
-                            </div>
+                            <div class="who">许嘉宁</div>
+                            <div class="job">念稿人 3 · 第 9 页</div>
                         </div>
                         <div class="role">
-                            <div class="who">F</div>
-                            <div class="job">
-                                Wrap-up &amp; Q&amp;A · 第14–15页
-                            </div>
+                            <div class="who">顾言舟</div>
+                            <div class="job">念稿人 4 · 第 10、11 页</div>
+                        </div>
+                        <div class="role">
+                            <div class="who">唐若溪</div>
+                            <div class="job">念稿人 5 · 第 12 页</div>
                         </div>
                     </div>
-                    <div class="refs">
-                        <span
-                            ><b
-                                >Horwitz, E. K., Horwitz, M. B., &amp; Cope, J.
-                                (1986).</b
-                            >
-                            Foreign language classroom anxiety. Modern Language
-                            Journal, 70(2), 125–132.</span
-                        >
-                        <span
-                            ><b
-                                >MacIntyre, P. D., &amp; Gardner, R. C.
-                                (1991).</b
-                            >
-                            Language anxiety: A review of the theory and
-                            research. Language Learning, 41(2), 255–278.</span
-                        >
-                        <span
-                            ><b>Yerkes, R. M., &amp; Dodson, J. D. (1908).</b>
-                            The relation of strength of stimulus to rapidity of
-                            habit-formation.</span
-                        >
-                    </div>
+                    <p class="zh" style="margin: 0">
+                        Names are placeholders · 姓名为占位，可替换
+                    </p>
                     <div class="note">
-                        【第15页｜主讲
-                        F｜Q&amp;A】\n分工表同时投屏，方便老师按人提问。常见追问的参考答案在
+                        【第16页｜主讲｜Q&amp;A】\n分工表同时投屏，方便老师按人提问。常见追问的参考答案在
                         speech.txt 的“问答预案”部分。
                     </div>
                 </div>
@@ -1638,7 +1814,7 @@
                     >
                         ›
                     </button>
-                    <span class="counter" id="counter">01 / 15</span>
+                    <span class="counter" id="counter">01 / 16</span>
                     <span class="slide-title" id="slideTitle">Title</span>
                 </div>
                 <div class="cluster">
@@ -1728,15 +1904,16 @@
                         spellcheck="false"
                     />
                     <div class="hint">
-                        Host both files on any static host (GitHub Pages /
-                        school server / Netlify Drop), then paste the URL your
-                        phone can open. Test it on your phone first.
+                        Host both pages plus spider-man-poster.avif in the same
+                        folder on any static host (GitHub Pages / school server
+                        / Netlify Drop), then paste the URL your phone can open.
+                        Test it on your phone first.
                     </div>
                 </div>
                 <p class="hint">
                     Race start time and question are now set right next to the
-                    QR code on the race slide (13).<br />抢答开始时间与题号已移到
-                    第 13 页二维码下方。
+                    QR code on the race slide (14).<br />抢答开始时间与题号已移到
+                    第 14 页二维码下方。
                 </p>
                 <label class="check"
                     ><input id="inpPreview" type="checkbox" /> Preview mode
@@ -2316,7 +2493,7 @@
                         ? note.textContent.trim().replace(/\\n/g, "\n")
                         : "(No notes for this slide.)";
                     els.notesBody.textContent = text;
-                    const who = text.match(/【([^｜]+)｜/);
+                    const who = text.match(/【第\d+页｜([^｜]+)｜/);
                     els.notesTitle.textContent =
                         "Speaker notes — " +
                         (slides[index].dataset.title || "");

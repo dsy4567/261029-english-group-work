@@ -7,19 +7,23 @@
 
 ## 项目性质
 
-大学英语课小组作业，课堂展示用。三件套，全部单文件、零依赖、零构建、离线可用：
+高中英语学习经验分享（回母校给学弟学妹讲），课堂展示用。除一张本地海报外，
+全部零依赖、零构建、离线可用：
 
-- `presentation.html` — 仿 PPT 展示页（15 页，投屏用）
+- `presentation.html` — 仿 PPT 展示页（16 页，投屏用）
 - `interaction.html` — 互动页（学生扫码，全交互合并于此）
 - `speech.txt` — 演讲稿（纯文本，禁止 Markdown 格式）
+- `spider-man-poster.avif` — 第 12 页素养页的本地海报，必须与展示页同目录
 
 ## 硬性约束（违反即错误）
 
-1. **单文件**：每个 HTML 自包含全部 CSS/JS，不得引入外部 JS/CSS/字体/CDN/图片。
+1. **单文件**：每个 HTML 自包含全部 CSS/JS，不得引入外部 JS/CSS/字体/CDN。
+   图片只允许一个例外：`presentation.html` 第 12 页用相对路径
+   `spider-man-poster.avif` 引用同目录海报；不得用外部图片 URL、不得再增加图片。
 2. **无后端**：不允许任何服务器逻辑、存储、第三方 API、网络上传。数据只存浏览器
    localStorage（键前缀 `wxf.`，仅展示页使用）或内存。
 3. **互动路由**：互动页仅通过 `?activity=` 区分活动，已注册：
-   - `survey` — 12 题自查问卷，题目写死在前端
+   - `survey` — 8 题自查问卷（痛点 3 / 习惯 3 / 态度 2），题目写死在前端
    - `race` — 抢答，参数 `q`（题号 1–3）、`start`（开始时间，毫秒时间戳或 HH:MM:SS）、
      `preview`（=1 立即解锁，测试用）、`answer`（已选答案字母 A–D，作答后写入用于防刷新重答）、
      `t`（作答实际用时，毫秒整数，与 `answer` 同时写入，刷新时原样显示）、
@@ -39,13 +43,13 @@
    - 目标是防手改地址栏（改 start 提前放题、加 preview 拿 0.0s、改 t 伪造用时）。
      无后端、盐就在源码里，这是威慑与彩蛋，不是真安全，不得写成能防作弊。
    新互动必须合并进 interaction.html，不新建文件。
-4. **抢答开始时间**由展示页第 13 页抢答二维码下方的控件生成进二维码 URI
+4. **抢答开始时间**由展示页第 14 页抢答二维码下方的控件生成进二维码 URI
    （`start` 毫秒时间戳），互动页解析后倒计时解锁；时钟偏差用 HTTP `Date`
    头校准，失败回退设备时钟。控件为 `rqAhead`（秒数）+ `rqApply`
    （"Apply · 应用"）：点击即把"当前时间 + N 秒"格式化成 HH:MM:SS 写入
    `cfg.start` 并立即保存、刷新二维码，无需再去设置面板。设置面板（S）
    只保留 `inpBase`（互动页网址）与 `inpPreview`（预览模式）；`rqQ` 题号
-   下拉框同样位于第 13 页二维码下方，变更即时保存并刷新二维码。
+   下拉框同样位于第 14 页二维码下方，变更即时保存并刷新二维码。
    `raceUrl()` 必须始终追加 `sign`（覆盖 q / start / preview，`preview` 关闭时按 `0` 计算），
    复制链接按钮随之带上；改 q、改开始时间、切换预览都要重算。
    **校准规则（勿退回单发点估计）**：`Date` 头只向下截断到整秒，故每个样本
@@ -58,7 +62,9 @@
    同源 HEAD 才能读到 `Date`（非 CORS 安全响应头），`wxf.base` 跨域时会退化为设备时钟。
 5. **二维码**：内置自写编码器（字节模式、EC 级 M、版本 1–10、掩码自动选优），
    禁止改用外部生成服务。改动编码器必须重新验证（见"验证"）。
-6. **无图片资源**：视觉全部用 CSS/SVG，不使用 `<img>` 或外部图片 URL。
+6. **图片**：默认视觉全部用 CSS/SVG，不使用 `<img>` 或外部图片 URL。
+   唯一例外是第 12 页海报：`<img src="spider-man-poster.avif">`，必须写 `alt`，
+   并保证文件随网页一起拷贝、一起托管；海报缺失时页面仍能翻页，只是该图不显示。
 7. **兼容性基线（按页面分级，不要再一刀切）**：
    - `interaction.html` — 兼容要求最高。学生用自己的手机扫码，设备与浏览器不可控：
      不用 `color-mix()`；`dvh` 必须在其前一行写 `vh` 回退（双写）；
@@ -74,12 +80,16 @@
 ## 结构与一致性
 
 - 幻灯片是 `presentation.html` 内的 `<section class="slide" data-title="...">`，
-  共 15 页；每页含一个隐藏 `.note`（演讲者备注，格式固定：
-  `【第N页｜主讲 X｜约NN秒】`，页内用 `\n` 换行）。
-- `speech.txt` 按"第 N 页 · 主讲 X"逐页对应幻灯片，页码与主讲人必须与
-  `.note` 一致。改任一侧必须同步另一侧（15 页 / 15 段，含 A–F 六角色）。
+  共 16 页；每页含一个隐藏 `.note`（演讲者备注，格式固定：
+  `【第N页｜角色｜约NN秒】`，角色为 `场控` / `主讲` / `念稿人1`–`念稿人5`，
+  页内用 `\n` 换行）。
+- `speech.txt` 按"第 N 页 · 角色"逐页对应幻灯片，页码与角色必须与
+  `.note` 一致。改任一侧必须同步另一侧（16 页 / 16 段，共 7 人：
+  场控 1 + 主讲 1 + 念稿人 5）。
+- 第 2 页是名单页，7 个姓名是占位；改姓名要同时改第 2 页、第 16 页分工表和
+  `speech.txt` 第 2 段。
 - 双语要求：互动页所有正文（题干、选项、说明、按钮、提示、页脚）必须中英双语，
-  英文在前、中文在后（中文用 `.zh` 小号 muted 样式）；展示页第 9、10、13 页
+  英文在前、中文在后（中文用 `.zh` 小号 muted 样式）；展示页第 3、13、14 页
   的互动内容同样适用。新增互动文案时不得只写一种语言。
   **例外**：抢答（race）作答页的题干与四个选项只显示英文（`question.en` / `question.options`），
   不加 `.zh`；其余（计时提示、结果页、解释、按钮）仍须中英双语。
@@ -89,13 +99,16 @@
 
 | 内容 | 位置 |
 |---|---|
-| 问卷 12 题（英/中/维度） | interaction.html `SURVEY` 数组 |
-| 三维定义与建议 | interaction.html `DIMS` |
-| 分数分档（≤30 / ≤42 / ≥43） | interaction.html `BANDS` |
+| 问卷 8 题（英/中/维度/键） | interaction.html `SURVEY` 数组 |
+| 三维定义与取值范围 | interaction.html `DIMS` |
+| 痛点分档（≤6 / ≤11 / ≥12） | interaction.html `BANDS` |
+| 最高痛点 / 最低习惯的建议映射 | interaction.html `FOCUS`（`ATTITUDE_TIP` 兜底） |
 | 抢答 3 题与答案解释 | interaction.html `RACE` |
 | 抢答验签拦截文案（5 句冷幽默） | interaction.html `TAMPER_LINES` |
 | 幻灯片正文 | presentation.html 各 `<section>` |
 | 演讲者备注 | 各 `<div class="note">` |
+| 名单页 / 分工表 | presentation.html 第 2 页与第 16 页的 `.role` |
+| 素养页海报 | presentation.html 第 12 页 `.poster img` |
 | 二维码编码器 | presentation.html 顶部 `QRCodeGen` IIFE |
 | 设置持久化 | localStorage `wxf.base / wxf.start / wxf.q / wxf.preview / wxf.notes / wxf.timer*` |
 | 讲稿正文 / Q&A / 应急预案 | speech.txt 对应章节 |
@@ -108,14 +121,16 @@ Python venv（qrcode、opencv-python-headless）可用时做二维码验证。
 
 1. 语法：提取两 HTML 的 `<script>` 用 `new Function()` 过一遍。
 2. 行为：jsdom 加载页面（`runScripts: "dangerously"`），
-   - 交互页：问卷 12 题出分、抢答 未来 start 倒计时→解锁→作答→结果、
+   - 交互页：问卷 8 题出分（痛点 3–15、习惯 3–15、态度 2–10，分档 3–6 / 7–11 / 12–15）、
+     最高痛点与最低习惯映射正确、抢答 未来 start 倒计时→解锁→作答→结果、
      过去/preview 立即出题、未知 activity 提示、菜单链接带正确参数；
      无参数落地页无抢答入口且提示扫码、`race` 缺 start 且无 preview 时出扫码提示页；
      验签：无 `sign`、改 `start`、改 `t`、给普通链接加 `preview=1`、`?activity=race` 裸链接
      均须渲染拦截页（不出题/不出结果）；合法签名照常出题与出结果；
      答题后 `answer` / `t` 参数写入且 `history.length` 不增长、写回的 `sign` 与重算值一致、
      带 `answer`+`t` 重载直接出结果页且用时与 `t` 一致、`answer` / `t` 非法时忽略；
-   - 展示页：翻页（键盘/点击/边缘回退）、备注换行、计时器开关、
+   - 展示页：16 页翻页（键盘/点击/边缘回退）、备注换行、计时器开关、
+     第 12 页海报引用为相对路径且文件存在、
      设置保存后二维码 SVG 生成且 URL 文案正确（q/start/preview/sign 参数）、
      生成的 `sign` 能被互动页同一算法复算通过、localStorage 落盘。
    - 断言范围限定 `#app` 或 `.slide` 内容——`body.textContent` 会包含内嵌脚本源码导致误判。

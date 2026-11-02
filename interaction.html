@@ -7,7 +7,7 @@
             content="width=device-width, initial-scale=1, viewport-fit=cover"
         />
         <meta name="theme-color" content="#f2eee5" />
-        <title>Why We Freeze · Live</title>
+        <title>My Journey of Learning English · Live</title>
         <style>
             :root {
                 --bg: #f2eee5;
@@ -170,6 +170,16 @@
                 letter-spacing: 0.18em;
                 text-transform: uppercase;
                 color: var(--muted);
+            }
+            /* 装饰用大号 emoji：只作点缀，不进入正文语义 */
+            .big-emoji {
+                font-size: 44px;
+                line-height: 1;
+                margin: 0 0 2px;
+                user-select: none;
+            }
+            .big-emoji.sm {
+                font-size: 34px;
             }
             h1,
             h2 {
@@ -526,13 +536,13 @@
                 width: 0;
                 transition: width 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
             }
-            .bar-fill.ca {
+            .bar-fill.pain {
                 background: var(--accent);
             }
-            .bar-fill.fne {
+            .bar-fill.habits {
                 background: var(--teal);
             }
-            .bar-fill.tp {
+            .bar-fill.attitude {
                 background: var(--gold);
             }
 
@@ -852,214 +862,255 @@
 
                 const SURVEY = [
                     {
-                        dim: "ca",
-                        en: "I freeze when I have to speak English in front of the class.",
-                        zh: "在全班面前说英语时，我脑子会一片空白。",
+                        dim: "pain",
+                        key: "p1",
+                        en: "In a listening section, I lose focus and miss several answers.",
+                        zh: "听力时我一走神，就会连着丢好几题。",
                     },
                     {
-                        dim: "ca",
-                        en: "I avoid raising my hand in English class, even when I know the answer.",
-                        zh: "即使知道答案，我也会避开在英语课上举手。",
+                        dim: "pain",
+                        key: "p2",
+                        en: "In reading or seven-choose-five, I run out of time before I finish.",
+                        zh: "阅读或七选五，我常常做不完。",
                     },
                     {
-                        dim: "ca",
-                        en: "My heart races when someone asks me a question in English.",
-                        zh: "有人用英语问我问题时，我会心跳加快。",
+                        dim: "pain",
+                        key: "p3",
+                        en: "In cloze, grammar or writing, one thing I do not understand turns into a chain of errors.",
+                        zh: "完形、语法或写作里，一个地方没弄懂，后面就接着错。",
                     },
                     {
-                        dim: "ca",
-                        en: "I rehearse an English sentence in my head, then decide not to say it.",
-                        zh: "我在心里演练了英文句子，最后还是决定不说。",
+                        dim: "habits",
+                        key: "h1",
+                        en: "I collect unknown words from papers and review them on a schedule.",
+                        zh: "我会把试卷里的生词整理出来，并按计划复盘。",
                     },
                     {
-                        dim: "fne",
-                        en: "I worry that classmates will notice every mistake I make.",
-                        zh: "我担心同学会注意到我的每一个错误。",
+                        dim: "habits",
+                        key: "h2",
+                        en: "I practise reading or writing with a time limit.",
+                        zh: "我会限时练阅读或写作。",
                     },
                     {
-                        dim: "fne",
-                        en: "I am afraid my teacher will think I am a weak student if I speak slowly.",
-                        zh: "我说得慢时，会怕老师觉得我英语很差。",
+                        dim: "habits",
+                        key: "h3",
+                        en: "I outline before writing and rewrite after feedback.",
+                        zh: "写作文前我会列提纲，讲评后我会重写。",
                     },
                     {
-                        dim: "fne",
-                        en: "After English class, I replay the things I said wrong.",
-                        zh: "下课后，我会反复回想自己说错的地方。",
+                        dim: "attitude",
+                        key: "a1",
+                        en: "I speak English even when I might make mistakes.",
+                        zh: "就算可能说错，我也愿意开口。",
                     },
                     {
-                        dim: "fne",
-                        en: "I would rather stay silent than sound \u201cstupid\u201d in English.",
-                        zh: "比起说错显得很蠢，我宁愿保持沉默。",
-                    },
-                    {
-                        dim: "tp",
-                        en: "My mind goes blank when a speaking task is timed.",
-                        zh: "口语任务一开始计时，我就大脑空白。",
-                    },
-                    {
-                        dim: "tp",
-                        en: "I perform worse in English when I know I am being graded.",
-                        zh: "知道要被评分时，我的英语反而发挥得更差。",
-                    },
-                    {
-                        dim: "tp",
-                        en: "I can say a sentence alone, but not when someone is listening.",
-                        zh: "我一个人能说出句子，有人在听时就不行。",
-                    },
-                    {
-                        dim: "tp",
-                        en: "After an English presentation, I only remember what went wrong.",
-                        zh: "英语展示结束后，我只记得自己哪里搞砸了。",
+                        dim: "attitude",
+                        key: "a2",
+                        en: "I use English outside class: songs, short clips, reading.",
+                        zh: "课外我会用英语：听歌、看短片、读东西。",
                     },
                 ];
 
                 const DIMS = {
-                    ca: {
-                        en: "Communication apprehension",
-                        zh: "交流恐惧 · 上台与开口",
-                        short: "communication apprehension",
-                        tips: [
-                            [
-                                "Preparation",
-                                "Prepare three \u201cislands\u201d for any topic: one opening line, one detail, one question.",
-                                "准备",
-                                "为任何话题准备三个\u201c语言岛\u201d：一句开场、一个细节、一个问题。",
-                            ],
-                            [
-                                "Exposure",
-                                "Speak to one person before you speak to the room. A pair is a safer stage than a class.",
-                                "低门槛练习",
-                                "先对一个人说，再对全班说。两人对话比全班更像安全的舞台。",
-                            ],
-                        ],
+                    pain: {
+                        en: "Exam pain points",
+                        zh: "考试痛点",
+                        short: "exam pain",
+                        min: 3,
+                        max: 15,
+                        color: "pain",
                     },
-                    fne: {
-                        en: "Fear of negative evaluation",
-                        zh: "负面评价恐惧 · 怕被评判",
-                        short: "fear of negative evaluation",
-                        tips: [
-                            [
-                                "Perspective",
-                                "Write down the worst sentence you imagine hearing. It is usually milder than the movie in your head.",
-                                "换个视角",
-                                "把你最怕听到的那句话写下来。它通常比你脑内的小电影温和得多。",
-                            ],
-                            [
-                                "Permission",
-                                "Tell your partner \u201cI\u2019m practising \u2014 don\u2019t grade me\u201d before you speak. It changes the stakes.",
-                                "给自己许可",
-                                "开口前告诉搭档\u201c我在练习，别评分\u201d。这句话会改变赌注。",
-                            ],
-                        ],
+                    habits: {
+                        en: "Study habits",
+                        zh: "学习习惯",
+                        short: "study habits",
+                        min: 3,
+                        max: 15,
+                        color: "habits",
                     },
-                    tp: {
-                        en: "Test & performance pressure",
-                        zh: "测评压力 · 限时与评分",
-                        short: "performance pressure",
-                        tips: [
-                            [
-                                "Rehearsal",
-                                "Practise with a 20-second timer, then again with no timer. Pressure loses its surprise.",
-                                "限时排练",
-                                "先用 20 秒计时练一遍，再不计时练一遍。压力就不再突然袭击。",
-                            ],
-                            [
-                                "Pausing",
-                                "Pause instead of translating. Silence buys thinking time; translation spends it.",
-                                "停顿",
-                                "用停顿代替翻译。沉默买来思考时间，翻译花掉思考时间。",
-                            ],
-                        ],
+                    attitude: {
+                        en: "Attitude & input",
+                        zh: "态度与课外输入",
+                        short: "attitude and input",
+                        min: 2,
+                        max: 10,
+                        color: "attitude",
                     },
                 };
 
                 const BANDS = {
                     low: {
-                        en: "LOW",
-                        zh: "低焦虑",
+                        en: "LOW PAIN",
+                        zh: "痛点较低",
                         cls: "low",
-                        read: "English rarely makes your body react. You still feel pressure in high-stakes moments \u2014 that is normal. Keep choosing to speak before you feel \u201cready\u201d; that is how the calm stays.",
-                        readZh: "英语很少让你的身体紧张。高风险时刻你仍会感到压力——这很正常。继续在\u201c准备好\u201d之前选择开口，平静就是这样保住的。",
+                        read: "Your main problems are under control. Keep the routine that got you here: daily practice, a mistake notebook, and one timed task a week.",
+                        readZh: "你的主要问题已经基本受控。把有效的做法保持住：每天练一点、有错题生词本、每周做一次限时训练。",
                     },
                     moderate: {
                         en: "MODERATE",
-                        zh: "中等",
+                        zh: "痛点中等",
                         cls: "moderate",
-                        read: "You can speak, but your attention splits: part of you is listening, part of you is watching yourself. That split is what makes words disappear. The fix is not \u201ccalm down\u201d \u2014 it is lowering the stakes and preparing fewer, stronger sentences.",
-                        readZh: "你能开口，但注意力被劈成两半：一半在听，一半在审视自己。正是这种分裂让词消失。解法不是\u201c冷静\u201d，而是降低赌注，准备更少但更结实的句子。",
+                        read: "You can handle the paper, but one weak link still costs you marks. Pick the single biggest pain below and fix it for two weeks before adding anything else.",
+                        readZh: "卷子你能应付，但有一个薄弱环节在持续丢分。先挑下面最大的那个痛点，集中改两周，别同时铺开。",
                     },
                     high: {
-                        en: "HIGH",
-                        zh: "高焦虑",
+                        en: "HIGH PAIN",
+                        zh: "痛点较高",
                         cls: "high",
-                        read: "Your fear is doing the talking. That is exhausting, and it is also changeable. Anxiety is a state, not a verdict on your ability. Start with one listener, one minute, one day \u2014 and get the reps in where nothing is graded.",
-                        readZh: "现在是恐惧在替你说。这很累，但它是可以改变的。焦虑是一种状态，不是对你能力的判决。从一个人、一分钟、一天开始——在没有评分的地方多练。",
+                        read: "Several parts are competing for your attention, so everything feels urgent. Do not fix all of them at once. Start with the one named below and give it a small, daily rep.",
+                        readZh: "几个板块都在抢你的注意力，所以哪哪都急。别想一次全改，从下面点名的那一项开始，每天做一点。",
                     },
+                };
+
+                const FOCUS = {
+                    p1: {
+                        en: "listening",
+                        zh: "听力",
+                        tipEn: [
+                            "Drill the transcript",
+                            "Replay one set, read the transcript, mark blurred words and linking, then shadow it for 15 minutes. Do this daily for two weeks.",
+                        ],
+                        tipZh: [
+                            "精听文本",
+                            "重放一套题，对照文本标出模糊词和连读弱读，再跟读 15 分钟。连续做两周。",
+                        ],
+                    },
+                    p2: {
+                        en: "reading and seven-choose-five",
+                        zh: "阅读与七选五",
+                        tipEn: [
+                            "Accuracy before speed",
+                            "Do one passage untimed and locate every wrong answer in the text. Only then add a time limit.",
+                        ],
+                        tipZh: [
+                            "先准后快",
+                            "先不计时做一篇，把每个错题回文定位。做对稳定了，再加时限。",
+                        ],
+                    },
+                    p3: {
+                        en: "cloze, grammar and writing",
+                        zh: "完形、语法与写作",
+                        tipEn: [
+                            "Form, story and outline",
+                            "Drill five word-form changes a day, read the cloze story before filling, and write a three-line outline before any writing task.",
+                        ],
+                        tipZh: [
+                            "变形、情节加提纲",
+                            "每天练五个词形变化；做完形先通读情节；每次写作前写三行提纲：开头、中间、结尾。",
+                        ],
+                    },
+                    h1: {
+                        en: "no word review",
+                        zh: "不复盘生词",
+                        tipEn: [
+                            "Start a mistake notebook",
+                            "Collect unknown words from every paper, group 200, and cycle the group for 7 days. Review on day 8.",
+                        ],
+                        tipZh: [
+                            "建错题生词本",
+                            "把每份卷子的生词收进来，200 个一组，连续循环 7 天，第 8 天复盘。",
+                        ],
+                    },
+                    h2: {
+                        en: "no timed practice",
+                        zh: "不限时训练",
+                        tipEn: [
+                            "Time one task a week",
+                            "Give one reading passage five minutes. When the timer ends, stop — then review what slowed you down.",
+                        ],
+                        tipZh: [
+                            "每周限时一次",
+                            "给一篇阅读五分钟，时间到就停，再复盘是哪一步拖慢了你。",
+                        ],
+                    },
+                    h3: {
+                        en: "no outline or rewrite",
+                        zh: "不列提纲、不重写",
+                        tipEn: [
+                            "Three lines, then write",
+                            "Before writing, put beginning, middle and end on paper. After feedback, rewrite the weakest paragraph only.",
+                        ],
+                        tipZh: [
+                            "三行提纲",
+                            "动笔前写下开头、中间、结尾。讲评后只重写最弱的那一段。",
+                        ],
+                    },
+                };
+
+                const ATTITUDE_TIP = {
+                    tipEn: [
+                        "Five minutes a day",
+                        "Pick one song or short clip you actually like and listen for five minutes. English does not have to be a fight.",
+                    ],
+                    tipZh: [
+                        "每天五分钟",
+                        "挑一首真的喜欢的歌或一段短片，听五分钟。英语不必天天跟你打仗。",
+                    ],
                 };
 
                 const RACE = {
                     1: {
-                        en: "Which habit is most likely to REDUCE speaking anxiety?",
-                        zh: "哪种做法最可能降低开口焦虑？",
+                        en: "In cloze, what should you do first?",
+                        zh: "做完形，第一步应该做什么？",
                         options: [
-                            "Rehearse silently until it feels perfect",
-                            "Prepare a few key phrases \u2014 then speak before you feel ready",
-                            "Translate every word before you speak",
-                            "Wait until your accent sounds native",
+                            "Read the whole passage for the story",
+                            "Fill the first blank immediately",
+                            "Count the A/B/C/D ratio",
+                            "Translate every sentence into Chinese",
                         ],
                         optionsZh: [
-                            "默练到完美再开口",
-                            "准备几句关键短语——然后在\u201c没准备好\u201d之前就开口",
-                            "开口前把每个词都翻译一遍",
-                            "等到口音听起来像母语者",
+                            "先通读全文，抓住故事",
+                            "马上填第一个空",
+                            "先数 ABCD 比例",
+                            "把每句都翻成中文",
                         ],
-                        correct: 1,
+                        correct: 0,
                         explain:
-                            "Action beats perfection. A few ready phrases lower the cost of starting, and starting is what calms the system.",
+                            "First pass gets the plot and the feeling; the second pass handles grammar and detail. The ratio is a check at the end, not a starting point.",
                         explainZh:
-                            "行动胜过完美。几句现成短语降低了启动成本，而启动正是让系统平静下来的东西。",
+                            "第一遍抓情节和情绪，第二遍再抠语法和细节。比例是做完后的检查，不是起手式。",
                     },
                     2: {
-                        en: "What do researchers say about mistakes in speaking a second language?",
-                        zh: "研究者如何看待二语口语中的错误？",
+                        en: "In continuation writing, what is the first step?",
+                        zh: "读后续写的第一步是什么？",
                         options: [
-                            "They should be corrected every single time",
-                            "They mean the learner is not ready",
-                            "They are a normal part of building fluency",
-                            "They come from not studying grammar",
+                            "Start writing to save time",
+                            "Choose the direction of the story",
+                            "Copy a full template",
+                            "Count the words first",
                         ],
                         optionsZh: [
-                            "每一次都应该被纠正",
-                            "说明学习者还没准备好",
-                            "是建立流利度的正常组成部分",
-                            "来自没有学语法",
-                        ],
-                        correct: 2,
-                        explain:
-                            "Errors are evidence of a system under construction \u2014 interlanguage in motion. Correction has a time and a place.",
-                        explainZh:
-                            "错误是一个正在建造中的系统的证据——中介语在运动中。纠正需要合适的时间和场合。",
-                    },
-                    3: {
-                        en: "Which statement about anxiety and performance is TRUE?",
-                        zh: "关于焦虑与表现，哪一句是对的？",
-                        options: [
-                            "More anxiety always means better performance",
-                            "A little can sharpen you; too much hurts",
-                            "Only beginners get anxious",
-                            "Anxiety has no effect on speaking",
-                        ],
-                        optionsZh: [
-                            "焦虑越多，表现一定越好",
-                            "适度紧张能让人更敏锐；过度则有害",
-                            "只有初学者才会焦虑",
-                            "焦虑对口说没有任何影响",
+                            "直接开写，省时间",
+                            "先定故事方向",
+                            "整篇套模板",
+                            "先数字数",
                         ],
                         correct: 1,
                         explain:
-                            "The Yerkes\u2013Dodson curve: arousal helps up to a point, then it hijacks working memory. Even fluent speakers freeze.",
+                            "Direction first, or the story drifts. Then 150 words in two paragraphs, without going over the limit.",
                         explainZh:
-                            "耶克斯—多德森曲线：唤醒水平在某个点之前有帮助，超过后就会劫持工作记忆。流利的人也会卡住。",
+                            "先定方向，不然容易跑偏。然后 150 词写两段，别超字数。",
+                    },
+                    3: {
+                        en: "In grammar fill-in, what do you decide first?",
+                        zh: "做语法填空，先判断什么？",
+                        options: [
+                            "The Chinese meaning",
+                            "The part of speech",
+                            "The number of letters",
+                            "Whether there is an article",
+                        ],
+                        optionsZh: [
+                            "中文意思",
+                            "词性",
+                            "单词字母数",
+                            "有没有冠词",
+                        ],
+                        correct: 1,
+                        explain:
+                            "Part of speech first, then the form: tense, voice, plural or comparison. Articles are frequent, but “usually one” is a rule of thumb, not a law.",
+                        explainZh:
+                            "先判词性，再想变形：时态、语态、单复数或比较级。冠词常考，但“一般一个”是经验，不是铁律。",
                     },
                 };
 
@@ -1067,7 +1118,7 @@
 
                 function chrome(tag) {
                     return (
-                        '<header class="top"><div class="brand">Why We Freeze</div><div class="pill">' +
+                        '<header class="top"><div class="brand">My Journey</div><div class="pill">' +
                         tag +
                         "</div></header>"
                     );
@@ -1100,6 +1151,7 @@
                         '<section class="screen">' +
                         chrome("Live · 现场") +
                         '<div class="hero">' +
+                        '<div class="big-emoji" aria-hidden="true">\uD83C\uDF93</div>' +
                         '<div class="kicker">Classroom live \u00b7 no login \u00b7 no app · 课堂现场 · 免登录 · 免安装</div>' +
                         "<h1>Live<br>Interaction</h1>" +
                         '<p class="zh" style="font-size:15px;margin-top:-6px">现场互动</p>' +
@@ -1108,7 +1160,7 @@
                         '<div class="menu">' +
                         '<a href="' +
                         esc(base) +
-                        '?activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">12 statements \u00b7 2 minutes \u00b7 private<br>12 题 · 约 2 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
+                        '?activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">8 statements \u00b7 about 1 minute \u00b7 private<br>8 题 · 约 1 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
                         "</div>" +
                         '<div class="warn">The live race cannot be opened from this page. Scan the QR code on the slide to join.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与。</span></div>' +
                         (note
@@ -1133,14 +1185,15 @@
                         chrome("Self-check · 自查") +
                         '<div class="card" style="display:flex;flex-direction:column;gap:18px">' +
                         "<div>" +
-                        '<div class="kicker">12 statements \u00b7 about 2 minutes · 12 题 · 约 2 分钟</div>' +
-                        '<h1 style="margin-top:10px">How loud is your<br>language anxiety?</h1>' +
-                        '<p class="zh" style="font-size:15px;margin-top:8px">你的语言焦虑，有多响？</p>' +
+                        '<div class="big-emoji" aria-hidden="true">\uD83D\uDCDD</div>' +
+                        '<div class="kicker">8 statements \u00b7 about 1 minute · 8 题 · 约 1 分钟</div>' +
+                        '<h1 style="margin-top:10px">Where does English<br>hurt?</h1>' +
+                        '<p class="zh" style="font-size:15px;margin-top:8px">你的英语，卡在哪一步？</p>' +
                         "</div>" +
-                        '<p class="lead">A short adaptation of the foreign-language classroom anxiety scale. There are no right answers \u2014 answer for the version of you that sat in English class last week.<span class="zh" style="display:block;margin-top:6px">改编自外语课堂焦虑量表。没有标准答案——请按上周坐在英语课上的那个你来回答。</span></p>' +
+                        '<p class="lead">A short self-check on exam pain, study habits and attitude. There are no right answers \u2014 answer as the student you were last week.<span class="zh" style="display:block;margin-top:6px">一份关于考试痛点、学习习惯和态度的小自查。没有标准答案——按上周的你如实选。</span></p>' +
                         '<div class="stack" style="gap:8px">' +
                         '<p class="tiny">\u2460 Tap the number that fits: <b>1 = not like me at all</b>, <b>5 = very much like me</b>.<br>① 点选最符合的数字：<b>1 = 完全不像我</b>，<b>5 = 非常像我</b>。</p>' +
-                        '<p class="tiny">\u2461 Your result is analyzed on this phone. Nothing is sent anywhere.<br>② 结果只在这台手机上分析，不会发送到任何地方。</p>' +
+                        '<p class="tiny">\u2461 Your three bars and two tips are calculated on this phone. Nothing is sent anywhere.<br>② 三条柱和两条建议只在这台手机上计算，不会发送到任何地方。</p>' +
                         '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand.<br>③ 留着结果页：我们会请你举手。</p>' +
                         "</div>" +
                         '<button class="btn primary block" id="startSurvey">Start the self-check · 开始自查</button>' +
@@ -1239,27 +1292,37 @@
                 }
 
                 function renderSurveyResult() {
-                    const dim = { ca: 0, fne: 0, tp: 0 };
+                    const dim = { pain: 0, habits: 0, attitude: 0 };
                     SURVEY.forEach((item, i) => {
                         dim[item.dim] += sAnswers[i];
                     });
-                    const total = dim.ca + dim.fne + dim.tp;
+                    const answerOf = key => {
+                        const item = SURVEY.find(x => x.key === key);
+                        return sAnswers[SURVEY.indexOf(item)];
+                    };
+                    const total = dim.pain;
                     const bandKey =
-                        total <= 30 ? "low" : total <= 42 ? "moderate" : "high";
+                        total <= 6 ? "low" : total <= 11 ? "moderate" : "high";
                     const band = BANDS[bandKey];
-                    const tallest = Object.keys(dim).sort(
-                        (a, b) => dim[b] - dim[a],
+                    const painKey = ["p1", "p2", "p3"].sort(
+                        (a, b) => answerOf(b) - answerOf(a),
                     )[0];
-                    const dimName = DIMS[tallest];
+                    const habitKey = ["h1", "h2", "h3"].sort(
+                        (a, b) => answerOf(a) - answerOf(b),
+                    )[0];
+                    const pain = FOCUS[painKey];
+                    const habit = FOCUS[habitKey];
+                    const tips = [pain, habit];
+                    if (dim.attitude <= 5) tips.push(ATTITUDE_TIP);
 
                     app.innerHTML =
                         '<section class="screen">' +
                         chrome("Your profile · 你的画像") +
                         '<div class="card" style="display:flex;flex-direction:column;gap:16px">' +
-                        '<div class="kicker">Your language-anxiety profile · 你的语言焦虑画像</div>' +
+                        '<div class="kicker">Your English self-check · 你的英语自查</div>' +
                         '<div class="score-row"><span class="score">' +
                         total +
-                        '</span><span class="of">/ 60</span></div>' +
+                        '</span><span class="of">/ 15 \u00b7 exam pain · 考试痛点</span></div>' +
                         '<div class="band ' +
                         band.cls +
                         '">' +
@@ -1268,19 +1331,24 @@
                         band.zh +
                         "</div>" +
                         '<div class="bars">' +
-                        ["ca", "fne", "tp"]
+                        ["pain", "habits", "attitude"]
                             .map(key => {
-                                const pct = ((dim[key] - 4) / 16) * 100;
+                                const d = DIMS[key];
+                                const pct =
+                                    ((dim[key] - d.min) / (d.max - d.min)) *
+                                    100;
                                 return (
                                     '<div class="bar-row"><div class="bar-head"><div class="bar-name">' +
-                                    DIMS[key].en +
+                                    d.en +
                                     "<span>" +
-                                    DIMS[key].zh +
+                                    d.zh +
                                     '</span></div><div class="bar-val">' +
                                     dim[key] +
-                                    " / 20</div></div>" +
+                                    " / " +
+                                    d.max +
+                                    "</div></div>" +
                                     '<div class="bar-track"><div class="bar-fill ' +
-                                    key +
+                                    d.color +
                                     '" data-w="' +
                                     pct.toFixed(1) +
                                     '"></div></div></div>'
@@ -1288,27 +1356,32 @@
                             })
                             .join("") +
                         "</div>" +
-                        '<p class="read"><strong>Tallest bar: ' +
-                        DIMS[tallest].en +
+                        '<p class="tiny">Pain: lower is better. Habits and attitude: higher is better.<br>痛点分越低越好；习惯与态度分越高越好。</p>' +
+                        '<p class="read"><strong>Top pain: ' +
+                        pain.en +
+                        ". Weakest habit: " +
+                        habit.en +
                         ".</strong> " +
                         band.read +
-                        '<span class="zh" style="display:block;margin-top:8px">最高的一项是' +
-                        DIMS[tallest].zh.split(" \u00b7 ")[0] +
+                        '<span class="zh" style="display:block;margin-top:8px">最大痛点：' +
+                        pain.zh +
+                        "；最薄弱习惯：" +
+                        habit.zh +
                         "。" +
                         band.readZh +
                         "</span></p>" +
                         '<div class="tipbox">' +
-                        dimName.tips
+                        tips
                             .map(
                                 t =>
                                     '<div class="tip"><b>' +
-                                    t[0] +
+                                    t.tipEn[0] +
                                     " · " +
-                                    t[2] +
+                                    t.tipZh[0] +
                                     "</b>" +
-                                    t[1] +
+                                    t.tipEn[1] +
                                     '<span class="zh" style="display:block;margin-top:4px">' +
-                                    t[3] +
+                                    t.tipZh[1] +
                                     "</span></div>",
                             )
                             .join("") +
@@ -1316,25 +1389,20 @@
                         '<div class="hands">' +
                         '<div class="kicker">Raise your hand if \u2026 · 符合条件的同学请举手</div>' +
                         "<ol>" +
-                        "<li>your tallest bar is " +
-                        dimName.short +
-                        ".<br><span class='zh'>你的最高项是\u201c" +
-                        DIMS[tallest].zh.split(" \u00b7 ")[0] +
+                        "<li>your top pain is " +
+                        pain.en +
+                        ".<br><span class='zh'>你的最大痛点是\u201c" +
+                        pain.zh +
                         "\u201d。</span></li>" +
-                        "<li>your total is under 31 (the low-anxiety band).<br><span class='zh'>总分低于 31。</span></li>" +
+                        "<li>your weakest habit is " +
+                        habit.en +
+                        ".<br><span class='zh'>你最薄弱的习惯是\u201c" +
+                        habit.zh +
+                        "\u201d。</span></li>" +
                         "<li>you would read one line of your result aloud.<br><span class='zh'>愿意念出结果里的一句话。</span></li>" +
                         "</ol>" +
-                        '<p class="tiny">Your tallest dimension: <b>' +
-                        dimName.en +
-                        "</b> (" +
-                        dim[tallest] +
-                        "/20).<br>你的最高维度：<b>" +
-                        DIMS[tallest].zh.split(" \u00b7 ")[0] +
-                        "</b>（" +
-                        dim[tallest] +
-                        "/20）。</p>" +
+                        '<p class="tiny">This is a self-check for class discussion, not a diagnosis. Nothing is uploaded \u2014 the result stays on your phone.<br>这是课堂自查，不是诊断；数据不上传，只留在你的手机上。</p>' +
                         "</div>" +
-                        '<p class="tiny">Adapted for class discussion from the Foreign Language Classroom Anxiety Scale (Horwitz, Horwitz &amp; Cope, 1986). This is a reflection tool, not a diagnosis.<br>改编自外语课堂焦虑量表（Horwitz, Horwitz &amp; Cope, 1986），用于课堂讨论。它是反思工具，不是诊断。</p>' +
                         "</div>" +
                         '<div class="row"><button class="btn ghost" id="retake">Take it again · 再做一次</button><button class="btn primary" id="home">Back · 返回</button></div>' +
                         foot() +
@@ -1658,6 +1726,7 @@
                             qParam +
                             " 题 · 等待开始</div>" +
                             '<div class="wait">' +
+                            '<div class="big-emoji sm" aria-hidden="true">\u23F3</div>' +
                             "<h1>You\u2019re in.<br>Keep this screen open.</h1>" +
                             '<p class="zh" style="font-size:15px;margin-top:-6px">已进入。<br>请让此页面保持打开。</p>' +
                             '<div class="count" id="count">--:--</div>' +
@@ -1771,6 +1840,9 @@
                             " 题 · 已作答</div>" +
                             '<div class="qwrap" style="justify-content:center">' +
                             '<div class="judge">Show this screen to the judge · 把此屏出示给裁判</div>' +
+                            '<div class="big-emoji" aria-hidden="true">' +
+                            (correct ? "\u2705" : "\uD83E\uDD14") +
+                            "</div>" +
                             '<div class="big-time">' +
                             seconds +
                             "<span>s</span></div>" +
