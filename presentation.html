@@ -1755,7 +1755,7 @@
                     <p class="lead">
                         Ask about methods, exams, or the parts that still feel
                         hard.
-                        <span class="zh"
+                        <br /><span class="zh"
                             >可以问方法、考试，也可以问“我还是卡在哪里”。</span
                         >
                     </p>
@@ -2455,6 +2455,11 @@
                     toast: document.getElementById("toast"),
                 };
 
+                const raceSlideIndex = slides.findIndex(slide =>
+                    slide.contains(document.getElementById("cardRace")),
+                );
+                let raceSeen = false;
+
                 let index = Math.min(
                     TOTAL - 1,
                     Math.max(0, parseInt(location.hash.slice(1), 10) - 1) || 0,
@@ -2470,6 +2475,10 @@
                         return;
                     const old = index;
                     index = next;
+                    if (index === raceSlideIndex && !raceSeen) {
+                        raceSeen = true;
+                        resetRaceStart();
+                    }
                     slides.forEach((s, i) => {
                         s.classList.toggle("active", i === index);
                         s.classList.toggle("prev", i < index);
@@ -2654,6 +2663,8 @@
                 function raceUrl() {
                     if (!cfg.base) return "";
                     const epoch = startEpoch(cfg.start);
+                    // 未设置开始时间且未开预览：链接无效，必须先点 Apply 再生成二维码
+                    if (epoch === null && !cfg.preview) return "";
                     const startVal = epoch !== null ? String(epoch) : "";
                     const parts = ["activity=race", "q=" + cfg.q];
                     if (epoch !== null) parts.push("start=" + startVal);
@@ -2711,14 +2722,35 @@
                             whenZh +
                             "</span>";
                     } else {
-                        els.raceMeta.innerHTML =
-                            "Question " +
-                            cfg.q +
-                            " · awaiting setup" +
-                            '<span class="zh">第 ' +
-                            cfg.q +
-                            " 题 · 等待设置</span>";
+                        els.urlRace.textContent = "";
+                        if (cfg.base) {
+                            els.qrRace.innerHTML =
+                                '<div class="placeholder">Set the start time, then press <b>Apply</b> — the QR code appears here.<br />请先设置开始时间并点击 <b>Apply · 应用</b>，二维码会出现在这里。</div>';
+                            els.raceMeta.innerHTML =
+                                "Question " +
+                                cfg.q +
+                                " · set start time & Apply" +
+                                '<span class="zh">第 ' +
+                                cfg.q +
+                                " 题 · 请设置开始时间并点击应用</span>";
+                        } else {
+                            els.qrRace.innerHTML =
+                                '<div class="placeholder">Press <b>S</b> to set the interaction URL first.<br />请先按 <b>S</b> 填写互动页网址。</div>';
+                            els.raceMeta.innerHTML =
+                                "Question " +
+                                cfg.q +
+                                " · awaiting setup" +
+                                '<span class="zh">第 ' +
+                                cfg.q +
+                                " 题 · 等待设置</span>";
+                        }
                     }
+                }
+
+                function resetRaceStart() {
+                    cfg.start = "";
+                    store.set("wxf.start", "");
+                    renderQr();
                 }
 
                 function openSetup() {
@@ -2803,7 +2835,11 @@
                 els.rqQ.addEventListener("change", () => {
                     cfg.q = els.rqQ.value;
                     store.set("wxf.q", cfg.q);
-                    renderQr();
+                    resetRaceStart();
+                    els.rqAhead.focus();
+                    showToast(
+                        "Start time cleared · set seconds and press Apply · 开始时间已清空，请填秒数并点击应用",
+                    );
                 });
                 document
                     .getElementById("btnHelpClose")
@@ -2820,7 +2856,10 @@
                                 ? surveyUrl()
                                 : raceUrl();
                         if (!url) {
-                            btn.textContent = "Set up first · 请先设置";
+                            btn.textContent =
+                                btn.dataset.copy === "race" && cfg.base
+                                    ? "Set start time first · 请先设置开始时间"
+                                    : "Set up first · 请先设置";
                             return;
                         }
                         try {
