@@ -575,6 +575,10 @@
                 text-transform: uppercase;
                 color: var(--muted);
             }
+            .tip strong {
+                display: block;
+                font-weight: 600;
+            }
 
             .hands {
                 border: 1px dashed var(--ink-22);
@@ -943,22 +947,26 @@
                         en: "LOW PAIN",
                         zh: "痛点较低",
                         cls: "low",
-                        read: "Your main problems are under control. Keep the routine that got you here: daily practice, a mistake notebook, and one timed task a week.",
-                        readZh: "你的主要问题已经基本受控。把有效的做法保持住：每天练一点、有错题生词本、每周做一次限时训练。",
+                        read: "Your main problems are under control, so keep the routine: daily practice, a mistake notebook, and one timed task a week.",
+                        readZh: "你的主要问题已经基本受控，把有效的做法保持住：每天练一点、有错题生词本、每周做一次限时训练。",
+                        readHabitsWeak:
+                            "Nothing on the paper is in crisis yet, but the habits that keep it that way are missing.",
+                        readHabitsWeakZh:
+                            "卷面暂时没有大问题，但能维持住它的习惯还没建立。",
                     },
                     moderate: {
                         en: "MODERATE",
                         zh: "痛点中等",
                         cls: "moderate",
-                        read: "You can handle the paper, but one weak link still costs you marks. Pick the single biggest pain below and fix it for two weeks before adding anything else.",
-                        readZh: "卷子你能应付，但有一个薄弱环节在持续丢分。先挑下面最大的那个痛点，集中改两周，别同时铺开。",
+                        read: "You can handle the paper, but one weak link keeps costing you marks. Fix the first item below for two weeks; then decide whether to add the next one.",
+                        readZh: "卷子你能应付，但有一个薄弱环节在持续丢分。先做下面第一条，两周后再决定要不要加第二条。",
                     },
                     high: {
                         en: "HIGH PAIN",
                         zh: "痛点较高",
                         cls: "high",
-                        read: "Several parts are competing for your attention, so everything feels urgent. Do not fix all of them at once. Start with the one named below and give it a small, daily rep.",
-                        readZh: "几个板块都在抢你的注意力，所以哪哪都急。别想一次全改，从下面点名的那一项开始，每天做一点。",
+                        read: "Several parts are competing for your attention, so everything feels urgent. Do not fix them all at once: start with the first item below and give it one small rep a day.",
+                        readZh: "几个板块都在抢你的注意力，所以哪哪都急。别想一次全改，先从下面第一条开始，每天做一点。",
                     },
                 };
 
@@ -1193,7 +1201,7 @@
                         '<p class="lead">A short self-check on exam pain, study habits and attitude. There are no right answers \u2014 answer as the student you were last week.<span class="zh" style="display:block;margin-top:6px">一份关于考试痛点、学习习惯和态度的小自查。没有标准答案——按上周的你如实选。</span></p>' +
                         '<div class="stack" style="gap:8px">' +
                         '<p class="tiny">\u2460 Tap the number that fits: <b>1 = not like me at all</b>, <b>5 = very much like me</b>.<br>① 点选最符合的数字：<b>1 = 完全不像我</b>，<b>5 = 非常像我</b>。</p>' +
-                        '<p class="tiny">\u2461 Your three bars and two tips are calculated on this phone. Nothing is sent anywhere.<br>② 三条柱和两条建议只在这台手机上计算，不会发送到任何地方。</p>' +
+                        '<p class="tiny">\u2461 Your three bars and the tips below are worked out on this phone. Nothing is sent anywhere.<br>② 三条柱和建议都在这台手机上算出来，不会发送到任何地方。</p>' +
                         '<p class="tiny">\u2462 Keep your result screen: we will ask you to raise your hand.<br>③ 留着结果页：我们会请你举手。</p>' +
                         "</div>" +
                         '<button class="btn primary block" id="startSurvey">Start the self-check · 开始自查</button>' +
@@ -1304,6 +1312,8 @@
                     const bandKey =
                         total <= 6 ? "low" : total <= 11 ? "moderate" : "high";
                     const band = BANDS[bandKey];
+                    const painAnswers = ["p1", "p2", "p3"].map(answerOf);
+                    const habitAnswers = ["h1", "h2", "h3"].map(answerOf);
                     const painKey = ["p1", "p2", "p3"].sort(
                         (a, b) => answerOf(b) - answerOf(a),
                     )[0];
@@ -1312,8 +1322,42 @@
                     )[0];
                     const pain = FOCUS[painKey];
                     const habit = FOCUS[habitKey];
-                    const tips = [pain, habit];
+                    const painFocus = Math.max(...painAnswers) >= 3;
+                    const painTie = painAnswers.every(v => v === painAnswers[0]);
+                    const habitsOk = Math.min(...habitAnswers) >= 4;
+                    const habitTie = habitAnswers.every(
+                        v => v === habitAnswers[0],
+                    );
+                    const useHabitsWeakCopy = bandKey === "low" && !habitsOk;
+                    const tips = [];
+                    if (painFocus) tips.push(pain);
+                    if (!habitsOk) tips.push(habit);
                     if (dim.attitude <= 5) tips.push(ATTITUDE_TIP);
+
+                    const topEn = painFocus
+                        ? "Top pain: " +
+                          pain.en +
+                          (painTie ? " (all three tie)" : "") +
+                          "."
+                        : "No clear top pain this week.";
+                    const topZh = painFocus
+                        ? "最大痛点：" +
+                          pain.zh +
+                          (painTie ? "（三题并列）" : "") +
+                          "。"
+                        : "这周没有明显的最大痛点。";
+                    const habitEn = habitsOk
+                        ? "Habits: already on track."
+                        : habitTie
+                          ? "All three habits are weak; start with " +
+                            habit.en +
+                            "."
+                          : "Weakest habit: " + habit.en + ".";
+                    const habitZh = habitsOk
+                        ? "习惯基本到位。"
+                        : habitTie
+                          ? "三项习惯都偏弱，先从：" + habit.zh + "。"
+                          : "最薄弱习惯：" + habit.zh + "。";
 
                     app.innerHTML =
                         '<section class="screen">' +
@@ -1357,48 +1401,58 @@
                             .join("") +
                         "</div>" +
                         '<p class="tiny">Pain: lower is better. Habits and attitude: higher is better.<br>痛点分越低越好；习惯与态度分越高越好。</p>' +
-                        '<p class="read"><strong>Top pain: ' +
-                        pain.en +
-                        ". Weakest habit: " +
-                        habit.en +
-                        ".</strong> " +
-                        band.read +
-                        '<span class="zh" style="display:block;margin-top:8px">最大痛点：' +
-                        pain.zh +
-                        "；最薄弱习惯：" +
-                        habit.zh +
-                        "。" +
-                        band.readZh +
+                        '<p class="read"><strong>' +
+                        topEn +
+                        " " +
+                        habitEn +
+                        "</strong> " +
+                        (useHabitsWeakCopy ? band.readHabitsWeak : band.read) +
+                        '<span class="zh" style="display:block;margin-top:8px">' +
+                        topZh +
+                        habitZh +
+                        (useHabitsWeakCopy
+                            ? band.readHabitsWeakZh
+                            : band.readZh) +
                         "</span></p>" +
-                        '<div class="tipbox">' +
-                        tips
-                            .map(
-                                t =>
-                                    '<div class="tip"><b>' +
-                                    t.tipEn[0] +
-                                    " · " +
-                                    t.tipZh[0] +
-                                    "</b>" +
-                                    t.tipEn[1] +
-                                    '<span class="zh" style="display:block;margin-top:4px">' +
-                                    t.tipZh[1] +
-                                    "</span></div>",
-                            )
-                            .join("") +
-                        "</div>" +
+                        (tips.length
+                            ? '<div class="tipbox">' +
+                              tips
+                                  .map(
+                                      (t, i) =>
+                                          '<div class="tip"><b>' +
+                                          (i === 0
+                                              ? "Start here \u00b7 先做这条"
+                                              : "Then \u00b7 之后") +
+                                          "</b><strong>" +
+                                          t.tipEn[0] +
+                                          " \u00b7 " +
+                                          t.tipZh[0] +
+                                          "</strong>" +
+                                          t.tipEn[1] +
+                                          '<span class="zh" style="display:block;margin-top:4px">' +
+                                          t.tipZh[1] +
+                                          "</span></div>",
+                                  )
+                                  .join("") +
+                              "</div>"
+                            : "") +
                         '<div class="hands">' +
                         '<div class="kicker">Raise your hand if \u2026 · 符合条件的同学请举手</div>' +
                         "<ol>" +
-                        "<li>your top pain is " +
-                        pain.en +
-                        ".<br><span class='zh'>你的最大痛点是\u201c" +
-                        pain.zh +
-                        "\u201d。</span></li>" +
-                        "<li>your weakest habit is " +
-                        habit.en +
-                        ".<br><span class='zh'>你最薄弱的习惯是\u201c" +
-                        habit.zh +
-                        "\u201d。</span></li>" +
+                        (painFocus
+                            ? "<li>your top pain is " +
+                              pain.en +
+                              ".<br><span class='zh'>你的最大痛点是\u201c" +
+                              pain.zh +
+                              "\u201d。</span></li>"
+                            : "") +
+                        (habitsOk || habitTie
+                            ? ""
+                            : "<li>your weakest habit is " +
+                              habit.en +
+                              ".<br><span class='zh'>你最薄弱的习惯是\u201c" +
+                              habit.zh +
+                              "\u201d。</span></li>") +
                         "<li>you would read one line of your result aloud.<br><span class='zh'>愿意念出结果里的一句话。</span></li>" +
                         "</ol>" +
                         '<p class="tiny">This is a self-check for class discussion, not a diagnosis. Nothing is uploaded \u2014 the result stays on your phone.<br>这是课堂自查，不是诊断；数据不上传，只留在你的手机上。</p>' +
