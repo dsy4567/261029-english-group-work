@@ -2629,13 +2629,11 @@
                     return d.getTime();
                 }
 
+                /* 互动页参数一律走 hash（#），整页始终是同一个 URL，
+                   换活动/题号都不会产生新的缓存键。 */
                 function surveyUrl() {
                     if (!cfg.base) return "";
-                    const u =
-                        cfg.base +
-                        (cfg.base.includes("?") ? "&" : "?") +
-                        "activity=survey";
-                    return u;
+                    return cfg.base.split("#")[0] + "#activity=survey";
                 }
                 /* 抢答链接签名：FNV-1a 32 位 + 固定盐，只用于发现手改地址栏。
                    无后端，密钥就在源码里，属于威慑而非真安全。 */
@@ -2679,11 +2677,7 @@
                                 "",
                             ),
                     );
-                    return (
-                        cfg.base +
-                        (cfg.base.includes("?") ? "&" : "?") +
-                        parts.join("&")
-                    );
+                    return cfg.base.split("#")[0] + "#" + parts.join("&");
                 }
 
                 function renderQr() {

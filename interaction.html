@@ -857,8 +857,11 @@
                 "use strict";
 
                 const app = document.getElementById("app");
-                const params = new URLSearchParams(location.search);
-                const activity = (params.get("activity") || "")
+                /* 活动参数放在 hash 里（#activity=...），不带 ? 查询串，
+                   这样所有活动共用同一个资源 URL，浏览器/代理缓存才能命中。
+                   改 hash 不会重新执行脚本，路由状态由 readRoute() 随时重读。 */
+                let params = new URLSearchParams(location.hash.slice(1));
+                let activity = (params.get("activity") || "")
                     .trim()
                     .toLowerCase();
 
@@ -1168,7 +1171,7 @@
                         '<div class="menu">' +
                         '<a href="' +
                         esc(base) +
-                        '?activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">8 statements \u00b7 about 1 minute \u00b7 private<br>8 题 · 约 1 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
+                        '#activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">8 statements \u00b7 about 1 minute \u00b7 private<br>8 题 · 约 1 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
                         "</div>" +
                         '<div class="warn">The live race cannot be opened from this page. Scan the QR code on the slide to join.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与。</span></div>' +
                         (note
@@ -1476,17 +1479,28 @@
                         });
                     document
                         .getElementById("home")
-                        .addEventListener("click", () => renderLanding());
+                        .addEventListener("click", () => {
+                            location.hash = "";
+                        });
                 }
 
                 /* ------------------------------------------------------------------ race */
 
-                const qParam = clamp(
-                    parseInt(params.get("q") || "1", 10) || 1,
-                    1,
-                    3,
-                );
-                const question = RACE[qParam];
+                let qParam = 1;
+                let question = RACE[1];
+
+                function readRoute() {
+                    params = new URLSearchParams(location.hash.slice(1));
+                    activity = (params.get("activity") || "")
+                        .trim()
+                        .toLowerCase();
+                    qParam = clamp(
+                        parseInt(params.get("q") || "1", 10) || 1,
+                        1,
+                        3,
+                    );
+                    question = RACE[qParam];
+                }
                 let startAt = null;
                 let preview = false;
                 let raceTimer = null;
@@ -1675,7 +1689,7 @@
                 }
 
                 function writeAnswerParam(letter, ms) {
-                    const query = new URLSearchParams(location.search);
+                    const query = new URLSearchParams(location.hash.slice(1));
                     if (letter) query.set("answer", letter);
                     else query.delete("answer");
                     if (Number.isFinite(ms))
@@ -1696,8 +1710,8 @@
                         null,
                         "",
                         location.pathname +
-                            (qs ? "?" + qs : "") +
-                            location.hash,
+                            location.search +
+                            (qs ? "#" + qs : ""),
                     );
                 }
 
@@ -2053,6 +2067,7 @@
                 /* ------------------------------------------------------------------ boot */
 
                 function boot() {
+                    readRoute();
                     if (activity === "survey") renderSurveyIntro();
                     else if (activity === "race") startRace();
                     else if (activity === "") renderLanding();
@@ -2060,11 +2075,22 @@
                         renderLanding(
                             "Unknown activity id \u201c" +
                                 activity +
-                                "\u201d. Use ?activity=survey or ?activity=race.\n未知的活动编号“" +
+                                "\u201d. Use #activity=survey or #activity=race.\n未知的活动编号“" +
                                 activity +
-                                "”。请使用 ?activity=survey 或 ?activity=race。",
+                                "”。请使用 #activity=survey 或 #activity=race。",
                         );
                 }
+
+                /* 落地页的入口是 # 链接：只改 hash 不会重新加载，
+                   必须监听 hashchange 重新路由，否则点问卷没反应。 */
+                window.addEventListener("hashchange", () => {
+                    stopSyncLoop();
+                    clearInterval(raceTimer);
+                    clearInterval(liveTimer);
+                    raceTimer = null;
+                    liveTimer = null;
+                    boot();
+                });
 
                 boot();
             })();

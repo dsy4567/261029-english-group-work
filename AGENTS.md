@@ -22,14 +22,16 @@
    `spider-man-poster.avif` 引用同目录海报；不得用外部图片 URL、不得再增加图片。
 2. **无后端**：不允许任何服务器逻辑、存储、第三方 API、网络上传。数据只存浏览器
    localStorage（键前缀 `wxf.`，仅展示页使用）或内存。
-3. **互动路由**：互动页仅通过 `?activity=` 区分活动，已注册：
+3. **互动路由**：互动页仅通过 `#activity=` 区分活动（参数放 hash，不放 `?` 查询串——
+   所有活动共用同一个资源 URL，缓存才能命中；互动页不得读取 `location.search`；
+   展示页自身的 `#页码` 翻页是另一个文件，不冲突），已注册：
    - `survey` — 8 题自查问卷（痛点 3 / 习惯 3 / 态度 2），题目写死在前端
    - `race` — 抢答，参数 `q`（题号 1–3）、`start`（开始时间，毫秒时间戳或 HH:MM:SS）、
      `preview`（=1 立即解锁，测试用）、`answer`（已选答案字母 A–D，作答后写入用于防刷新重答）、
      `t`（作答实际用时，毫秒整数，与 `answer` 同时写入，刷新时原样显示）、
      `sign`（签名，见下）
-   抢答每题只允许作答一次：点选后将答案字母和用时用 `history.replaceState` 写进 `answer` / `t`
-   参数（不新增历史记录），刷新时若 `answer` 合法则直接渲染结果页并沿用 `t`（缺失或非法时
+   抢答每题只允许作答一次：点选后将答案字母和用时用 `history.replaceState` 写进 hash 里的
+   `answer` / `t` 参数（不新增历史记录），刷新时若 `answer` 合法则直接渲染结果页并沿用 `t`（缺失或非法时
    才按 `now()-start` 回算），不得再次出现选项；
    抢答只能从二维码进入：无参数落地页不得提供抢答入口（只保留自查问卷与扫码提示），
    `race` 缺少合法 `start` 且无 `preview=1` 时须渲染扫码提示页，不得出题；
@@ -143,7 +145,7 @@ Python venv（qrcode、opencv-python-headless）可用时做二维码验证。
      建议条数 0–3 且首条为 `Start here · 先做这条`、抢答 未来 start 倒计时→解锁→作答→结果、
      过去/preview 立即出题、未知 activity 提示、菜单链接带正确参数；
      无参数落地页无抢答入口且提示扫码、`race` 缺 start 且无 preview 时出扫码提示页；
-     验签：无 `sign`、改 `start`、改 `t`、给普通链接加 `preview=1`、`?activity=race` 裸链接
+     验签：无 `sign`、改 `start`、改 `t`、给普通链接加 `preview=1`、`#activity=race` 裸链接
      均须渲染拦截页（不出题/不出结果）；合法签名照常出题与出结果；
      答题后 `answer` / `t` 参数写入且 `history.length` 不增长、写回的 `sign` 与重算值一致、
      带 `answer`+`t` 重载直接出结果页且用时与 `t` 一致、`answer` / `t` 非法时忽略；
