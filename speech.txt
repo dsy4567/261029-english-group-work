@@ -1,7 +1,7 @@
 MY JOURNEY OF LEARNING ENGLISH —— 高中英语学习经验分享演讲稿
 副标题：From exam scores to real English literacy
 时长：约 14 分钟（正文约 11 分 + 两次互动约 3 分钟，可伸缩）
-成员：7 人（场控 1 + 主讲 1 + 念稿人 5，姓名见名单页）
+成员：7 人（场控 1 + 主讲 1 + 内容准备 5，姓名见名单页）
 配套：presentation.html（16 页）+ interaction.html（互动页）
 ================================================================
 
@@ -48,12 +48,12 @@ Before we start, let me introduce our team.
 
 Our host is 陈可欣. Our main speaker is 林致远.
 
-Our five readers are 苏晓航, 周予安, 许嘉宁, 顾言舟 and 唐若溪.
+From page six, 陈可欣 and 林致远 take turns page by page.
 
-They will cover listening, reading, cloze, grammar, writing, vocabulary and
-English outside the exam.
+苏晓航, 周予安, 许嘉宁, 顾言舟 and 唐若溪 prepared the content for every page.
 
-【提醒：姓名是占位，正式名单替换后再念；只报角色和负责页，不逐页念页码。】
+【提醒：姓名是占位，正式名单替换后再念；只报场控、主讲和讲解页，内容准备
+的成员不报页码。】
 
 【示意翻页】
 
@@ -135,7 +135,7 @@ high school: exam skills on one side, real English literacy on the other.
 
 ================================================================
 第 6 页 · 听力
-念稿人1 · 约 70 秒
+场控 · 约 70 秒
 ================================================================
 
 Listening is not about catching every word. It is about not being stopped by a
@@ -162,7 +162,7 @@ Fifteen minutes every day beats one long session before the exam.
 
 ================================================================
 第 7 页 · 阅读
-念稿人1 · 约 60 秒
+主讲 · 约 60 秒
 ================================================================
 
 Reading: accuracy first, speed second.
@@ -187,7 +187,7 @@ Review is what turns quantity into quality.
 
 ================================================================
 第 8 页 · 完形
-念稿人2 · 约 70 秒
+场控 · 约 70 秒
 ================================================================
 
 Cloze: two passes, one story.
@@ -210,7 +210,7 @@ Second pass, fill each blank with grammar and context, not with a gut feeling.
 
 ================================================================
 第 9 页 · 语法填空
-念稿人3 · 约 70 秒
+主讲 · 约 70 秒
 ================================================================
 
 Grammar fill-in looks technical, but it starts with one question: what part of
@@ -235,7 +235,7 @@ first. Then decide the form: plural, tense, voice, comparison or non-finite.
 
 ================================================================
 第 10 页 · 写作
-念稿人4 · 约 60 秒
+场控 · 约 60 秒
 ================================================================
 
 Writing: outline first, direction first.
@@ -256,7 +256,7 @@ setting, then adapt them to the prompt.
 
 ================================================================
 第 11 页 · 背词法
-念稿人4 · 约 60 秒
+主讲 · 约 60 秒
 ================================================================
 
 Vocabulary: do not start from “abandon” every time.
@@ -282,7 +282,7 @@ learned alone.
 
 ================================================================
 第 12 页 · 英语素养
-念稿人5 · 约 60 秒
+场控 · 约 60 秒
 ================================================================
 
 English outside the exam.
@@ -392,7 +392,7 @@ Thank you.
 
 ================================================================
 第 16 页 · 致谢与问答
-主讲 · Q&A 环节
+场控 · Q&A 环节
 ================================================================
 
 That is our presentation. Thank you for listening.
