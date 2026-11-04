@@ -948,28 +948,28 @@
                 const BANDS = {
                     low: {
                         en: "LOW PAIN",
-                        zh: "痛点较低",
+                        zh: "问题较少",
                         cls: "low",
                         read: "Your main problems are under control, so keep the routine: daily practice, a mistake notebook, and one timed task a week.",
-                        readZh: "你的主要问题已经基本受控，把有效的做法保持住：每天练一点、有错题生词本、每周做一次限时训练。",
+                        readZh: "主要问题已经基本控制住了，继续保持：每天练一点，记错题本，每周做一次限时训练。",
                         readHabitsWeak:
                             "Nothing on the paper is in crisis yet, but the habits that keep it that way are missing.",
                         readHabitsWeakZh:
-                            "卷面暂时没有大问题，但能维持住它的习惯还没建立。",
+                            "卷面暂时没出大问题，但还没养成能保持这种状态的习惯。",
                     },
                     moderate: {
                         en: "MODERATE",
-                        zh: "痛点中等",
+                        zh: "问题中等",
                         cls: "moderate",
                         read: "You can handle the paper, but one weak link keeps costing you marks. Fix the first item below for two weeks; then decide whether to add the next one.",
-                        readZh: "卷子你能应付，但有一个薄弱环节在持续丢分。先做下面第一条，两周后再决定要不要加第二条。",
+                        readZh: "卷子你应付得来，但总有一个薄弱环节在丢分。先集中做下面第一条，坚持两周，再决定要不要加第二条。",
                     },
                     high: {
                         en: "HIGH PAIN",
-                        zh: "痛点较高",
+                        zh: "问题较多",
                         cls: "high",
                         read: "Several parts are competing for your attention, so everything feels urgent. Do not fix them all at once: start with the first item below and give it one small rep a day.",
-                        readZh: "几个板块都在抢你的注意力，所以哪哪都急。别想一次全改，先从下面第一条开始，每天做一点。",
+                        readZh: "几个板块都在抢注意力，感觉哪儿都急。别想一次全改：先做下面第一条，每天做一点。",
                     },
                 };
 
@@ -982,8 +982,8 @@
                             "Replay one set, read the transcript, mark blurred words and linking, then shadow it for 15 minutes. Do this daily for two weeks.",
                         ],
                         tipZh: [
-                            "精听文本",
-                            "重放一套题，对照文本标出模糊词和连读弱读，再跟读 15 分钟。连续做两周。",
+                            "精听原文",
+                            "重放一套听力题，对照原文，标出听不清的词和连读处，再做15分钟影子跟读。每天坚持，连续两周。",
                         ],
                     },
                     p2: {
@@ -995,7 +995,7 @@
                         ],
                         tipZh: [
                             "先准后快",
-                            "先不计时做一篇，把每个错题回文定位。做对稳定了，再加时限。",
+                            "先不计时做一篇，每道错题都回到原文找到依据；正确率稳定后，再限时。",
                         ],
                     },
                     p3: {
@@ -1006,8 +1006,8 @@
                             "Drill five word-form changes a day, read the cloze story before filling, and write a three-line outline before any writing task.",
                         ],
                         tipZh: [
-                            "变形、情节加提纲",
-                            "每天练五个词形变化；做完形先通读情节；每次写作前写三行提纲：开头、中间、结尾。",
+                            "词形、情节、提纲",
+                            "每天练五个词形变化；做完形先通读全文、抓住情节；每次写作前先写三行提纲：开头、中间、结尾。",
                         ],
                     },
                     h1: {
@@ -1019,7 +1019,7 @@
                         ],
                         tipZh: [
                             "建错题生词本",
-                            "把每份卷子的生词收进来，200 个一组，连续循环 7 天，第 8 天复盘。",
+                            "把每份卷子里的生词收集起来，每200个一组，连续复习7天，第8天复盘。",
                         ],
                     },
                     h2: {
@@ -1031,7 +1031,7 @@
                         ],
                         tipZh: [
                             "每周限时一次",
-                            "给一篇阅读五分钟，时间到就停，再复盘是哪一步拖慢了你。",
+                            "一篇阅读限时五分钟，时间一到就停，再复盘是哪一步拖慢了你。",
                         ],
                     },
                     h3: {
@@ -1043,7 +1043,7 @@
                         ],
                         tipZh: [
                             "三行提纲",
-                            "动笔前写下开头、中间、结尾。讲评后只重写最弱的那一段。",
+                            "动笔前把开头、中间、结尾写在纸上。讲评后只重写最弱的一段。",
                         ],
                     },
                 };
@@ -1055,7 +1055,7 @@
                     ],
                     tipZh: [
                         "每天五分钟",
-                        "挑一首真的喜欢的歌或一段短片，听五分钟。英语不必天天跟你打仗。",
+                        "挑一首你真正喜欢的歌，或一段短片，听五分钟。英语不必天天跟你较劲。",
                     ],
                 };
 
@@ -1072,14 +1072,14 @@
                         optionsZh: [
                             "先通读全文，抓住故事",
                             "马上填第一个空",
-                            "先数 ABCD 比例",
+                            "先数 A/B/C/D 的比例",
                             "把每句都翻成中文",
                         ],
                         correct: 0,
                         explain:
                             "First pass gets the plot and the feeling; the second pass handles grammar and detail. The ratio is a check at the end, not a starting point.",
                         explainZh:
-                            "第一遍抓情节和情绪，第二遍再抠语法和细节。比例是做完后的检查，不是起手式。",
+                            "第一遍抓情节和情绪，第二遍再抠语法和细节。比例是做完后的检查，不是做题的起点。",
                     },
                     2: {
                         en: "In continuation writing, what is the first step?",
@@ -1094,13 +1094,13 @@
                             "直接开写，省时间",
                             "先定故事方向",
                             "整篇套模板",
-                            "先数字数",
+                            "先数一下字数",
                         ],
                         correct: 1,
                         explain:
                             "Direction first, or the story drifts. Then 150 words in two paragraphs, without going over the limit.",
                         explainZh:
-                            "先定方向，不然容易跑偏。然后 150 词写两段，别超字数。",
+                            "先定方向，否则容易跑偏；再用150词写两段，别超字数。",
                     },
                     3: {
                         en: "In grammar fill-in, what do you decide first?",
@@ -1114,14 +1114,14 @@
                         optionsZh: [
                             "中文意思",
                             "词性",
-                            "单词字母数",
+                            "单词有几个字母",
                             "有没有冠词",
                         ],
                         correct: 1,
                         explain:
                             "Part of speech first, then the form: tense, voice, plural or comparison. Articles are frequent, but “usually one” is a rule of thumb, not a law.",
                         explainZh:
-                            "先判词性，再想变形：时态、语态、单复数或比较级。冠词常考，但“一般一个”是经验，不是铁律。",
+                            "先判断词性，再想变形：时态、语态、单复数或比较级。冠词常考，但“一般一个”是经验，不是铁律。",
                     },
                 };
 
@@ -1315,52 +1315,59 @@
                     const bandKey =
                         total <= 6 ? "low" : total <= 11 ? "moderate" : "high";
                     const band = BANDS[bandKey];
-                    const painAnswers = ["p1", "p2", "p3"].map(answerOf);
-                    const habitAnswers = ["h1", "h2", "h3"].map(answerOf);
-                    const painKey = ["p1", "p2", "p3"].sort(
-                        (a, b) => answerOf(b) - answerOf(a),
-                    )[0];
-                    const habitKey = ["h1", "h2", "h3"].sort(
-                        (a, b) => answerOf(a) - answerOf(b),
-                    )[0];
-                    const pain = FOCUS[painKey];
-                    const habit = FOCUS[habitKey];
+                    const painKeys = ["p1", "p2", "p3"];
+                    const habitKeys = ["h1", "h2", "h3"];
+                    const painAnswers = painKeys.map(answerOf);
+                    const habitAnswers = habitKeys.map(answerOf);
                     const painFocus = Math.max(...painAnswers) >= 3;
-                    const painTie = painAnswers.every(v => v === painAnswers[0]);
                     const habitsOk = Math.min(...habitAnswers) >= 4;
-                    const habitTie = habitAnswers.every(
-                        v => v === habitAnswers[0],
-                    );
+                    const painItems = painFocus
+                        ? painKeys
+                              .filter(
+                                  k => answerOf(k) === Math.max(...painAnswers),
+                              )
+                              .map(k => FOCUS[k])
+                        : [];
+                    const habitItems = habitsOk
+                        ? []
+                        : habitKeys
+                              .filter(
+                                  k =>
+                                      answerOf(k) === Math.min(...habitAnswers),
+                              )
+                              .map(k => FOCUS[k]);
                     const useHabitsWeakCopy = bandKey === "low" && !habitsOk;
                     const tips = [];
-                    if (painFocus) tips.push(pain);
-                    if (!habitsOk) tips.push(habit);
+                    if (painFocus) tips.push(painItems[0]);
+                    if (!habitsOk) tips.push(habitItems[0]);
                     if (dim.attitude <= 5) tips.push(ATTITUDE_TIP);
 
                     const topEn = painFocus
-                        ? "Top pain: " +
-                          pain.en +
-                          (painTie ? " (all three tie)" : "") +
+                        ? (painItems.length > 1
+                              ? "Top pains: "
+                              : "Top pain: ") +
+                          painItems.map(x => x.en).join(", ") +
                           "."
                         : "No clear top pain this week.";
                     const topZh = painFocus
                         ? "最大痛点：" +
-                          pain.zh +
-                          (painTie ? "（三题并列）" : "") +
+                          painItems.map(x => x.zh).join("、") +
                           "。"
                         : "这周没有明显的最大痛点。";
                     const habitEn = habitsOk
                         ? "Habits: already on track."
-                        : habitTie
-                          ? "All three habits are weak; start with " +
-                            habit.en +
+                        : habitItems.length > 1
+                          ? "Weak habits: " +
+                            habitItems.map(x => x.en).join(", ") +
                             "."
-                          : "Weakest habit: " + habit.en + ".";
+                          : "Weakest habit: " + habitItems[0].en + ".";
                     const habitZh = habitsOk
                         ? "习惯基本到位。"
-                        : habitTie
-                          ? "三项习惯都偏弱，先从：" + habit.zh + "。"
-                          : "最薄弱习惯：" + habit.zh + "。";
+                        : habitItems.length > 1
+                          ? "偏弱习惯：" +
+                            habitItems.map(x => x.zh).join("、") +
+                            "。"
+                          : "最薄弱习惯：" + habitItems[0].zh + "。";
 
                     app.innerHTML =
                         '<section class="screen">' +
@@ -1443,19 +1450,32 @@
                         '<div class="kicker">Raise your hand if \u2026 · 符合条件的同学请举手</div>' +
                         "<ol>" +
                         (painFocus
-                            ? "<li>your top pain is " +
-                              pain.en +
+                            ? "<li>" +
+                              (painItems.length > 1
+                                  ? "your top pains are "
+                                  : "your top pain is ") +
+                              painItems.map(x => x.en).join(", ") +
                               ".<br><span class='zh'>你的最大痛点是\u201c" +
-                              pain.zh +
+                              painItems
+                                  .map(x => x.zh)
+                                  .join("\u201d\u3001\u201c") +
                               "\u201d。</span></li>"
                             : "") +
-                        (habitsOk || habitTie
+                        (habitsOk
                             ? ""
-                            : "<li>your weakest habit is " +
-                              habit.en +
-                              ".<br><span class='zh'>你最薄弱的习惯是\u201c" +
-                              habit.zh +
-                              "\u201d。</span></li>") +
+                            : habitItems.length > 1
+                              ? "<li>your weak habits are " +
+                                habitItems.map(x => x.en).join(", ") +
+                                ".<br><span class='zh'>你偏弱的习惯是\u201c" +
+                                habitItems
+                                    .map(x => x.zh)
+                                    .join("\u201d\u3001\u201c") +
+                                "\u201d。</span></li>"
+                              : "<li>your weakest habit is " +
+                                habitItems[0].en +
+                                ".<br><span class='zh'>你最薄弱的习惯是\u201c" +
+                                habitItems[0].zh +
+                                "\u201d。</span></li>") +
                         "<li>you would read one line of your result aloud.<br><span class='zh'>愿意念出结果里的一句话。</span></li>" +
                         "</ol>" +
                         '<p class="tiny">This is a self-check for class discussion, not a diagnosis. Nothing is uploaded \u2014 the result stays on your phone.<br>这是课堂自查，不是诊断；数据不上传，只留在你的手机上。</p>' +
