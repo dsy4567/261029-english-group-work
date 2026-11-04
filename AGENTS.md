@@ -12,7 +12,7 @@
 
 - `presentation.html` — 仿 PPT 展示页（16 页，投屏用）
 - `interaction.html` — 互动页（学生扫码，全交互合并于此）
-- `speech.txt` — 演讲稿（纯文本，禁止 Markdown 格式）
+- `speech.txt` — 演讲稿（纯文本，禁止 Markdown 格式；英文段落附“译：”中文）
 - `spider-man-poster.avif` — 第 12 页素养页的本地海报，必须与展示页同目录
 
 ## 硬性约束（违反即错误）
@@ -83,7 +83,8 @@
      仍须支持 `prefers-reduced-motion`。
    - 现状：两页均未使用 `color-mix()`；展示页仅用 `vh`，互动页已做 `vh`+`dvh` 双写。
      放宽只是解除限制，不要求主动改写现有样式。
-8. **讲稿是纯文本**：speech.txt 不得出现 Markdown 语法（#、**、表格等）。
+8. **讲稿是纯文本**：speech.txt 不得出现 Markdown 语法（#、**、表格等）；
+   英文段落后的中文译文以“译：”开头，同样用纯文本。
 9. **离线优先**：展示页在 `file://` 下也必须能完整翻页；二维码在托管后才可用。
 
 ## 结构与一致性

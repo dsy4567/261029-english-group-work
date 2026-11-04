@@ -1568,17 +1568,16 @@
                     <div class="qr-grid">
                         <div class="qr-card" id="cardRace">
                             <div class="tag">
-                                Scan early · keep the screen open · 早点扫码 ·
-                                别关页面
+                                Scan early · keep this page open · 早点扫码 ·
+                                页面别关
                             </div>
                             <div class="qr-box" id="qrRace">
                                 <div class="placeholder">
                                     Press <b>S</b> to set the interaction URL,
-                                    then use the controls below to start the
-                                    race — this QR code regenerates.<br />按键盘
-                                    <b>S</b>
-                                    填互动页网址，再用下方控件设开始时间，
-                                    二维码会重新生成。
+                                    then use the controls below to set the
+                                    start — the QR code updates.<br />按
+                                    <b>S</b> 填互动页网址，再用下面的控件设
+                                    开始时间，二维码会跟着更新。
                                 </div>
                             </div>
                             <div class="race-controls">
@@ -1620,7 +1619,8 @@
                                             writing?
                                         </option>
                                         <option value="3">
-                                            3 — First call in grammar fill-in?
+                                            3 — First thing to decide in
+                                            grammar fill-in?
                                         </option>
                                     </select>
                                 </div>
@@ -1630,9 +1630,9 @@
                                 <span class="zh">第 1 题 · 开始时间 —:—:—</span>
                             </h3>
                             <p>
-                                Fastest correct answer wins · your phone shows
-                                your time<br />最快答对者获胜 ·
-                                手机上显示你的用时
+                                Fastest correct answer wins · your time shows
+                                on your phone<br />最快答对者获胜 ·
+                                用时显示在手机上
                             </p>
                             <div class="qr-url" id="urlRace"></div>
                             <button
@@ -1649,18 +1649,18 @@
                                 <div>
                                     <b>1</b
                                     ><span
-                                        >Scan <b>now</b> — the question is
-                                        locked until start time.<span class="zh"
-                                            >现在就扫码——题目在开始时间前处于锁定状态。</span
+                                        >Scan <b>now</b> — the question stays
+                                        locked until the start.<span class="zh"
+                                            >现在就扫码，题目锁着，到点才开。</span
                                         ></span
                                     >
                                 </div>
                                 <div>
                                     <b>2</b
                                     ><span
-                                        >At start time your screen unlocks. Tap
+                                        >Your screen unlocks at the start. Tap
                                         once — one shot.<span class="zh"
-                                            >到开始时间自动解锁。只能点一次。</span
+                                            >到点自动解锁。只能点一次。</span
                                         ></span
                                     >
                                 </div>
@@ -1669,17 +1669,16 @@
                                     ><span
                                         >Correct + fastest = winner. Show your
                                         screen to the host.<span class="zh"
-                                            >答对且最快 =
-                                            获胜。把屏幕给场控看。</span
+                                            >答对且最快即获胜。把屏幕给场控看。</span
                                         ></span
                                     >
                                 </div>
                                 <div>
                                     <b>4</b
                                     ><span
-                                        >Ranking is done live — no cheating,
-                                        don’t refresh.<span class="zh"
-                                            >名次现场统计——不要作弊，不要刷新。</span
+                                        >Ranking happens live — no cheating, no
+                                        refreshing.<span class="zh"
+                                            >名次现场排，别作弊，也别刷新。</span
                                         ></span
                                     >
                                 </div>
@@ -2710,12 +2709,12 @@
                             els.urlRace.textContent = rUrl;
                             const epoch = startEpoch(cfg.start);
                             const when = cfg.preview
-                                ? "PREVIEW (unlocks now)"
+                                ? "PREVIEW (opens now)"
                                 : epoch !== null
                                   ? "starts at " + cfg.start
                                   : "no start time set!";
                             const whenZh = cfg.preview
-                                ? "预览（立即解锁）"
+                                ? "预览（立刻出题）"
                                 : epoch !== null
                                   ? cfg.start + " 开始"
                                   : "未设置开始时间！";

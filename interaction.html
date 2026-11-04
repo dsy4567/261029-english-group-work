@@ -1064,7 +1064,7 @@
                         en: "In cloze, what should you do first?",
                         zh: "做完形，第一步应该做什么？",
                         options: [
-                            "Read the whole passage for the story",
+                            "Read the whole passage to get the story",
                             "Fill the first blank immediately",
                             "Count the A/B/C/D ratio",
                             "Translate every sentence into Chinese",
@@ -1077,9 +1077,9 @@
                         ],
                         correct: 0,
                         explain:
-                            "First pass gets the plot and the feeling; the second pass handles grammar and detail. The ratio is a check at the end, not a starting point.",
+                            "The first pass captures the plot and mood; the second pass focuses on grammar and details. Checking the answer distribution is a final check, not a starting point. For cloze tests, counting the option distribution can give you a rough idea whether any answer is obviously off.",
                         explainZh:
-                            "第一遍抓情节和情绪，第二遍再抠语法和细节。比例是做完后的检查，不是做题的起点。",
+                            "第一遍抓情节和情绪，第二遍再处理语法和细节。统计选项分布是做完后的检查，不是做题的起点。完形填空可以通过统计选项比例，大致判断有没有明显离谱的错误。",
                     },
                     2: {
                         en: "In continuation writing, what is the first step?",
@@ -1098,9 +1098,9 @@
                         ],
                         correct: 1,
                         explain:
-                            "Direction first, or the story drifts. Then 150 words in two paragraphs, without going over the limit.",
+                            "Set the direction first; otherwise, the story will drift. Then write about 150 words in two paragraphs, and stay within the word limit.",
                         explainZh:
-                            "先定方向，否则容易跑偏；再用150词写两段，别超字数。",
+                            "先定好续写方向，否则情节容易跑偏；再分两段写约150词，并控制在规定词数内。",
                     },
                     3: {
                         en: "In grammar fill-in, what do you decide first?",
@@ -1109,7 +1109,7 @@
                             "The Chinese meaning",
                             "The part of speech",
                             "The number of letters",
-                            "Whether there is an article",
+                            "Whether to use an article",
                         ],
                         optionsZh: [
                             "中文意思",
@@ -1119,9 +1119,9 @@
                         ],
                         correct: 1,
                         explain:
-                            "Part of speech first, then the form: tense, voice, plural or comparison. Articles are frequent, but “usually one” is a rule of thumb, not a law.",
+                            "First identify the part of speech, then determine the form: tense, voice, singular/plural, or comparative. Articles are a frequent test point, but “usually only one article per word-bank cloze” is a rule of thumb, not a hard-and-fast rule.",
                         explainZh:
-                            "先判断词性，再想变形：时态、语态、单复数或比较级。冠词常考，但“一般一个”是经验，不是铁律。",
+                            "先判断词性，再确定形式：时态、语态、单复数或比较级。冠词是高频考点，但“一道选词填空通常只考一个冠词”只是经验之谈，并非硬性规则。",
                     },
                 };
 
@@ -1173,7 +1173,7 @@
                         esc(base) +
                         '#activity=survey"><div class="meta"><div class="t">Self-check · 自查问卷</div><div class="s">8 statements \u00b7 about 1 minute \u00b7 private<br>8 题 · 约 1 分钟 · 仅自己可见</div></div><div class="go">\u2192</div></a>' +
                         "</div>" +
-                        '<div class="warn">The live race cannot be opened from this page. Scan the QR code on the slide to join.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与。</span></div>' +
+                        '<div class="warn">The live race doesn\u2019t start here. Scan the QR code on the slide to join.<span class="zh" style="display:block;margin-top:4px">现场抢答不能从这里进入。请扫描幻灯片上的二维码参与。</span></div>' +
                         (note
                             ? '<div class="warn">' +
                               esc(note).replace(/\n/g, "<br>") +
@@ -1815,16 +1815,16 @@
                             " 题 · 等待开始</div>" +
                             '<div class="wait">' +
                             '<div class="big-emoji sm" aria-hidden="true">\u23F3</div>' +
-                            "<h1>You\u2019re in.<br>Keep this screen open.</h1>" +
-                            '<p class="zh" style="font-size:15px;margin-top:-6px">已进入。<br>请让此页面保持打开。</p>' +
+                            "<h1>You\u2019re in.<br>Keep this page open.</h1>" +
+                            '<p class="zh" style="font-size:15px;margin-top:-6px">已进入，<br>请勿关闭此页面。</p>' +
                             '<div class="count" id="count">--:--</div>' +
-                            '<div class="wait-sub">Question unlocks automatically at <b>' +
+                            '<div class="wait-sub">The question unlocks on its own at <b>' +
                             fmtClock(startAt) +
-                            '</b>. Do not refresh.<span class="zh" style="display:block;margin-top:4px">题目将在 <b>' +
+                            '</b>. Don\u2019t refresh.<span class="zh" style="display:block;margin-top:4px"><b>' +
                             fmtClock(startAt) +
-                            "</b> 自动解锁，请不要刷新。</span></div>" +
+                            "</b> 时自动出题，请不要刷新。</span></div>" +
                             '<div class="sync" id="sync">Syncing clock\u2026 · 正在校准时钟…</div>' +
-                            '<div class="tipbox" style="margin-top:4px"><div class="tip"><b>Scoring · 计分</b>Fastest correct answer wins. Your screen will show your answer time for the judge.<span class="zh" style="display:block;margin-top:4px">最快答对者获胜。你的屏幕会显示答题用时，供裁判查看。</span></div></div>' +
+                            '<div class="tipbox" style="margin-top:4px"><div class="tip"><b>Scoring · 计分</b>Fastest correct answer wins. Your time stays on screen for the judge.<span class="zh" style="display:block;margin-top:4px">最快答对者获胜。用时留在屏幕上，给裁判看。</span></div></div>' +
                             "</div>",
                         "Round " + qParam + " · 第 " + qParam + " 题",
                     );
@@ -1885,7 +1885,7 @@
                                 )
                                 .join("") +
                             "</div>" +
-                            '<p class="rank-note" style="margin-top:auto">Tap once. Your time is measured from the official start, not from when you opened the page.<br>只能点一次。用时从官方开始时间算起，而不是从你打开页面算起。</p>' +
+                            '<p class="rank-note" style="margin-top:auto">One tap only. Your time counts from the official start, not from when you opened this page.<br>只能点一次。用时从正式开始时间算，不是从你打开页面时算。</p>' +
                             "</div>",
                         "Round " + qParam + " · 第 " + qParam + " 题",
                     );
@@ -1927,7 +1927,7 @@
                             qParam +
                             " 题 · 已作答</div>" +
                             '<div class="qwrap" style="justify-content:center">' +
-                            '<div class="judge">Show this screen to the judge · 把此屏出示给裁判</div>' +
+                            '<div class="judge">Show this screen to the judge · 把这屏给裁判看</div>' +
                             '<div class="big-emoji" aria-hidden="true">' +
                             (correct ? "\u2705" : "\uD83E\uDD14") +
                             "</div>" +
@@ -1957,10 +1957,10 @@
                             '<span class="zh" style="display:block;margin-top:6px">' +
                             esc(question.explainZh) +
                             "</span></p>" +
-                            '<div class="tipbox"><div class="tip"><b>For the judge · 裁判请看</b>Time is measured from the official start time. Fastest correct answer wins; incorrect answers do not qualify.<span class="zh" style="display:block;margin-top:4px">用时从官方开始时间算起。最快答对者获胜；答错不参与排名。</span></div></div>' +
+                            '<div class="tipbox"><div class="tip"><b>For the judge · 裁判看这里</b>Time counts from the official start. Fastest correct answer wins; wrong answers don\u2019t rank.<span class="zh" style="display:block;margin-top:4px">用时从正式开始时间算起。最快答对者获胜，答错不进排名。</span></div></div>' +
                             (preview
                                 ? '<button class="btn ghost block" id="again">Test again · 再测一次</button>'
-                                : '<p class="rank-note">Keep this screen visible, do not refresh the page.<br>保持此屏可见，不要刷新页面。</p>') +
+                                : '<p class="rank-note">Leave this screen open and don\u2019t refresh.<br>这屏别关，也别刷新。</p>') +
                             "</div>",
                         "Round " + qParam + " · 第 " + qParam + " 题",
                     );
@@ -1971,7 +1971,7 @@
                                 writeAnswerParam(null);
                                 startAt = now();
                                 renderRaceQuestion(
-                                    "Test mode \u00b7 no start time in this link · 测试模式 · 此链接没有开始时间",
+                                    "Test mode \u00b7 this link has no start time · 测试模式 · 这条链接没设开始时间",
                                 );
                             });
                     }
@@ -1984,8 +1984,8 @@
                         chrome("Live race · 现场抢答") +
                         '<div class="wait">' +
                         "<h1>Scan the QR code<br>on the slide.</h1>" +
-                        '<p class="zh" style="font-size:15px;margin-top:-6px">请扫描幻灯片上的二维码进入抢答。</p>' +
-                        '<p class="wait-sub">The race link carries the round number and the official start time, so it can only be opened from the QR code shown in class.<span class="zh" style="display:block;margin-top:4px">抢答链接里带有题号和官方开始时间，因此只能通过课堂上展示的二维码进入。</span></p>' +
+                        '<p class="zh" style="font-size:15px;margin-top:-6px">扫幻灯片上的二维码，进抢答。</p>' +
+                        '<p class="wait-sub">This link carries the round and the official start time, so it only works from the QR code shown in class.<span class="zh" style="display:block;margin-top:4px">这条链接带题号和正式开始时间，只能从课堂上的二维码进。</span></p>' +
                         (reason
                             ? '<div class="warn">' + esc(reason) + "</div>"
                             : "") +
@@ -2010,8 +2010,8 @@
                         "这条链接不是我发的那条。",
                     ],
                     [
-                        "Fastest fingers, or fastest editor?",
-                        "手快，还是编辑器快？",
+                        "Fastest fingers, or fastest at editing the link?",
+                        "比手快，还是比改链接快？",
                     ],
                 ];
 
@@ -2029,7 +2029,7 @@
                         '<p class="zh" style="font-size:15px;margin-top:-6px">' +
                         esc(pick[1]) +
                         "</p>" +
-                        '<p class="wait-sub">This link has been changed, so the race will not open here. Scan the QR code on the slide again.<span class="zh" style="display:block;margin-top:4px">这条链接的参数被改过了，抢答不会在这里打开。请重新扫描幻灯片上的二维码。</span></p>' +
+                        '<p class="wait-sub">This link has been edited, so the race won\u2019t open here. Scan the QR code on the slide again.<span class="zh" style="display:block;margin-top:4px">这条链接被改过了，抢答不会在这里打开。重新扫一下幻灯片上的二维码。</span></p>' +
                         "</div>" +
                         foot() +
                         "</section>";
@@ -2075,8 +2075,8 @@
                     if (preview) {
                         renderRaceQuestion(
                             rawStart
-                                ? "Test mode \u00b7 start time not recognised · 测试模式 · 无法识别开始时间"
-                                : "Test mode \u00b7 no start time in this link · 测试模式 · 此链接没有开始时间",
+                                ? "Test mode \u00b7 start time not recognised · 测试模式 · 开始时间格式不对"
+                                : "Test mode \u00b7 this link has no start time · 测试模式 · 这条链接没设开始时间",
                         );
                     } else {
                         // 先出等待页：设备时钟可能偏快，"是否已开始"交给 tick 在校准后判断

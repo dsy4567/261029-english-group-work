@@ -11,7 +11,7 @@
 |---|---|---|
 | `presentation.html` | 展示用幻灯片，16 页，键盘/点击/滑动翻页，内嵌备注、计时器、二维码生成器 | 课堂投屏 |
 | `interaction.html` | 互动页，全部互动合并于此，靠 `#activity=` 区分 | 学生手机扫码 |
-| `speech.txt` | 演讲稿（纯文本非 Markdown），逐页对应幻灯片，7 人分角色 | 演讲者背稿 |
+| `speech.txt` | 演讲稿（纯文本非 Markdown），英文段落附“译：”中文，逐页对应幻灯片，7 人分角色 | 演讲者背稿 |
 | `spider-man-poster.avif` | 第 12 页素养页海报，必须与 `presentation.html` 同目录 | 课堂投屏 |
 | `fonts/` | 可选的本机字体（Inter + Noto Sans SC），供 XP 投屏机手动安装；HTML 不引用 | 场控 |
 | `README.md` | 人看的使用说明 | 人 |
