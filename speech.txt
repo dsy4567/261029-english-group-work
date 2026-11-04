@@ -1,5 +1,5 @@
 MY JOURNEY OF LEARNING ENGLISH —— 高中英语学习经验分享演讲稿
-副标题：From exam scores to real English literacy
+副标题：From exam scores to real English literacy（从考试分数到真正的英语素养）
 时长：约 14 分钟（正文约 11 分 + 两次互动约 3 分钟，可伸缩）
 成员：7 人（场控 1 + 主讲 1 + 内容准备 5，姓名见名单页）
 配套：presentation.html（16 页）+ interaction.html（互动页）
@@ -8,7 +8,9 @@ MY JOURNEY OF LEARNING ENGLISH —— 高中英语学习经验分享演讲稿
 
 【总体说明】
 - 逐页对应 presentation.html 的 16 页幻灯片，页码一致。
-- 英文为主体；复杂概念、方法细节、互动口令用中文补充。
+- 英文为主体；每个英文段落后附“译：”中文翻译，按口语习惯意译，
+  供全中文讲或现场口译参考，正常英文场次不念。
+- 复杂概念、方法细节、互动口令用中文补充。
 - 【方括号】内是舞台提示，不要念出来。
 - 每段开头标注：页码 / 角色 / 建议用时。
 - 姓名是占位，替换名单页后，讲稿里的名字也要同步替换。
@@ -23,13 +25,22 @@ MY JOURNEY OF LEARNING ENGLISH —— 高中英语学习经验分享演讲稿
 
 Good morning, dear teachers and classmates.
 
+译：各位老师、各位同学，早上好。
+
 It is my great honor to come back to our high school and share my English
 learning journey with you.
 
+译：很荣幸能回到母校，和大家分享我的英语学习经历。
+
 English is not only a required subject. It is a window to the world.
+
+译：英语不只是一门必修课，它还是一扇看世界的窗。
 
 Today I will talk about three things: the problems I had, the methods that
 actually helped me, and how English can become more than an exam.
+
+译：今天我想讲三件事：我遇到过哪些问题，哪些方法真的帮到了我，
+以及怎么让英语不止于考试。
 
 【停一拍】
 
@@ -46,11 +57,19 @@ actually helped me, and how English can become more than an exam.
 
 Before we start, let me introduce our team.
 
+译：开始之前，先介绍一下我们的小组。
+
 Our host is 陈可欣. Our main speaker is 林致远.
+
+译：场控是陈可欣，主讲是林致远。
 
 From page six, 陈可欣 and 林致远 take turns page by page.
 
+译：从第六页开始，陈可欣和林致远逐页交替来讲。
+
 苏晓航, 周予安, 许嘉宁, 顾言舟 and 唐若溪 prepared the content for every page.
+
+译：苏晓航、周予安、许嘉宁、顾言舟和唐若溪，负责每一页的内容准备。
 
 【提醒：姓名是占位，正式名单替换后再念；只报场控、主讲和讲解页，内容准备
 的成员不报页码。】
@@ -65,8 +84,13 @@ From page six, 陈可欣 and 林致远 take turns page by page.
 
 First, a one-minute self-check.
 
+译：先来一个一分钟的自查。
+
 Scan the QR code on the screen. Eight statements. No right answers. Nothing is
 uploaded. The result stays on your phone.
+
+译：扫描屏幕上的二维码。八道题，没有标准答案，也不上传任何数据，
+结果只留在你的手机上。
 
 【中文口令，放慢】
 扫码，点“开始自查”。八道题，一分钟。1 表示完全不像我，5 表示非常像我。
@@ -75,11 +99,17 @@ uploaded. The result stays on your phone.
 While you answer, think about one question: which moment in an English exam
 makes you panic?
 
+译：答题的时候，请想一个问题：英语考试里，哪个瞬间最让你发慌？
+
 Listening? Reading? Cloze? Grammar? Writing?
+
+译：听力？阅读？完形？语法？还是写作？
 
 【停两秒，环视教室】
 
 Keep that moment in mind. We will come back to it.
+
+译：记住那个瞬间，我们等会儿还会回到它。
 
 【示意翻页】
 
@@ -91,22 +121,39 @@ Keep that moment in mind. We will come back to it.
 
 When I started learning English, I had five problems.
 
+译：刚开始学英语的时候，我有五个问题。
+
 Listening: one lost minute, and the whole passage collapsed.
+
+译：听力：一分钟没跟上，整段就崩了。
 
 Reading and seven-choose-five: I was slow, so time always ran out.
 
+译：阅读和七选五：我读得慢，时间总也不够用。
+
 Cloze: I missed the story, and then wrong answers snowballed.
+
+译：完形：没读懂故事，错误就一个接一个滚起来。
 
 Word forms: I knew the word, but I could not write the right form.
 
+译：词形：单词我认识，可就是写不对形式。
+
 Writing: the prompt was there, but the first sentence was not.
+
+译：写作：题目摆在那儿，第一句却怎么也写不出来。
 
 【停一拍】
 
 Later I understood: most of these were not proof that I was bad at English.
 They were problems of method, accumulation and review.
 
+译：后来我才明白：这些问题大多不能证明我英语差，它们其实是方法、
+积累和复盘的问题。
+
 Vocabulary is the root. But memorising a word list alone is not enough.
+
+译：词汇是根，但只背单词表远远不够。
 
 【示意翻页】
 
@@ -119,16 +166,26 @@ Vocabulary is the root. But memorising a word list alone is not enough.
 Here is the basic map. One hundred and fifty points, one hundred and twenty
 minutes.
 
+译：先看这张基本地图。一百五十分，一百二十分钟。
+
 Listening, thirty. Reading A to D, thirty-seven point five. Seven-choose-five,
 twelve point five. Cloze, fifteen. Grammar fill-in, fifteen. Writing, forty —
 fifteen for the short piece and twenty-five for continuation writing.
+
+译：听力 30 分；阅读 A 到 D 共 37.5 分；七选五 12.5 分；完形 15 分；
+语法填空 15 分；写作 40 分——小作文 15 分，读后续写 25 分。
 
 【指屏幕】
 
 Different regions use different formats and marks, so check your local paper.
 
+译：各地题型和分值不一样，请以你本地试卷为准。
+
 We are not talking about primary or middle school today. We are focusing on
 high school: exam skills on one side, real English literacy on the other.
+
+译：今天我们不讲小学和初中，只讲高中：一边是应试技巧，一边是真正的
+英语素养。
 
 【示意翻页】
 
@@ -141,13 +198,22 @@ high school: exam skills on one side, real English literacy on the other.
 Listening is not about catching every word. It is about not being stopped by a
 few blurred words.
 
+译：听力不是要抓住每一个词，而是别被几个模糊的词卡住。
+
 Here is what worked for me.
+
+译：下面这些方法对我有效。
 
 First, listen. Do not translate while the audio is running. If you translate,
 your attention splits, and the next sentence is already gone.
 
+译：第一，先听。音频还在放的时候不要翻译。你一翻译，注意力就分成
+两半，下一句已经过去了。
+
 Second, read the transcript after every practice set. Mark the words you did not
 recognise, and mark linking and weak forms.
+
+译：第二，每做完一套就对照原文。标出不认识的词，也标出连读和弱读。
 
 【中文补充】
 文本里那些“好像听过、但没反应过来”的词，就是你觉得这篇很难的罪魁祸首。
@@ -155,7 +221,11 @@ recognise, and mark linking and weak forms.
 Third, shadow the audio for fifteen to twenty minutes a day. Copy the rhythm,
 not just the words.
 
-Fifteen minutes every day beats one long session before the exam.
+译：第三，每天跟读十五到二十分钟。要模仿节奏，不只是念词。
+
+Fifteen minutes every day beats one long cram before the exam.
+
+译：每天十五分钟，胜过考前猛灌一次。
 
 【示意翻页】
 
@@ -167,20 +237,31 @@ Fifteen minutes every day beats one long session before the exam.
 
 Reading: accuracy first, speed second.
 
+译：阅读：先求准，再求快。
+
 Do not chase the clock on day one. Get the answers right first, then add a time
 limit.
 
+译：第一天别追着时间跑。先把答案做对，再给自己加时限。
+
 When a sentence is long, split it: find the subject, the verb and the object;
 then find the connectors and the modifiers.
+
+译：句子一长就拆开：先找主语、谓语、宾语，再找连接词和修饰成分。
 
 For every wrong answer, go back to the passage and locate the evidence. Ask
 yourself: did I misread it, did a distractor fool me, or did I simply run out of
 time?
 
+译：每错一道，都回原文定位证据。问自己：是我看错了，是被干扰项骗了，
+还是单纯没时间了？
+
 【中文补充】
 三种错法对应三种改法。复盘十篇，强过囫囵刷三十篇。
 
 Review is what turns quantity into quality.
+
+译：复盘，才是把数量变成质量的关键。
 
 【示意翻页】
 
@@ -192,10 +273,16 @@ Review is what turns quantity into quality.
 
 Cloze: two passes, one story.
 
+译：完形：读两遍，讲一个故事。
+
 First pass, read the whole passage. Get the plot and the feeling. Do not stop at
 every blank.
 
+译：第一遍，通读全文，抓住情节和情绪，不要在每一个空上停下来。
+
 Second pass, fill each blank with grammar and context, not with a gut feeling.
+
+译：第二遍，用语法和上下文填空，别靠语感瞎猜。
 
 【中文补充，重点】
 完形大多是故事，很考验共情：人物为什么这么做，情绪怎么变。理解不到位，
@@ -216,8 +303,13 @@ Second pass, fill each blank with grammar and context, not with a gut feeling.
 Grammar fill-in looks technical, but it starts with one question: what part of
 speech is missing?
 
+译：语法填空看着很技术，其实先问一个问题：这里缺的是什么词性？
+
 Noun, verb, adjective, adverb, pronoun, conjunction or article. Decide that
 first. Then decide the form: plural, tense, voice, comparison or non-finite.
+
+译：名词、动词、形容词、副词、代词、连词还是冠词？先定词性，
+再定形式：单复数、时态、语态、比较级还是非谓语。
 
 【中文补充，逐个指屏幕】
 高频考点可以盯这十一个：名词单复数、各类时态、序数词、冠词、逻辑连接词、
@@ -240,16 +332,27 @@ first. Then decide the form: plural, tense, voice, comparison or non-finite.
 
 Writing: outline first, direction first.
 
+译：写作先列提纲、定方向。
+
 Spend two minutes on a three-line outline: beginning, middle, end. Your ideas
 will be much clearer when you write.
+
+译：花两分钟写三行提纲：开头、中间、结尾。真动笔时，思路会清楚得多。
 
 For continuation writing, choose the direction before you write a word. Without
 a direction, the story drifts.
 
-One hundred and fifty words, two paragraphs. Do not go over the limit.
+译：读后续写，动笔前先定方向。没有方向，故事就会跑偏。
+
+One hundred and fifty words, two paragraphs.
+
+译：写够一百五十词，两段
 
 Templates are a floor, not a script. Learn the patterns for action, emotion and
 setting, then adapt them to the prompt.
+
+译：模板是下限，不是剧本。学好动作、情绪、环境这几类句式，
+再按题目去改。
 
 【示意翻页】
 
@@ -261,8 +364,12 @@ setting, then adapt them to the prompt.
 
 Vocabulary: do not start from “abandon” every time.
 
+译：背单词，别每次都从 abandon 开始。
+
 Collect the unknown words from your papers and practice sets. Put them into
 groups of two hundred.
+
+译：从试卷和练习里收生词，两百个一组。
 
 【中文补充】
 基础弱的同学可以把 200 减到 100 或 50。关键不是一次背多少，而是循环和复盘。
@@ -271,11 +378,18 @@ One group, seven days, continuous cycling. Review after you forget. Keep a
 separate list of words that keep slipping away, and give them a final sprint in
 the two weeks before the exam.
 
+译：一组词，七天，连续循环。忘了就回头复习。老是记不住的词
+单独列一栏，考前两周再冲刺一遍。
+
 If you miss a word three times, treat it as a hard word and give it extra
 attention.
 
+译：一个词错过三次，就当成硬词，多给它一点注意力。
+
 Context matters too: a word learned in a sentence stays longer than a word
 learned alone.
+
+译：语境也很重要：放进句子里记的词，比孤零零背的词留得久。
 
 【示意翻页】
 
@@ -287,22 +401,35 @@ learned alone.
 
 English outside the exam.
 
+译：考试之外的英语。
+
 Listen to songs you actually like, and sing along. You learn melody, phrasing
 and rhythm at the same time.
+
+译：听你真正喜欢的歌，跟着唱。旋律、语块和节奏，一次都学到了。
 
 Watch short films with clear dialogue. Listen for the situation first; you do
 not need every word.
 
+译：看对白清楚的短片。先听情境，不需要每个词都听懂。
+
 【指右侧海报】
 This is “Spider-Man: Brand New Day”. Clear dialogue, fast rhythm. It is good
 listening practice, not a magic pill.
+
+译：这是《蜘蛛侠：崭新之日》。对白清楚，节奏快，是很好的听力素材，
+但不是灵丹妙药。
 
 【中文补充】
 看电影不是任务，别一边看一边查词。先跟住情节，第二遍再挑几句跟读。
 
 Most importantly, accept English. Five minutes a day beats one long cram.
 
+译：最重要的是接纳英语。每天五分钟，胜过考前猛灌一次。
+
 English does not end when the exam ends.
+
+译：考试结束，英语不会跟着结束。
 
 【示意翻页】
 
@@ -313,6 +440,8 @@ English does not end when the exam ends.
 ================================================================
 
 Now let us look at the room.
+
+译：现在我们来看看教室里的情况。
 
 【中文口令，以手机结果页为准】
 看你的结果页。下面每一条，手机上写着的才举手；没写的不用举。
@@ -332,6 +461,8 @@ Now let us look at the room.
 【点两位同学】
 Could you read one line of your result aloud?
 
+译：能把你结果页上的一行念出来吗？
+
 【中文补充】
 这是自查，不是诊断。痛点分高不代表没救，只说明这一项现在最值得先改。
 
@@ -345,6 +476,8 @@ Could you read one line of your result aloud?
 
 One more interaction. This one is about the methods we just covered.
 
+译：再来一个互动，这次是刚讲过的那些方法。
+
 【中文口令】
 现在扫码，页面别关。题目会在开始时间自动解锁。每题只能答一次，答完把屏幕
 给场控看。
@@ -353,10 +486,17 @@ One more interaction. This one is about the methods we just covered.
 
 The question unlocks at the start time. Tap once. Correct and fastest wins.
 
+译：到开始时间题目就会解锁。只能点一次，答对且最快的人赢。
+
 【倒计时结束，读题；每题给 20 秒】
 Question one: in cloze, what should you do first?
+译：第一题：做完形，第一步该做什么？
+
 Question two: in continuation writing, what is the first step?
+译：第二题：读后续写，第一步是什么？
+
 Question three: in grammar fill-in, what do you decide first?
+译：第三题：语法填空，先判断什么？
 
 【请前五名举手，现场记名次】
 
@@ -370,22 +510,36 @@ Question three: in grammar fill-in, what do you decide first?
 
 Before we finish, four things I wish I had known earlier.
 
+译：结束之前，讲四件我希望能早点知道的事。
+
 First, practise a little every day. Cramming is not a plan.
+
+译：第一，每天练一点。突击不叫计划。
 
 Second, feed yourself real English, not only textbook exercises.
 
+译：第二，让自己接触真实的英语，而不只是课本练习。
+
 Third, speak and write before you feel ready. Mistakes are data, not verdicts.
 
+译：第三，别等准备好了才开口、才动笔。错误是数据，不是判决。
+
 Fourth, make English part of your life, not just your timetable.
+
+译：第四，让英语成为生活的一部分，而不只是课表上的一项。
 
 【停一拍，放慢】
 
 “Patience is the key to life.”
 
+译：“耐心是生活的关键。”
+
 耐心是生活的关键。高考结束，不等于英语学习结束；那只是你开始真正用英语看
 世界的起点。
 
 Thank you.
+
+译：谢谢大家。
 
 【示意翻页】
 
@@ -397,7 +551,11 @@ Thank you.
 
 That is our presentation. Thank you for listening.
 
+译：我们的分享就到这里，谢谢大家。
+
 If you have any questions — in English or in Chinese — we are happy to answer.
+
+译：如果有问题——用英文或中文都可以——我们很乐意回答。
 
 【全员站定，分工表投屏】
 
