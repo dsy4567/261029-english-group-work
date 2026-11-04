@@ -29,9 +29,9 @@
                     Georgia, "Times New Roman", "Songti SC",
                     "Noto Serif CJK SC", serif;
                 --sans:
-                    ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-                    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-                    sans-serif;
+                    "Inter", "Noto Sans SC", ui-sans-serif, system-ui,
+                    -apple-system, "Segoe UI", "PingFang SC",
+                    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
             }
             * {
                 box-sizing: border-box;
@@ -2688,36 +2688,63 @@
                     const rUrl = raceUrl();
 
                     if (sUrl) {
-                        els.qrSurvey.innerHTML = QRCodeGen.svg(sUrl);
-                        els.urlSurvey.textContent = sUrl;
+                        try {
+                            els.qrSurvey.innerHTML = QRCodeGen.svg(sUrl);
+                            els.urlSurvey.textContent = sUrl;
+                        } catch (err) {
+                            els.qrSurvey.innerHTML =
+                                '<div class="placeholder">Survey link is ' +
+                                sUrl.length +
+                                " characters — too long for the built-in QR encoder (max ~200). Shorten the interaction URL.<br />问卷链接 " +
+                                sUrl.length +
+                                " 个字符，超出内置二维码容量（约 200），请缩短互动页网址。</div>";
+                            els.urlSurvey.textContent = sUrl;
+                        }
                     } else {
                         els.urlSurvey.textContent = "";
                     }
 
                     if (rUrl) {
-                        els.qrRace.innerHTML = QRCodeGen.svg(rUrl);
-                        els.urlRace.textContent = rUrl;
-                        const epoch = startEpoch(cfg.start);
-                        const when = cfg.preview
-                            ? "PREVIEW (unlocks now)"
-                            : epoch !== null
-                              ? "starts at " + cfg.start
-                              : "no start time set!";
-                        const whenZh = cfg.preview
-                            ? "预览（立即解锁）"
-                            : epoch !== null
-                              ? cfg.start + " 开始"
-                              : "未设置开始时间！";
-                        els.raceMeta.innerHTML =
-                            "Question " +
-                            cfg.q +
-                            " · " +
-                            when +
-                            '<span class="zh">第 ' +
-                            cfg.q +
-                            " 题 · " +
-                            whenZh +
-                            "</span>";
+                        try {
+                            els.qrRace.innerHTML = QRCodeGen.svg(rUrl);
+                            els.urlRace.textContent = rUrl;
+                            const epoch = startEpoch(cfg.start);
+                            const when = cfg.preview
+                                ? "PREVIEW (unlocks now)"
+                                : epoch !== null
+                                  ? "starts at " + cfg.start
+                                  : "no start time set!";
+                            const whenZh = cfg.preview
+                                ? "预览（立即解锁）"
+                                : epoch !== null
+                                  ? cfg.start + " 开始"
+                                  : "未设置开始时间！";
+                            els.raceMeta.innerHTML =
+                                "Question " +
+                                cfg.q +
+                                " · " +
+                                when +
+                                '<span class="zh">第 ' +
+                                cfg.q +
+                                " 题 · " +
+                                whenZh +
+                                "</span>";
+                        } catch (err) {
+                            els.qrRace.innerHTML =
+                                '<div class="placeholder">Race link is ' +
+                                rUrl.length +
+                                " characters — too long for the built-in QR encoder (max ~200). Shorten the interaction URL.<br />抢答链接 " +
+                                rUrl.length +
+                                " 个字符，超出内置二维码容量（约 200），请缩短互动页网址。</div>";
+                            els.urlRace.textContent = rUrl;
+                            els.raceMeta.innerHTML =
+                                "Question " +
+                                cfg.q +
+                                " · link too long" +
+                                '<span class="zh">第 ' +
+                                cfg.q +
+                                " 题 · 链接过长</span>";
+                        }
                     } else {
                         els.urlRace.textContent = "";
                         if (cfg.base) {

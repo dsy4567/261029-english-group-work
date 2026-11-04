@@ -124,6 +124,7 @@
 | 抢答 3 题与答案解释 | interaction.html `RACE` |
 | 抢答验签拦截文案（5 句冷幽默） | interaction.html `TAMPER_LINES` |
 | 幻灯片正文 | presentation.html 各 `<section>` |
+| 字体栈 / 可选本机字体 | presentation.html `:root --sans`（`Inter` + `Noto Sans SC`）；`fonts/` 仅供手动安装到系统，HTML 不引用，不违反零依赖 |
 | 演讲者备注 | 各 `<div class="note">` |
 | 名单页 / 分工表 | presentation.html 第 2 页与第 16 页的 `.role` |
 | 素养页海报 | presentation.html 第 12 页 `.poster img` |
